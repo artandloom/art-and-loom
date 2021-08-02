@@ -4,13 +4,21 @@
       <div>
         <img src="/images/logo.svg" alt="Art and loom" />
       </div>
-      <div>
+      <div class="flex flex-row">
         <a
+          class="mr-7"
           href="https://www.instagram.com/artandloom/"
           target="_blank"
           rel="noopener"
         >
           <img src="/icons/instagram.svg" alt="Instagram" />
+        </a>
+        <a
+          href="https://api.whatsapp.com/send?phone=+19177670078"
+          target="_blank"
+          rel="noopener"
+        >
+          <img src="/icons/whatsapp.svg" alt="Whatsapp" />
         </a>
       </div>
     </section>
