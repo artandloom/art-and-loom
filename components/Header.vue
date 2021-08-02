@@ -1,7 +1,9 @@
 <template>
   <header class="flex flex-row items-center justify-between pt-11 px-15">
     <div>
-      <img src="/images/logo.svg" alt="Art and loom" />
+      <NuxtLink to="/">
+        <img src="/images/logo.svg" alt="Art and loom" />
+      </NuxtLink>
     </div>
     <nav class="w-2/3">
       <ul class="flex flex-row list-none m-0 p-0 justify-between">

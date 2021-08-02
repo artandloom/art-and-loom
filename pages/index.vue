@@ -1,56 +1,82 @@
 <template>
-  <div>
+  <main>
     <Header />
-    <div
-      class="
-        max-w-md
-        mx-auto
-        bg-white
-        rounded-xl
-        shadow-md
-        overflow-hidden
-        md:max-w-2xl
-      "
-    >
-      <div class="md:flex">
-        <div class="md:flex-shrink-0">
-          <img
-            class="h-48 w-full object-cover md:w-48"
-            src="https://images.unsplash.com/photo-1515711660811-48832a4c6f69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80"
-            alt="Man looking at item at a store"
-          />
-        </div>
-        <div class="p-8">
-          <div
-            class="
-              uppercase
-              tracking-wide
-              text-sm text-indigo-500
-              font-semibold
-            "
+    <section>
+      <swiper class="swiper">
+        <swiper-slide
+          class="flex justify-center items-center"
+          :key="banner.id"
+          v-for="banner in data.banners"
+        >
+          <p
+            class="absolute text-7xl uppercase"
+            :class="banner.color === 'dark' ? 'text-black' : 'text-white'"
           >
-            Case study
-          </div>
-          <a
-            href="#"
-            class="
-              block
-              mt-1
-              text-lg
-              leading-tight
-              font-medium
-              text-black
-              hover:underline
-            "
-            >Finding customers for your new business</a
-          >
-          <p class="mt-2 text-gray-500">
-            Getting a new business off the ground is a lot of hard work. Here
-            are five ideas you can use to find your first customers.
+            {{ banner.name }}
           </p>
-        </div>
-      </div>
-    </div>
+          <img class="m-auto" :src="banner.image.data.full_url" />
+        </swiper-slide>
+      </swiper>
+    </section>
+    <section class="px-15">
+      <h2 class="flex flex-row items-center uppercase">
+        Collections.
+        <span class="flex ml-6 separator"></span>
+      </h2>
+      <img
+        class="w-4/5"
+        :src="data.collection_cover.data.full_url"
+        alt="Collections"
+      />
+    </section>
+    <div class="mb-35">Slider</div>
+    <section class="flex flex-col items-end px-15">
+      <h2 class="flex flex-row items-center uppercase">
+        <span class="flex mr-6 separator"></span>
+        Collaborations.
+      </h2>
+      <img
+        class="w-4/5"
+        :src="data.collaboration_cover.data.full_url"
+        alt="Collaborations"
+      />
+    </section>
+    <div class="mb-35">Slider</div>
     <Footer />
-  </div>
+  </main>
 </template>
+<script>
+import { directive } from "vue-awesome-swiper";
+
+export default {
+  directives: {
+    swiper: directive,
+  },
+  async asyncData({ $axios }) {
+    const { data } = await $axios.$get(
+      process.env.baseUrl + "/home?single=1&fields=*.*.*"
+    );
+    console.log("data", data);
+    console.log("process.env.baseUrl", process.env.baseUrl);
+    return { data };
+  },
+  data() {
+    return {
+      banners: ["/slider-1.png", "/slider-2.png", "/slider-3.png"],
+      swiperOption: {
+        loop: true,
+        // navigation: false,
+      },
+    };
+  },
+};
+</script>
+<style scoped>
+h2 {
+  font-size: 6.875rem;
+}
+.separator {
+  border-top: 0.5px solid #000000;
+  width: 200px;
+}
+</style>
