@@ -2,7 +2,7 @@
   <main>
     <Header />
     <section>
-      <swiper>
+      <swiper class="swiper">
         <swiper-slide
           class="flex justify-center items-center"
           :key="banner.id"
@@ -30,7 +30,7 @@
       />
     </section>
     <section class="mb-35">
-      <swiper>
+      <swiper class="swiper" :options="swiperOptionItem">
         <swiper-slide
           class="flex justify-center items-center item"
           :key="collection.id"
@@ -56,7 +56,7 @@
       />
     </section>
     <section class="mb-35">
-      <swiper>
+      <swiper class="swiper" :options="swiperOptionItem">
         <swiper-slide
           class="flex justify-center items-center item"
           :key="collection.id"
@@ -77,6 +77,14 @@
 import { directive } from "vue-awesome-swiper";
 
 export default {
+  data() {
+    return {
+      swiperOptionItem: {
+        slidesPerView: "auto",
+        spaceBetween: 8,
+      },
+    };
+  },
   directives: {
     swiper: directive,
   },

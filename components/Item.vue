@@ -37,5 +37,6 @@ p {
 }
 img {
   margin-left: 30px;
+  max-height: 413px;
 }
 </style>
