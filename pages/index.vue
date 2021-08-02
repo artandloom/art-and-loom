@@ -2,7 +2,7 @@
   <main>
     <Header />
     <section>
-      <swiper class="swiper">
+      <swiper>
         <swiper-slide
           class="flex justify-center items-center"
           :key="banner.id"
@@ -18,7 +18,7 @@
         </swiper-slide>
       </swiper>
     </section>
-    <section class="px-15">
+    <section class="px-15 mb-30">
       <h2 class="flex flex-row items-center uppercase">
         Collections.
         <span class="flex ml-6 separator"></span>
@@ -29,8 +29,22 @@
         alt="Collections"
       />
     </section>
-    <div class="mb-35">Slider</div>
-    <section class="flex flex-col items-end px-15">
+    <section class="mb-35">
+      <swiper>
+        <swiper-slide
+          class="flex justify-center items-center item"
+          :key="collection.id"
+          v-for="collection in collections"
+        >
+          <Item
+            :name="collection.name"
+            :image="collection.picture.data.full_url"
+          />
+          <!-- style="width: 300px" -->
+        </swiper-slide>
+      </swiper>
+    </section>
+    <section class="flex flex-col items-end px-15 mb-30">
       <h2 class="flex flex-row items-center uppercase">
         <span class="flex mr-6 separator"></span>
         Collaborations.
@@ -41,7 +55,21 @@
         alt="Collaborations"
       />
     </section>
-    <div class="mb-35">Slider</div>
+    <section class="mb-35">
+      <swiper>
+        <swiper-slide
+          class="flex justify-center items-center item"
+          :key="collection.id"
+          v-for="collection in collections"
+        >
+          <Item
+            :name="collection.name"
+            :image="collection.picture.data.full_url"
+          />
+          <!-- style="width: 300px" -->
+        </swiper-slide>
+      </swiper>
+    </section>
     <Footer />
   </main>
 </template>
@@ -56,9 +84,18 @@ export default {
     const { data } = await $axios.$get(
       process.env.baseUrl + "/home?single=1&fields=*.*.*"
     );
-    console.log("data", data);
-    console.log("process.env.baseUrl", process.env.baseUrl);
-    return { data };
+
+    const { data: collections } = await $axios.$get(
+      process.env.baseUrl + "/collections?filter[featured][nempty]&fields=*.*.*"
+    );
+
+    // const { data: collaborations } = await $axios.$get(
+    //   process.env.baseUrl +
+    //     "/collaborations?filter[featured][nempty]&fields=*.*.*"
+    // );
+    console.log("data", collections);
+    // collaborations
+    return { data, collections };
   },
 };
 </script>
@@ -69,5 +106,8 @@ h2 {
 .separator {
   border-top: 0.5px solid #000000;
   width: 200px;
+}
+.item {
+  width: 25% !important;
 }
 </style>
