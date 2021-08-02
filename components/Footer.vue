@@ -1,5 +1,6 @@
 <template>
   <footer>
+    <SubscribeNewsletter />
     <section class="flex flex-row items-end justify-between pt-11 px-15">
       <div>
         <img src="/images/logo.svg" alt="Art and loom" />

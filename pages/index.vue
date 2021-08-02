@@ -60,15 +60,6 @@ export default {
     console.log("process.env.baseUrl", process.env.baseUrl);
     return { data };
   },
-  data() {
-    return {
-      banners: ["/slider-1.png", "/slider-2.png", "/slider-3.png"],
-      swiperOption: {
-        loop: true,
-        // navigation: false,
-      },
-    };
-  },
 };
 </script>
 <style scoped>
