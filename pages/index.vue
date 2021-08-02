@@ -2,23 +2,21 @@
   <main>
     <Header />
     <section>
-      <div ::instanceName="'main-slider'" v-swiper="{}">
-        <div class="swiper-wrapper">
-          <div
-            class="swiper-slide flex justify-center items-center"
-            :key="banner.id"
-            v-for="banner in data.banners"
+      <swiper class="swiper">
+        <swiper-slide
+          class="flex justify-center items-center"
+          :key="banner.id"
+          v-for="banner in data.banners"
+        >
+          <p
+            class="absolute text-7xl uppercase"
+            :class="banner.color === 'dark' ? 'text-black' : 'text-white'"
           >
-            <p
-              class="absolute text-7xl uppercase"
-              :class="banner.color === 'dark' ? 'text-black' : 'text-white'"
-            >
-              {{ banner.name }}
-            </p>
-            <img class="m-auto" :src="banner.image.data.full_url" />
-          </div>
-        </div>
-      </div>
+            {{ banner.name }}
+          </p>
+          <img class="m-auto" :src="banner.image.data.full_url" />
+        </swiper-slide>
+      </swiper>
     </section>
     <section class="px-15 mb-30">
       <h2 class="flex flex-row items-center uppercase">
@@ -32,21 +30,19 @@
       />
     </section>
     <section class="mb-35">
-      <div v-swiper="swiperOptionItem" ref="collections">
-        <div class="swiper-wrapper">
-          <div
-            class="swiper-slide flex justify-center items-center item"
-            :key="collection.id"
-            v-for="collection in collections"
-          >
-            <Item
-              :name="collection.name"
-              :image="collection.picture.data.full_url"
-            />
-            <!-- style="width: 300px" -->
-          </div>
-        </div>
-      </div>
+      <swiper class="swiper" :options="swiperOptionItem">
+        <swiper-slide
+          class="flex justify-center items-center item"
+          :key="collection.id"
+          v-for="collection in collections"
+        >
+          <Item
+            :name="collection.name"
+            :image="collection.picture.data.full_url"
+          />
+          <!-- style="width: 300px" -->
+        </swiper-slide>
+      </swiper>
     </section>
     <section class="flex flex-col items-end px-15 mb-30">
       <h2 class="flex flex-row items-center uppercase">
@@ -60,27 +56,25 @@
       />
     </section>
     <section class="mb-35">
-      <div :key="'collaborations'" v-swiper="swiperOptionItem">
-        <div class="swiper-wrapper">
-          <div
-            class="swiper-slide flex justify-center items-center item"
-            :key="collection.id"
-            v-for="collection in collections"
-          >
-            <Item
-              :name="collection.name"
-              :image="collection.picture.data.full_url"
-            />
-            <!-- style="width: 300px" -->
-          </div>
-        </div>
-      </div>
+      <swiper class="swiper" :options="swiperOptionItem">
+        <swiper-slide
+          class="flex justify-center items-center item"
+          :key="collection.id"
+          v-for="collection in collections"
+        >
+          <Item
+            :name="collection.name"
+            :image="collection.picture.data.full_url"
+          />
+          <!-- style="width: 300px" -->
+        </swiper-slide>
+      </swiper>
     </section>
     <Footer />
   </main>
 </template>
 <script>
-import { directive } from "vue-awesome-swiper";
+import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 
 export default {
   data() {
@@ -91,8 +85,9 @@ export default {
       },
     };
   },
-  directives: {
-    swiper: directive,
+  components: {
+    Swiper,
+    SwiperSlide,
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.$get(
