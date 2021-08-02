@@ -2,7 +2,7 @@
   <main>
     <Header />
     <section>
-      <swiper class="swiper">
+      <swiper class="swiper" :options="swiperOptionsMain">
         <swiper-slide
           class="flex justify-center items-center"
           :key="banner.id"
@@ -30,17 +30,20 @@
       />
     </section>
     <section class="mb-35">
-      <swiper class="swiper" :options="swiperOptionItem">
+      <swiper class="swiper" :options="swiperOptionsItem">
         <swiper-slide
           class="flex justify-center items-center item"
           :key="collection.id"
           v-for="collection in collections"
         >
-          <Item
-            :name="collection.name"
-            :image="collection.picture.data.full_url"
-          />
-          <!-- style="width: 300px" -->
+          <NuxtLink
+            :to="'/collections/' + collection.slug + '-iid' + collection.id"
+          >
+            <Item
+              :name="collection.name"
+              :image="collection.picture.data.full_url"
+            />
+          </NuxtLink>
         </swiper-slide>
       </swiper>
     </section>
@@ -56,17 +59,20 @@
       />
     </section>
     <section class="mb-35">
-      <swiper class="swiper" :options="swiperOptionItem">
+      <swiper class="swiper" :options="swiperOptionsItem">
         <swiper-slide
           class="flex justify-center items-center item"
           :key="collection.id"
           v-for="collection in collections"
         >
-          <Item
-            :name="collection.name"
-            :image="collection.picture.data.full_url"
-          />
-          <!-- style="width: 300px" -->
+          <NuxtLink
+            :to="'/collections/' + collection.slug + '-iid' + collection.id"
+          >
+            <Item
+              :name="collection.name"
+              :image="collection.picture.data.full_url"
+            />
+          </NuxtLink>
         </swiper-slide>
       </swiper>
     </section>
@@ -79,9 +85,19 @@ import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 export default {
   data() {
     return {
-      swiperOptionItem: {
+      swiperOptionsMain: {
+        preventClicks: false,
+        preventClicksPropagation: false,
+        resistance: true,
+        resistanceRatio: 0.65,
+      },
+      swiperOptionsItem: {
         slidesPerView: "auto",
         spaceBetween: 8,
+        preventClicks: false,
+        preventClicksPropagation: false,
+        resistance: true,
+        resistanceRatio: 0.65,
       },
     };
   },
