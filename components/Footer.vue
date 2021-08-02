@@ -1,0 +1,14 @@
+<template>
+  <div>
+    <div>
+      <div>Logo</div>
+      <div>redes</div>
+    </div>
+    <div>
+        navbar
+    </div>
+    <div>
+        copyright
+    </div>
+  </div>
+</template>
