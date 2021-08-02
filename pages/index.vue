@@ -2,21 +2,23 @@
   <main>
     <Header />
     <section>
-      <swiper class="swiper">
-        <swiper-slide
-          class="flex justify-center items-center"
-          :key="banner.id"
-          v-for="banner in data.banners"
-        >
-          <p
-            class="absolute text-7xl uppercase"
-            :class="banner.color === 'dark' ? 'text-black' : 'text-white'"
+      <div ::instanceName="'main-slider'" v-swiper="{}">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide flex justify-center items-center"
+            :key="banner.id"
+            v-for="banner in data.banners"
           >
-            {{ banner.name }}
-          </p>
-          <img class="m-auto" :src="banner.image.data.full_url" />
-        </swiper-slide>
-      </swiper>
+            <p
+              class="absolute text-7xl uppercase"
+              :class="banner.color === 'dark' ? 'text-black' : 'text-white'"
+            >
+              {{ banner.name }}
+            </p>
+            <img class="m-auto" :src="banner.image.data.full_url" />
+          </div>
+        </div>
+      </div>
     </section>
     <section class="px-15 mb-30">
       <h2 class="flex flex-row items-center uppercase">
@@ -30,19 +32,21 @@
       />
     </section>
     <section class="mb-35">
-      <swiper class="swiper" :options="swiperOptionItem">
-        <swiper-slide
-          class="flex justify-center items-center item"
-          :key="collection.id"
-          v-for="collection in collections"
-        >
-          <Item
-            :name="collection.name"
-            :image="collection.picture.data.full_url"
-          />
-          <!-- style="width: 300px" -->
-        </swiper-slide>
-      </swiper>
+      <div v-swiper="swiperOptionItem" ref="collections">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide flex justify-center items-center item"
+            :key="collection.id"
+            v-for="collection in collections"
+          >
+            <Item
+              :name="collection.name"
+              :image="collection.picture.data.full_url"
+            />
+            <!-- style="width: 300px" -->
+          </div>
+        </div>
+      </div>
     </section>
     <section class="flex flex-col items-end px-15 mb-30">
       <h2 class="flex flex-row items-center uppercase">
@@ -56,19 +60,21 @@
       />
     </section>
     <section class="mb-35">
-      <swiper class="swiper" :options="swiperOptionItem">
-        <swiper-slide
-          class="flex justify-center items-center item"
-          :key="collection.id"
-          v-for="collection in collections"
-        >
-          <Item
-            :name="collection.name"
-            :image="collection.picture.data.full_url"
-          />
-          <!-- style="width: 300px" -->
-        </swiper-slide>
-      </swiper>
+      <div :key="'collaborations'" v-swiper="swiperOptionItem">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide flex justify-center items-center item"
+            :key="collection.id"
+            v-for="collection in collections"
+          >
+            <Item
+              :name="collection.name"
+              :image="collection.picture.data.full_url"
+            />
+            <!-- style="width: 300px" -->
+          </div>
+        </div>
+      </div>
     </section>
     <Footer />
   </main>
