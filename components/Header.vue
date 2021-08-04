@@ -1,13 +1,15 @@
 <template>
   <header class="flex flex-row items-center justify-between pt-11 px-15">
     <div>
-      <NuxtLink to="/">
+      <NuxtLink to="/" title="Home">
         <img src="/images/logo.svg" alt="Art and loom" />
       </NuxtLink>
     </div>
     <nav class="w-2/3">
       <ul class="flex flex-row list-none m-0 p-0 justify-between">
-        <li><a href="#">Collection</a></li>
+        <li>
+          <NuxtLink title="Collections" to="/collections">Collections</NuxtLink>
+        </li>
         <li>+</li>
         <li><a href="#">Collaboration</a></li>
         <li>+</li>

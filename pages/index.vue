@@ -37,6 +37,7 @@
           v-for="collection in collections"
         >
           <NuxtLink
+            :title="collection.name"
             :to="'/collections/' + collection.slug + '-iid' + collection.id"
           >
             <Item

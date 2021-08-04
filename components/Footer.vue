@@ -34,7 +34,9 @@
     </section>
     <nav class="m-auto w-3/4 my-28">
       <ul class="flex flex-row list-none m-0 p-0 justify-between">
-        <li><a href="#">Collection</a></li>
+        <li>
+          <NuxtLink title="Collections" to="/collections">Collections</NuxtLink>
+        </li>
         <li>+</li>
         <li><a href="#">Collaboration</a></li>
         <li>+</li>
