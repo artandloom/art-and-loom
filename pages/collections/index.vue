@@ -2,7 +2,7 @@
   <div>
     <Header />
     <main class="px-15">
-      <section class="mb-30">
+      <section class="mb-30 pb-30">
         <div class="relative">
           <img
             class="cover"
@@ -21,7 +21,7 @@
               justify-end
             "
           >
-            <h2 class="uppercase">
+            <h2 class="flex flex-row items-center uppercase">
               <span class="flex mr-6 separator"></span>
               Collections.
             </h2>
