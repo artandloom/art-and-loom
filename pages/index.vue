@@ -29,8 +29,8 @@
         alt="Collections"
       />
     </section>
-    <section class="mb-35">
-      <swiper class="swiper" :options="swiperOptionsItem">
+    <section class="px-15 mb-35 text-right">
+      <swiper class="swiper mb-4" :options="swiperOptionsItem">
         <swiper-slide
           class="flex justify-center items-center item"
           :key="collection.id"
@@ -47,6 +47,9 @@
           </NuxtLink>
         </swiper-slide>
       </swiper>
+      <NuxtLink class="uppercase" title="Collections" to="/collections"
+        >See all Collections.</NuxtLink
+      >
     </section>
     <section class="flex flex-col items-end px-15 mb-30">
       <h2 class="flex flex-row items-center uppercase">
