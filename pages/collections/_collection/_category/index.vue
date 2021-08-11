@@ -33,13 +33,22 @@
           <ul>
             <NuxtLink
               class="m-7"
-              :key="category.id"
-              v-for="category in data.categories"
-              :to="'/collections/' + category.slug + '-iid' + category.id"
-              :title="category.name"
+              :key="product.id"
+              v-for="product in data.products"
+              :to="
+                '/collections/' +
+                $route.params.collection +
+                '/' +
+                $route.params.category +
+                '/' +
+                product.slug +
+                '-iid' +
+                product.id
+              "
+              :title="product.name"
             >
               <li class="font-semibold uppercase">
-                {{ category.name }}
+                {{ product.name }}
               </li>
             </NuxtLink>
           </ul>
@@ -47,15 +56,21 @@
         <div class="flex flex-row flex-wrap w-4/5">
           <NuxtLink
             class="w1/3"
-            :key="category.id"
-            v-for="category in data.categories"
-            :to="'/collections/' + category.slug + '-iid' + category.id"
-            :title="category.name"
+            :key="product.id"
+            v-for="product in data.products"
+            :to="
+              '/collections/' +
+              $route.params.collection +
+              '/' +
+              $route.params.category +
+              '/' +
+              product.slug +
+              '-iid' +
+              product.id
+            "
+            :title="product.name"
           >
-            <Item
-              :name="category.name"
-              :image="category.picture.data.full_url"
-            />
+            <Item :name="product.name" :image="product.picture.data.full_url" />
           </NuxtLink>
         </div>
       </section>
@@ -66,15 +81,17 @@
 <script>
 export default {
   async asyncData({ $axios, route }) {
-    const matcher = route.params.collection.match(/-iid(\d+)/);
+    const matcher = route.params.category.match(/-iid(\d+)/);
 
     let id = null;
     if (matcher && matcher.length > 1) {
       id = matcher[1];
     }
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/collections/" + id + "?fields=*.*.*"
+      process.env.baseUrl + "/categories/" + id + "?fields=*.*.*"
     );
+
+    console.log("data", data);
 
     return { data };
   },

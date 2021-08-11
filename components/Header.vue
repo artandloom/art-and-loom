@@ -1,5 +1,5 @@
 <template>
-  <header class="flex flex-row items-center justify-between pt-11 px-15">
+  <header class="flex flex-row items-center justify-between pb-24 pt-11 px-15">
     <div>
       <NuxtLink to="/" title="Home">
         <img src="/images/logo.svg" alt="Art and loom" />
