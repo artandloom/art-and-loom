@@ -1,26 +1,26 @@
 {
     "version": 2,
-    "env": {
-        "ON_VERCEL": "true"
-    },
     "builds": [
         {
-            "src": "api/**/*.js",
+            "src": "api/routes/**/*.js",
             "use": "@now/node"
         },
         {
-            "src": "nuxt.config.js",
-            "use": "@nuxtjs/now-builder"
+            "src": "package.json",
+            "use": "@now/static-build"
         }
     ],
+    "build": {
+        "env": {
+            "API_URL": "https://monorepo.arukomp.now.sh"
+        }
+    },
     "routes": [
         {
-            "src": "/api/(.*)",
-            "dest": "api/index.js"
-        },
-        {
-            "src": "/api",
-            "dest": "api/index.js"
+            "src": "/.nuxt/.+",
+            "headers": {
+                "cache-control": "s-maxage=31536000"
+            }
         },
         {
             "src": "/(.*)",
