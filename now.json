@@ -5,11 +5,27 @@
     },
     "builds": [
         {
+            "src": "api/**/*.js",
+            "use": "@now/node"
+        },
+        {
             "src": "nuxt.config.js",
             "use": "@nuxtjs/now-builder"
         }
     ],
     "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1.js",
+            "methods": [
+                "GET",
+                "OPTIONS"
+            ],
+            "headers": {
+                "Access-Control-Allow-Methods": "GET",
+                "Access-Control-Allow-Headers": "Content-Type"
+            }
+        },
         {
             "src": "/(.*)",
             "dest": "$1"
