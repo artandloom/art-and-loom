@@ -49,7 +49,7 @@
     </nav>
     <section class="pb-15">
       <p class="text-center">
-        Copyright © 2020 Art + Loom. All Rights Reserved.
+        Copyright © {{ year }} Art + Loom. All Rights Reserved.
       </p>
     </section>
   </footer>
@@ -61,3 +61,11 @@
   width: 50px;
 }
 </style>
+
+<script>
+export default {
+  data: () => ({
+    year: new Date().getFullYear(),
+  }),
+};
+</script>
