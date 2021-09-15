@@ -1,5 +1,5 @@
 <template>
-  <section class="text-center -mx-15 pt-14 pb-30">
+  <section class="text-center pt-14 pb-30">
     <h3 class="pb-12 text-4xl">Stay in touch for our Newsletter</h3>
     <p class="text-2xl font-normal mb-16">
       Stay up to date on exciting proyects and upcoming events from Art Loom.

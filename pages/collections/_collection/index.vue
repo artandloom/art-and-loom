@@ -64,7 +64,6 @@
         </NuxtLink>
       </div>
     </section>
-    <SubscribeNewsletter />
   </main>
 </template>
 <script>

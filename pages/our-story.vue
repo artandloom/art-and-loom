@@ -25,6 +25,12 @@
   </main>
 </template>
 
+<script>
+export default {
+  layout: "landing",
+};
+</script>
+
 <style scoped>
 .separator {
   border-top: 0.5px solid #000000;
