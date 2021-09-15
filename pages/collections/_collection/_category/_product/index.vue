@@ -1,7 +1,6 @@
 <template>
   <div>
-    <Header />
-    <main class="px-15 pb-30">
+    <main>
       <section class="mb-30">
         <img class="w-full" :src="data.cover.data.full_url" alt="Collections" />
       </section>
@@ -39,7 +38,6 @@
         </swiper>
       </section>
     </main>
-    <Footer />
 
     <div
       v-show="showModal"

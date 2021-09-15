@@ -1,91 +1,98 @@
 <template>
-  <div>
-    <Header />
-    <main class="px-15">
-      <section>
-        <swiper class="swiper" :options="swiperOptionsMain">
-          <swiper-slide
-            class="flex justify-center items-center"
-            :key="banner.id"
-            v-for="banner in data.banners"
+  <main>
+    <section>
+      <swiper class="swiper" :options="swiperOptionsMain">
+        <swiper-slide
+          class="flex justify-center items-center"
+          :key="banner.id"
+          v-for="banner in data.banners"
+        >
+          <p
+            class="absolute text-7xl uppercase"
+            :class="banner.color === 'dark' ? 'text-black' : 'text-white'"
           >
-            <p
-              class="absolute text-7xl uppercase"
-              :class="banner.color === 'dark' ? 'text-black' : 'text-white'"
-            >
-              {{ banner.name }}
-            </p>
-            <img class="m-auto" :src="banner.image.data.full_url" />
-          </swiper-slide>
-        </swiper>
-      </section>
-      <section class="mb-30">
-        <h2 class="flex flex-row items-center uppercase">
-          Collections.
-          <span class="flex ml-6 separator"></span>
-        </h2>
-        <img
-          class="w-4/5"
-          :src="data.collection_cover.data.full_url"
-          alt="Collections"
-        />
-      </section>
-      <section class="-mx-15 mb-35 text-right">
-        <swiper class="swiper mb-4" :options="swiperOptionsItem">
-          <swiper-slide
-            class="flex justify-center items-center item"
-            :key="collection.id"
-            v-for="collection in collections"
+            {{ banner.name }}
+          </p>
+          <img class="m-auto" :src="banner.image.data.full_url" />
+        </swiper-slide>
+      </swiper>
+    </section>
+    <section class="mb-30">
+      <h2 class="flex flex-row items-center uppercase">
+        Collections.
+        <span class="flex ml-6 separator"></span>
+      </h2>
+      <img
+        class="w-4/5"
+        :src="data.collection_cover.data.full_url"
+        alt="Collections"
+      />
+    </section>
+    <section class="-mx-15 mb-35 text-right">
+      <swiper class="swiper mb-4" :options="swiperOptionsItem">
+        <swiper-slide
+          class="flex justify-center items-center item"
+          :key="collection.id"
+          v-for="collection in collections"
+        >
+          <NuxtLink
+            :title="collection.name"
+            :to="'/collections/' + collection.slug + '-iid' + collection.id"
           >
-            <NuxtLink
-              :title="collection.name"
-              :to="'/collections/' + collection.slug + '-iid' + collection.id"
-            >
-              <Item
-                :name="collection.name"
-                :image="collection.picture.data.full_url"
-              />
-            </NuxtLink>
-          </swiper-slide>
-        </swiper>
+            <Item
+              :name="collection.name"
+              :image="collection.picture.data.full_url"
+            />
+          </NuxtLink>
+        </swiper-slide>
+      </swiper>
+      <div class="px-15">
+        <NuxtLink
+          class="uppercase"
+          title="See all Collections"
+          to="/collections"
+          >See all Collections.</NuxtLink
+        >
+      </div>
+    </section>
+    <section class="flex flex-col items-end mb-30">
+      <h2 class="flex flex-row items-center uppercase">
+        <span class="flex mr-6 separator"></span>
+        Collaborations.
+      </h2>
+      <img
+        class="w-4/5"
+        :src="data.collaboration_cover.data.full_url"
+        alt="Collaborations"
+      />
+    </section>
+    <section class="mb-35">
+      <swiper class="swiper" :options="swiperOptionsItem">
+        <swiper-slide
+          class="flex justify-center items-center item"
+          :key="collection.id"
+          v-for="collection in collections"
+        >
+          <NuxtLink
+            :to="'/collections/' + collection.slug + '-iid' + collection.id"
+          >
+            <Item
+              :name="collection.name"
+              :image="collection.picture.data.full_url"
+            />
+          </NuxtLink>
+        </swiper-slide>
         <div class="px-15">
-          <NuxtLink class="uppercase" title="Collections" to="/collections"
-            >See all Collections.</NuxtLink
+          <NuxtLink
+            class="uppercase"
+            title="See all Collaborations"
+            to="/collaborations"
+            >See all Collaborations.</NuxtLink
           >
         </div>
-      </section>
-      <section class="flex flex-col items-end mb-30">
-        <h2 class="flex flex-row items-center uppercase">
-          <span class="flex mr-6 separator"></span>
-          Collaborations.
-        </h2>
-        <img
-          class="w-4/5"
-          :src="data.collaboration_cover.data.full_url"
-          alt="Collaborations"
-        />
-      </section>
-      <section class="mb-35">
-        <swiper class="swiper" :options="swiperOptionsItem">
-          <swiper-slide
-            class="flex justify-center items-center item"
-            :key="collection.id"
-            v-for="collection in collections"
-          >
-            <NuxtLink
-              :to="'/collections/' + collection.slug + '-iid' + collection.id"
-            >
-              <Item
-                :name="collection.name"
-                :image="collection.picture.data.full_url"
-              />
-            </NuxtLink>
-          </swiper-slide>
-        </swiper>
-      </section>
-    </main>
-    <Footer />
-  </div>
+      </swiper>
+    </section>
+  </main>
 </template>
 <script>
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";

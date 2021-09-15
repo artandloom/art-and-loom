@@ -6,18 +6,18 @@
       </NuxtLink>
     </div>
     <nav class="w-2/3">
-      <ul class="flex flex-row list-none m-0 p-0 justify-between">
-        <li>
+      <ul class="flex flex-row list-none m-0 p-0 justify-end uppercase">
+        <li class="mx-5">
           <NuxtLink title="Collections" to="/collections">Collections</NuxtLink>
         </li>
-        <li>+</li>
-        <li><a href="#">Collaboration</a></li>
-        <li>+</li>
-        <li><a href="#">Gallery</a></li>
-        <li>+</li>
-        <li><a href="#">Our Story</a></li>
-        <li>+</li>
-        <li><a href="#">Press</a></li>
+        <li class="mx-5">+</li>
+        <li class="mx-5"><a href="#">Collaboration</a></li>
+        <li class="mx-5">+</li>
+        <li class="mx-5"><a href="#">Gallery</a></li>
+        <li class="mx-5">+</li>
+        <li class="mx-5"><a href="#">Our Story</a></li>
+        <li class="mx-5">+</li>
+        <li class="mx-5"><a href="#">Press</a></li>
       </ul>
     </nav>
   </header>

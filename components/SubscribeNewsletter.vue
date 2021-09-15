@@ -1,8 +1,8 @@
 <template>
   <section class="text-center py-14">
-    <h3 class="pb-12 text-4xl">Sign up for our Newsletter</h3>
-    <p class="text-2xl mb-16">
-      Stay up to date on exciting proyects and upcoming events from Art and Loom.
+    <h3 class="pb-12 text-4xl">Stay in touch for our Newsletter</h3>
+    <p class="text-2xl font-normal mb-16">
+      Stay up to date on exciting proyects and upcoming events from Art Loom.
     </p>
 
     <form class="w-1/3 mx-auto">
@@ -70,7 +70,7 @@
             rounded
           "
         >
-          Sign up
+          Stay In Touch
         </button>
       </div>
     </form>

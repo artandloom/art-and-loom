@@ -32,19 +32,15 @@
         <p>igworkshop.com</p>
       </div>
     </section>
-    <nav class="m-auto w-3/4 my-28">
-      <ul class="flex flex-row list-none m-0 p-0 justify-between">
-        <li>
-          <NuxtLink title="Collections" to="/collections">Collections</NuxtLink>
-        </li>
-        <li>+</li>
-        <li><a href="#">Collaboration</a></li>
-        <li>+</li>
-        <li><a href="#">Gallery</a></li>
-        <li>+</li>
-        <li><a href="#">Our Story</a></li>
-        <li>+</li>
-        <li><a href="#">Press</a></li>
+    <nav class="px-15 my-28">
+      <ul class="flex flex-row list-none m-0 p-0 justify-end uppercase">
+        <li class="mx-5">Contact</li>
+        <li class="mx-5">+</li>
+        <li class="mx-5">Rug Care</li>
+        <li class="mx-5">+</li>
+        <li class="mx-5">Material & Techniques</li>
+        <li class="mx-5">+</li>
+        <li class="mx-5">Trade</li>
       </ul>
     </nav>
     <section class="pb-15">
