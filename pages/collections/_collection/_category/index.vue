@@ -47,9 +47,9 @@
           </NuxtLink>
         </ul>
       </aside>
-      <div class="flex flex-row flex-wrap w-4/5">
+      <div class="flex flex-row flex-wrap w-4/5 justify-end">
         <NuxtLink
-          class="w1/3"
+          class="w1/3 overflow-hidden	"
           :key="product.id"
           v-for="product in data.products"
           :to="
@@ -68,6 +68,7 @@
         </NuxtLink>
       </div>
     </section>
+    <SubscribeNewsletter />
   </main>
 </template>
 <script>

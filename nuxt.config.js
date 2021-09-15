@@ -1,7 +1,7 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'server',
-  
+
   // SSR: https://go.nuxtjs.dev/config-target
   ssr: true,
 
@@ -17,7 +17,12 @@ export default {
         content: 'This is an awesome description of my Nuxt app',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://use.typekit.net/kng2flj.css' },
+      { rel: 'preconnect', href: 'https://use.typekit.net', crossorigin: true },
+      { rel: 'dns-prefetch', href: 'https://use.typekit.net' },
+    ],
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -47,14 +52,14 @@ export default {
     baseUrl: 'https://art-and-loom-admin.thinkapp.dev/art-and-loom/items'
   },
 
-  googleFonts: {
-    /* module options */
-    families: {
-      Raleway: {
-        wght: [100, 400],
-        ital: [100]
-      },
-    },
-    display: 'swap'
-  }
+  // googleFonts: {
+  //   /* module options */
+  //   families: {
+  //     Raleway: {
+  //       wght: [100, 400],
+  //       ital: [100]
+  //     },
+  //   },
+  //   display: 'swap'
+  // }
 };

@@ -92,6 +92,7 @@
         </div>
       </swiper>
     </section>
+    <SubscribeNewsletter />
   </main>
 </template>
 <script>

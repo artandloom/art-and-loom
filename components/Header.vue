@@ -15,9 +15,13 @@
         <li class="mx-5">+</li>
         <li class="mx-5"><a href="#">Gallery</a></li>
         <li class="mx-5">+</li>
-        <li class="mx-5"><a href="#">Our Story</a></li>
+        <li class="mx-5">
+          <NuxtLink title="Our Story" to="/our-story">Our Story</NuxtLink>
+        </li>
         <li class="mx-5">+</li>
-        <li class="mx-5"><a href="#">Press</a></li>
+        <li class="mx-5">
+          <NuxtLink title="Press" to="/press">Press</NuxtLink>
+        </li>
       </ul>
     </nav>
   </header>

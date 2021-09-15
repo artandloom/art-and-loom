@@ -38,6 +38,7 @@
         </swiper>
       </section>
     </main>
+    <SubscribeNewsletter />
 
     <div
       v-show="showModal"

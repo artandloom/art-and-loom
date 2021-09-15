@@ -1,6 +1,5 @@
 <template>
   <footer>
-    <SubscribeNewsletter />
     <section class="flex flex-row items-end justify-between pt-11 px-15">
       <div>
         <img src="/images/logo.svg" alt="Art and loom" />
@@ -34,13 +33,23 @@
     </section>
     <nav class="px-15 my-28">
       <ul class="flex flex-row list-none m-0 p-0 justify-end uppercase">
-        <li class="mx-5">Contact</li>
+        <li class="mx-5">
+          <NuxtLink title="Contact" to="/contact">Contact</NuxtLink>
+        </li>
         <li class="mx-5">+</li>
-        <li class="mx-5">Rug Care</li>
+        <li class="mx-5">
+          <NuxtLink title="Rug Care" to="/rug-care">Rug Care</NuxtLink>
+        </li>
         <li class="mx-5">+</li>
-        <li class="mx-5">Material & Techniques</li>
+        <li class="mx-5">
+          <NuxtLink title="Material and Techniques" to="/material"
+            >Material & Techniques</NuxtLink
+          >
+        </li>
         <li class="mx-5">+</li>
-        <li class="mx-5">Trade</li>
+        <li class="mx-5">
+          <NuxtLink title="Trade" to="/trade">Trade</NuxtLink>
+        </li>
       </ul>
     </nav>
     <section class="pb-15">
