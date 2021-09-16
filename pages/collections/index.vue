@@ -80,28 +80,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-h2 {
-  font-size: 6.875rem;
-  z-index: 1;
-}
-.separator {
-  border-top: 0.5px solid #000000;
-  width: 50px;
-}
-.separator-large {
-  width: 200px;
-}
-.text-background:before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: block;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 0%,
-    #ffffff 78.12%
-  );
-}
-</style>
