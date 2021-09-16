@@ -13,10 +13,9 @@
             flex flex-row
             items-center
             justify-end
-            px-15
           "
         >
-          <h2 class="flex flex-row items-center uppercase text-7xl">
+          <h2 class="flex flex-row items-center uppercase text-7xl px-15">
             <span class="flex mr-6 separator"></span>
             Connect with us
           </h2>

@@ -1,8 +1,8 @@
 <template>
   <main>
     <section class="mb-30">
-      <div class="relative">
-        <!-- <img class="cover" :src="data.cover.data.full_url" alt="Collections" /> -->
+      <div class="relative -mx-15">
+        <img class="cover" :src="data.cover.data.full_url" alt="Collections" />
         <div
           class="
             text-background
@@ -15,7 +15,7 @@
             justify-end
           "
         >
-          <h2 class="flex flex-row items-center uppercase text-7xl">
+          <h2 class="flex flex-row items-center uppercase text-7xl px-15">
             <span class="flex mr-6 separator"></span>
             Rug Care & Maintenance
           </h2>
@@ -28,6 +28,14 @@
 <script>
 export default {
   layout: "landing",
+  async asyncData({ $axios }) {
+    const { data } = await $axios.$get(
+      process.env.baseUrl + "/rug_care_maintenance?single=1&fields=*.*.*"
+    );
+
+    console.log("data", data);
+    return { data };
+  },
 };
 </script>
 
