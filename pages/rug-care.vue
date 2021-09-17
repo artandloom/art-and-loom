@@ -31,7 +31,7 @@
           alt="Collections"
         />
       </div>
-      <div class="w-3/5 pl-32 text-xl">
+      <div class="w-3/5 pl-32 text-4xl">
         <p v-if="data.description">
           {{ data.description }}
         </p>
