@@ -22,6 +22,84 @@
         </div>
       </div>
     </section>
+    <section class="flex flex-row mb-44">
+      <div class="w-2/5">
+        <img
+          v-if="data.image_left_first"
+          class="cover"
+          :src="data.image_left_first.data.full_url"
+          alt="Collections"
+        />
+      </div>
+      <div class="w-3/5 pl-32 text-xl">
+        <p v-if="data.description">
+          {{ data.description }}
+        </p>
+      </div>
+    </section>
+    <section class="flex flex-row mb-44">
+      <div class="w-2/5 pr-32 text-xl">
+        <h3 class="mb-2 text-5xl" v-if="data.padding_title">
+          {{ data.padding_title }}
+        </h3>
+        <p v-if="data.padding_description" class="mb-16">
+          {{ data.padding_description }}
+        </p>
+        <h3 class="mb-2 text-5xl" v-if="data.vacumming_title">
+          {{ data.vacumming_title }}
+        </h3>
+        <p v-if="data.vacumming_description">
+          {{ data.vacumming_description }}
+        </p>
+      </div>
+      <div class="w-3/5">
+        <img
+          class="cover"
+          :src="data.image_right_first.data.full_url"
+          alt="Collections"
+        />
+      </div>
+    </section>
+    <section class="flex flex-row mb-44">
+      <div class="w-2/5">
+        <img
+          class="cover"
+          :src="data.image_left_second.data.full_url"
+          alt="Collections"
+        />
+      </div>
+      <div class="w-3/5 pl-32 text-xl">
+        <h3 class="mb-2 text-5xl" v-if="data.fiber_pulls_title">
+          {{ data.fiber_pulls_title }}
+        </h3>
+        <p v-if="data.fiber_pulls_description" class="mb-16">
+          {{ data.fiber_pulls_description }}
+        </p>
+        <h3 class="mb-2 text-5xl" v-if="data.shedding_title">
+          {{ data.shedding_title }}
+        </h3>
+        <p v-if="data.shedding_description">
+          {{ data.shedding_description }}
+        </p>
+      </div>
+    </section>
+    <section class="flex flex-row">
+      <div class="w-2/5 pr-32 text-xl">
+        <h3 class="mb-2 text-5xl" v-if="data.wear_title">
+          {{ data.wear_title }}
+        </h3>
+        <p v-if="data.wear_description" class="mb-16">
+          {{ data.wear_description }}
+        </p>
+      </div>
+      <div class="w-3/5">
+        <img
+          class="cover"
+          :src="data.image_right_second.data.full_url"
+          alt="Collections"
+        />
+      </div>
+    </section>
   </main>
 </template>
 
