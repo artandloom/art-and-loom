@@ -2,7 +2,9 @@
   <footer>
     <section class="flex flex-row items-end justify-between pt-11 px-15">
       <div>
-        <img src="/images/logo.svg" alt="Art and loom" />
+        <NuxtLink to="/" title="Home">
+          <img src="/images/logo.svg" alt="Art and loom" />
+        </NuxtLink>
       </div>
       <div class="flex flex-row">
         <a
@@ -28,7 +30,7 @@
           <span class="flex mr-6 separator"></span>
           For Interior Design
         </p>
-        <p>igworkshop.com</p>
+        <a href="https://igworkshop.com" target="_blank">igworkshop.com</a>
       </div>
     </section>
     <nav class="px-15 my-28">
@@ -61,6 +63,9 @@
 </template>
 
 <style scoped>
+footer {
+  border-top: 1px solid #e5e5e5;
+}
 .separator {
   border-top: 0.5px solid #000000;
   width: 50px;

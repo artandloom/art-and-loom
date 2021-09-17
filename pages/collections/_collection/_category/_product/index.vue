@@ -300,9 +300,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.separator {
-  border-top: 0.5px solid #000000;
-  width: 100px;
-}
-</style>
