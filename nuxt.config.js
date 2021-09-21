@@ -52,14 +52,13 @@ export default {
     baseUrl: 'https://art-and-loom-admin.thinkapp.dev/art-and-loom/items'
   },
 
-  // googleFonts: {
-  //   /* module options */
-  //   families: {
-  //     Raleway: {
-  //       wght: [100, 400],
-  //       ital: [100]
-  //     },
-  //   },
-  //   display: 'swap'
-  // }
+  googleFonts: {
+    /* module options */
+    families: {
+      Barlow: {
+        wght: [200]
+      },
+    },
+    display: 'swap'
+  }
 };

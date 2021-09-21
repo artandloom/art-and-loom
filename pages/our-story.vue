@@ -1,7 +1,7 @@
 <template>
   <main>
     <section class="mb-30">
-      <div class="relative">
+      <div class="relative -mx-15">
         <img class="cover" :src="data.cover.data.full_url" alt="Collections" />
         <div
           class="
