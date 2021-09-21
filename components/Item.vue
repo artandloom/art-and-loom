@@ -29,6 +29,9 @@ export default {
 
 
 <style scoped>
+article {
+  padding-left: 30px;
+}
 p {
   transform-origin: 0 50%;
   transform: rotate(-90deg) translate(-50%, 50%);
@@ -36,7 +39,7 @@ p {
   line-height: 2em;
 }
 img {
-  margin-left: 30px;
-  max-height: 413px;
+  width: 100%;
+  height: auto;
 }
 </style>

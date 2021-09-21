@@ -25,7 +25,7 @@
     <section class="flex flex-row justify-end">
       <div class="flex flex-row flex-wrap w-4/5 justify-end">
         <NuxtLink
-          class="w1/3 overflow-hidden"
+          class="w-1/3 overflow-hidden mb-24 px-4"
           :key="category.id"
           v-for="category in data.categories"
           :to="
