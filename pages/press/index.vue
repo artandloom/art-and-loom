@@ -22,19 +22,33 @@
       </div>
     </section>
     <section class="flex flex-row -mx-4">
-      <div class="w-1/3 m-4">
-        Image
-      </div>
-      <div class="w-1/3 m-4">
-        Image
-      </div>
-      <div class="w-1/3 m-4">
-        Image
+      <div class="w-1/3 m-4 press-item" v-for="item in data" :key="item.id">
+        <NuxtLink :to="'/press/' + item.slug">
+          <!-- TODO: Add image component -->
+          <img :src="item.cover.data.full_url" :alt="item.title" />
+        </NuxtLink>
       </div>
     </section>
   </main>
 </template>
 
 <script>
-export default {};
+export default {
+  async asyncData({ $axios }) {
+    const { data } = await $axios.$get(
+      process.env.baseUrl + "/press?fields=*.*.*"
+    );
+
+    console.log("data", data);
+    return { data };
+  },
+};
 </script>
+<style scoped>
+a {
+  display: block;
+}
+.press-item img {
+  border: 1px solid #c4c4c4;
+}
+</style>

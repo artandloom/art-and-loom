@@ -1,6 +1,6 @@
 <template>
   <main>
-    <section class="mb-30 pb-30">
+    <section class="mb-30">
       <div class="relative">
         <img
           class="cover"

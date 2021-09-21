@@ -22,29 +22,7 @@
         </div>
       </div>
     </section>
-    <section class="flex flex-row">
-      <aside class="w-1/5">
-        <ul>
-          <NuxtLink
-            class="m-7"
-            :key="category.id"
-            v-for="category in data.categories"
-            :to="
-              '/collections/' +
-              $route.params.collection +
-              '/' +
-              category.slug +
-              '-iid' +
-              category.id
-            "
-            :title="category.name"
-          >
-            <li class="font-semibold uppercase">
-              {{ category.name }}
-            </li>
-          </NuxtLink>
-        </ul>
-      </aside>
+    <section class="flex flex-row justify-end">
       <div class="flex flex-row flex-wrap w-4/5 justify-end">
         <NuxtLink
           class="w1/3 overflow-hidden"
