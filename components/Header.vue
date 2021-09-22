@@ -13,7 +13,9 @@
         <li class="mx-5">+</li>
         <li class="mx-5"><a href="#">Collaboration</a></li>
         <li class="mx-5">+</li>
-        <li class="mx-5"><a href="#">Gallery</a></li>
+        <li class="mx-5">
+          <NuxtLink title="Gallery" to="/gallery">Gallery</NuxtLink>
+        </li>
         <li class="mx-5">+</li>
         <li class="mx-5">
           <NuxtLink title="Our Story" to="/our-story">Our Story</NuxtLink>
