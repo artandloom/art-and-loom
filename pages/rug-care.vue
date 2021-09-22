@@ -100,6 +100,20 @@
         />
       </div>
     </section>
+    <section class="flex flex-col">
+      <h3 class="flex flex-row items-center uppercase text-5xl mb-20">
+        CLEANING GUIDE
+        <span class="flex ml-6 separator"></span>
+      </h3>
+      <div
+        class="text-2xl mb-8"
+        v-for="(item, index) in data.cleaning_guide"
+        :key="index"
+      >
+        <h4 class="uppercase">{{ item.title }}</h4>
+        <p>{{ item.description }}</p>
+      </div>
+    </section>
   </main>
 </template>
 
