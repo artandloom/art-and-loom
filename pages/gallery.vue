@@ -21,14 +21,10 @@
         </div>
       </div>
     </section>
-    <section class="flex flex-row pt-15 -mx-4">
-      <div
-        class="w-1/3 m-4 press-item flex flex-row justify-center"
-        v-for="item in data"
-        :key="item.id"
-      >
+    <section class="flex flex-row flex-wrap pt-15 -mx-4">
+      <div class="w-1/3 p-4 press-item" v-for="item in data" :key="item.id">
         <!-- TODO: Add image component -->
-        <img :src="item.image.data.full_url" :alt="item.name" />
+        <img class="w-full" :src="item.image.data.full_url" :alt="item.name" />
       </div>
     </section>
   </main>

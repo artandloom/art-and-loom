@@ -22,14 +22,16 @@
         Collections.
         <span class="flex ml-6 separator"></span>
       </h2>
-      <img
-        class="w-4/5"
-        :src="data.collection_cover.data.full_url"
-        alt="Collections"
-      />
+      <NuxtLink class="w-4/5" title="See all Collections" to="/collections">
+        <img
+          class="w-full"
+          :src="data.collection_cover.data.full_url"
+          alt="Collections"
+        />
+      </NuxtLink>
     </section>
     <section class="-mx-15 mb-35 text-right">
-      <swiper class="swiper mb-4" :options="swiperOptionsItem">
+      <swiper class="swiper mb-4" :options="swiperOptionsCollection">
         <swiper-slide
           class="flex justify-center items-center item"
           :key="collection.id"
@@ -51,8 +53,8 @@
           class="uppercase"
           title="See all Collections"
           to="/collections"
-          >See all Collections.</NuxtLink
-        >
+          >See all Collections.
+        </NuxtLink>
       </div>
     </section>
     <section class="flex flex-col items-end mb-30">
@@ -60,37 +62,50 @@
         <span class="flex mr-6 separator"></span>
         Collaborations.
       </h2>
-      <img
+
+      <NuxtLink
         class="w-4/5"
-        :src="data.collaboration_cover.data.full_url"
-        alt="Collaborations"
-      />
+        title="See all Collaborations"
+        to="/collaborations"
+      >
+        <img
+          class="w-full"
+          :src="data.collaboration_cover.data.full_url"
+          alt="Collaborations"
+        />
+      </NuxtLink>
     </section>
-    <section class="mb-35">
-      <swiper class="swiper" :options="swiperOptionsItem">
+    <section class="-mx-15 mb-35 text-right">
+      <swiper class="swiper mb-4" :options="swiperOptionsCollaboration">
         <swiper-slide
           class="flex justify-center items-center item"
-          :key="collection.id"
-          v-for="collection in collections"
+          :key="collaboration.id"
+          v-for="collaboration in collaborations"
         >
           <NuxtLink
-            :to="'/collections/' + collection.slug + '-iid' + collection.id"
+            :to="
+              '/collaborations/' +
+              collaboration.artist[0].slug +
+              '-iid' +
+              collaboration.artist[0].id
+            "
           >
             <Item
-              :name="collection.name"
-              :image="collection.picture.data.full_url"
+              :name="collaboration.artist[0].name"
+              :image="collaboration.cover.data.full_url"
             />
           </NuxtLink>
         </swiper-slide>
-        <div class="px-15">
-          <NuxtLink
-            class="uppercase"
-            title="See all Collaborations"
-            to="/collaborations"
-            >See all Collaborations.</NuxtLink
-          >
-        </div>
       </swiper>
+      <div class="px-15">
+        <NuxtLink
+          class="uppercase"
+          title="See all Collaborations"
+          to="/collaborations"
+        >
+          See all Collaborations.
+        </NuxtLink>
+      </div>
     </section>
   </main>
 </template>
@@ -106,8 +121,7 @@ export default {
         resistance: true,
         resistanceRatio: 0.65,
       },
-      swiperOptionsItem: {
-        slidesPerView: "auto",
+      swiperOptionsCollection: {
         preventClicks: false,
         preventClicksPropagation: false,
         resistance: true,
@@ -115,7 +129,17 @@ export default {
         spaceBetween: 40,
         slidesOffsetAfter: 20,
         slidesOffsetBefore: 60,
-        slidesPerView: 4,
+        slidesPerView: 4.5,
+      },
+      swiperOptionsCollaboration: {
+        preventClicks: false,
+        preventClicksPropagation: false,
+        resistance: true,
+        resistanceRatio: 0.65,
+        spaceBetween: 40,
+        slidesOffsetAfter: 20,
+        slidesOffsetBefore: 60,
+        slidesPerView: 2.5,
       },
     };
   },
@@ -132,13 +156,12 @@ export default {
       process.env.baseUrl + "/collections?filter[featured][nempty]&fields=*.*.*"
     );
 
-    // const { data: collaborations } = await $axios.$get(
-    //   process.env.baseUrl +
-    //     "/collaborations?filter[featured][nempty]&fields=*.*.*"
-    // );
-    console.log("data", collections);
-    // collaborations
-    return { data, collections };
+    const { data: collaborations } = await $axios.$get(
+      process.env.baseUrl +
+        "/collaborations?filter[featured][nempty]&fields=*.*.*"
+    );
+
+    return { data, collections, collaborations };
   },
 };
 </script>
