@@ -23,13 +23,20 @@
       </div>
     </section>
     <section class="flex flex-col">
-      <div
+      <NuxtLink
         class="w-4/5 mb-44 flex flex-col"
         :key="collaboration.id"
         v-for="(collaboration, index) in collaborations"
         :class="{
           'ml-auto justify-end': index % 2,
         }"
+        :to="
+          '/collaborations/' +
+          collaboration.artist[0].slug +
+          '-iid' +
+          collaboration.artist[0].id
+        "
+        :title="'View ' + collaboration.artist[0].name"
       >
         <!-- even: index % 2,
           odd: !(index % 2), -->
@@ -43,12 +50,21 @@
             :class="{ 'mr-6': index % 2, 'ml-6': !(index % 2) }"
           ></span>
         </h3>
-
+        <!-- <NuxtLink
+          class="flex flex-col"
+          :to="
+            '/collaborations/' +
+            collaboration.artist[0].slug +
+            '-iid' +
+            collaboration.artist[0].id
+          "
+        > -->
         <img
           :src="collaboration.cover.data.full_url"
           :alt="collaboration.artist.name"
         />
-      </div>
+        <!-- </NuxtLink> -->
+      </NuxtLink>
     </section>
   </main>
 </template>
