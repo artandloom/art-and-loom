@@ -11,7 +11,11 @@
           <NuxtLink title="Collections" to="/collections">Collections</NuxtLink>
         </li>
         <li class="mx-5">+</li>
-        <li class="mx-5"><a href="#">Collaboration</a></li>
+        <li class="mx-5">
+          <NuxtLink title="Collaborations" to="/collaborations">
+            Collaborations
+          </NuxtLink>
+        </li>
         <li class="mx-5">+</li>
         <li class="mx-5">
           <NuxtLink title="Gallery" to="/gallery">Gallery</NuxtLink>

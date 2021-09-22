@@ -41,7 +41,7 @@
             :to="'/collections/' + collection.slug + '-iid' + collection.id"
             :title="collection.name"
           >
-            <li class="font-semibold uppercase">
+            <li class="uppercase">
               {{ collection.name }}
             </li>
           </NuxtLink>
@@ -65,18 +65,19 @@
   </main>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
+  computed: {
+    ...mapState({
+      settings: ({ configs }) => configs,
+    }),
+  },
   async asyncData({ $axios }) {
     const { data } = await $axios.$get(
       process.env.baseUrl + "/collections?fields=*.*.*"
     );
 
-    const { data: settings } = await $axios.$get(
-      process.env.baseUrl + "/settings?single=1&fields=*.*.*"
-    );
-
-    console.log("data", settings);
-    return { data, settings };
+    return { data };
   },
 };
 </script>
