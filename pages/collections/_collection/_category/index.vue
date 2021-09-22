@@ -22,8 +22,8 @@
         </div>
       </div>
     </section>
-    <section class="flex flex-row">
-      <aside class="w-1/5">
+    <section class="flex flex-row justify-end">
+      <!-- <aside class="w-1/5">
         <ul>
           <NuxtLink
             class="m-7"
@@ -46,7 +46,7 @@
             </li>
           </NuxtLink>
         </ul>
-      </aside>
+      </aside> -->
       <div class="flex flex-row flex-wrap w-4/5 justify-end">
         <NuxtLink
           class="w-1/3 overflow-hidden mb-24 px-4"
