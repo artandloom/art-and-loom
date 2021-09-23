@@ -18,11 +18,15 @@
       </swiper>
     </section>
     <section class="mb-30">
-      <h2 class="flex flex-row items-center uppercase">
+      <h2 class="flex flex-row items-center uppercase text-7xl mb-15">
         Collections.
-        <span class="flex ml-6 separator"></span>
+        <span class="flex ml-6 separator separator-large"></span>
       </h2>
-      <NuxtLink class="flex w-4/5" title="See all Collections" to="/collections">
+      <NuxtLink
+        class="flex w-4/5"
+        title="See all Collections"
+        to="/collections"
+      >
         <img
           class="w-full"
           :src="data.collection_cover.data.full_url"
@@ -58,8 +62,8 @@
       </div>
     </section>
     <section class="flex flex-col items-end mb-30">
-      <h2 class="flex flex-row items-center uppercase">
-        <span class="flex mr-6 separator"></span>
+      <h2 class="flex flex-row items-center uppercase text-7xl mb-15">
+        <span class="flex mr-6 separator separator-large"></span>
         Collaborations.
       </h2>
 
@@ -106,6 +110,31 @@
           See all Collaborations.
         </NuxtLink>
       </div>
+    </section>
+    <section class="flex flex-col mb-15">
+      <a
+        class="mb-4 text-7xl leading-none"
+        href="https://www.instagram.com/artandloom/"
+        target="_blank"
+        rel="noopener"
+      >
+        <h2 class="flex flex-row items-center">
+          @artandloom
+          <span class="flex ml-6 separator separator-large"></span>
+        </h2>
+      </a>
+      <p class="uppercase">Social media</p>
+    </section>
+    <section>
+      <!-- LightWidget WIDGET -->
+      <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+      <iframe
+        src="https://cdn.lightwidget.com/widgets/da81cb722aca53069571ff4f70c852a8.html"
+        scrolling="no"
+        allowtransparency="true"
+        class="lightwidget-widget"
+        style="width: 100%; border: 0; overflow: hidden"
+      ></iframe>
     </section>
   </main>
 </template>
@@ -157,23 +186,10 @@ export default {
     );
 
     const { data: collaborations } = await $axios.$get(
-      process.env.baseUrl +
-        "/artists?filter[featured][nempty]&fields=*.*.*"
+      process.env.baseUrl + "/artists?filter[featured][nempty]&fields=*.*.*"
     );
 
     return { data, collections, collaborations };
   },
 };
 </script>
-<style scoped>
-h2 {
-  font-size: 6.875rem;
-}
-.separator {
-  border-top: 0.5px solid #000000;
-  width: 200px;
-}
-/* .item {
-  width: 25% !important;
-} */
-</style>

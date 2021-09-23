@@ -4,11 +4,6 @@ body {
     font-style: normal;
 }
 
-h2 {
-    font-size: 6.875rem;
-    z-index: 1;
-}
-
 .cover {
     width: 100%;
 }

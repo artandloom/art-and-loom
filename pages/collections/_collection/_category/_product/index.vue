@@ -5,7 +5,7 @@
         <img class="w-full" :src="data.cover.data.full_url" alt="Collections" />
       </section>
       <section class="flex flex-row justify-end">
-        <h2 class="text-7xl flex flex-row items-center uppercase">
+        <h2 class="flex flex-row items-center uppercase text-7xl">
           <span class="flex mr-6 separator"></span>
           {{ data.name }}
         </h2>

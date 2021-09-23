@@ -19,7 +19,7 @@
             justify-end
           "
         >
-          <h2 class="flex flex-row items-center uppercase">
+          <h2 class="flex flex-row items-center uppercase text-7xl">
             <span class="flex mr-6 separator"></span>
             Collections.
           </h2>
