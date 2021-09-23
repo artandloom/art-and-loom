@@ -25,8 +25,12 @@
     <section class="flex flex-row">
       <aside class="w-1/5">
         <ul>
+          <NuxtLink class="flex mb-12" title="Go Back" to="/collections">
+            ← Go Back
+          </NuxtLink>
+
           <NuxtLink
-            class="m-7"
+            class="flex my-7"
             :key="category.id"
             v-for="category in data.categories"
             :to="

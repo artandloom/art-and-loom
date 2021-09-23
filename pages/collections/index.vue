@@ -35,7 +35,7 @@
       <aside class="w-1/5">
         <ul>
           <NuxtLink
-            class="m-7"
+            class="flex my-7"
             :key="collection.id"
             v-for="collection in data"
             :to="'/collections/' + collection.slug + '-iid' + collection.id"
