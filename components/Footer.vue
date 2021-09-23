@@ -52,6 +52,10 @@
         <li class="mx-5">
           <NuxtLink title="Trade" to="/trade">Trade</NuxtLink>
         </li>
+        <li class="mx-5">+</li>
+        <li class="mx-5">
+          <NuxtLink title="Legal" to="/legal">Legal</NuxtLink>
+        </li>
       </ul>
     </nav>
     <section class="pb-15">

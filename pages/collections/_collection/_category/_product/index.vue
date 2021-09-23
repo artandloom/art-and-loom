@@ -10,7 +10,7 @@
           {{ data.name }}
         </h2>
       </section>
-      <section class="flex flex-row my-24">
+      <section class="flex flex-row mt-24">
         <div class="w-2/4 pr-4">
           <img
             class="cover"
@@ -29,6 +29,19 @@
           </p>
           <a class="underline" href="tel:+19177670078">Call Us 917.767.0078</a>
         </div>
+      </section>
+      <section class="mt-8 mb-24">
+        <NuxtLink
+          title="Go Back"
+          :to="
+            '/collections/' +
+            $route.params.collection +
+            '/' +
+            $route.params.category
+          "
+        >
+          ← Go Back
+        </NuxtLink>
       </section>
       <section class="-mx-15">
         <swiper class="swiper gallery" :options="swiperOptionsGallery">

@@ -1,6 +1,6 @@
 <template>
   <main>
-    <section class="mb-30">
+    <section class="mb-20">
       <div class="relative -mx-15">
         <img class="cover" :src="data.cover.data.full_url" :alt="data.name" />
         <div
@@ -22,7 +22,10 @@
         </div>
       </div>
     </section>
-    <section class="flex flex-row justify-end my-24">
+    <section class="mx-10">
+      <NuxtLink title="Go Back" to="/collaborations"> ← Go Back </NuxtLink>
+    </section>
+    <section class="flex flex-row justify-end my-14">
       <div class="w-2/4 text-xl" v-if="data.biography">
         {{ data.biography }}
       </div>
@@ -46,6 +49,8 @@
         :to="
           '/collaborations/' +
           data.slug +
+          '-iid' +
+          data.id +
           '/' +
           product.slug +
           '-iid' +

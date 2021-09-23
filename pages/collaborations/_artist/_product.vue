@@ -4,13 +4,14 @@
       <section class="mb-30">
         <img class="w-full" :src="data.cover.data.full_url" alt="Collections" />
       </section>
+
       <section class="flex flex-row justify-end">
         <h2 class="text-7xl flex flex-row items-center uppercase">
           <span class="flex mr-6 separator"></span>
           {{ data.name }}
         </h2>
       </section>
-      <section class="flex flex-row my-24">
+      <section class="flex flex-row mt-24">
         <div class="w-2/4 pr-4">
           <img
             class="cover"
@@ -29,6 +30,14 @@
           </p>
           <a class="underline" href="tel:+19177670078">Call Us 917.767.0078</a>
         </div>
+      </section>
+      <section class="mt-8 mb-24">
+        <NuxtLink
+          title="Go Back"
+          :to="'/collaborations/' + $route.params.artist"
+        >
+          ← Go Back
+        </NuxtLink>
       </section>
       <section class="-mx-15">
         <swiper class="swiper gallery" :options="swiperOptionsGallery">
@@ -194,9 +203,7 @@
                   />
                 </div>
                 <div>
-                  <label for="message" class="sr-only"
-                    >Message</label
-                  >
+                  <label for="message" class="sr-only">Message</label>
                   <textarea
                     id="message"
                     name="message"
