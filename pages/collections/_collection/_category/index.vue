@@ -23,9 +23,17 @@
       </div>
     </section>
     <section class="flex flex-row justify-end">
-      <!-- <aside class="w-1/5">
+      <aside class="w-1/5">
         <ul>
           <NuxtLink
+            class="flex mb-12"
+            title="Go Back"
+            :to="'/collections/' + $route.params.collection"
+          >
+            ← Go Back
+          </NuxtLink>
+
+          <!-- <NuxtLink
             class="m-7"
             :key="product.id"
             v-for="product in data.products"
@@ -44,9 +52,9 @@
             <li class="font-semibold uppercase">
               {{ product.name }}
             </li>
-          </NuxtLink>
+          </NuxtLink> -->
         </ul>
-      </aside> -->
+      </aside>
       <div class="flex flex-row flex-wrap w-4/5 justify-end">
         <NuxtLink
           class="w-1/3 overflow-hidden mb-24 px-4"

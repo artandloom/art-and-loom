@@ -22,7 +22,7 @@
         </div>
       </div>
     </section>
-    <section class="flex flex-row mb-44">
+    <section class="flex flex-row mb-44 items-center">
       <div class="w-2/5">
         <img
           v-if="data.image_left_first"
@@ -31,7 +31,7 @@
           alt="Collections"
         />
       </div>
-      <div class="w-3/5 pl-32 text-4xl">
+      <div class="w-3/5 pl-32 text-3xl">
         <p v-if="data.description">
           {{ data.description }}
         </p>
