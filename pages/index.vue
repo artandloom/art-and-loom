@@ -22,7 +22,7 @@
         Collections.
         <span class="flex ml-6 separator"></span>
       </h2>
-      <NuxtLink class="w-4/5" title="See all Collections" to="/collections">
+      <NuxtLink class="flex w-4/5" title="See all Collections" to="/collections">
         <img
           class="w-full"
           :src="data.collection_cover.data.full_url"
@@ -64,7 +64,7 @@
       </h2>
 
       <NuxtLink
-        class="w-4/5"
+        class="flex w-4/5"
         title="See all Collaborations"
         to="/collaborations"
       >
@@ -85,13 +85,13 @@
           <NuxtLink
             :to="
               '/collaborations/' +
-              collaboration.artist[0].slug +
+              collaboration.slug +
               '-iid' +
-              collaboration.artist[0].id
+              collaboration.id
             "
           >
             <Item
-              :name="collaboration.artist[0].name"
+              :name="collaboration.name"
               :image="collaboration.cover.data.full_url"
             />
           </NuxtLink>
@@ -158,7 +158,7 @@ export default {
 
     const { data: collaborations } = await $axios.$get(
       process.env.baseUrl +
-        "/collaborations?filter[featured][nempty]&fields=*.*.*"
+        "/artists?filter[featured][nempty]&fields=*.*.*"
     );
 
     return { data, collections, collaborations };

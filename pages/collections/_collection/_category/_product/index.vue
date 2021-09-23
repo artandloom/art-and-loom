@@ -11,14 +11,14 @@
         </h2>
       </section>
       <section class="flex flex-row my-24">
-        <div class="w-2/4">
+        <div class="w-2/4 pr-4">
           <img
             class="cover"
             :src="data.picture.data.full_url"
             alt="Collections"
           />
         </div>
-        <div class="w-2/4">
+        <div class="w-2/4 pl-4">
           <h3 class="uppercase mt-16 mb-9">Collections shape.</h3>
           <div class="mb-4" v-html="data.information"></div>
           <p
@@ -120,14 +120,14 @@
             </button>
           </header>
           <section class="w-10/12 flex flex-row my-8 mx-auto">
-            <div class="w-2/4">
+            <div class="w-2/4 pr-4">
               <img
                 class="cover"
                 :src="data.picture.data.full_url"
                 alt="Collections"
               />
             </div>
-            <div class="w-2/4">
+            <div class="w-2/4 pl-4">
               <h2
                 class="
                   text-4xl
@@ -194,13 +194,10 @@
                   />
                 </div>
                 <div>
-                  <label for="email-address" class="sr-only"
-                    >Email address</label
-                  >
+                  <label for="message" class="sr-only">Message</label>
                   <textarea
-                    id="email-address"
-                    name="email"
-                    type="email"
+                    id="message"
+                    name="message"
                     required
                     rows="8"
                     class="
@@ -217,7 +214,7 @@
                       focus:ring-black
                       focus:border-black
                     "
-                    placeholder="Email address"
+                    placeholder="Message"
                   />
                 </div>
 

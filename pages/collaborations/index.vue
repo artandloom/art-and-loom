@@ -31,12 +31,9 @@
           'ml-auto justify-end': index % 2,
         }"
         :to="
-          '/collaborations/' +
-          collaboration.artist[0].slug +
-          '-iid' +
-          collaboration.artist[0].id
+          '/collaborations/' + collaboration.slug + '-iid' + collaboration.id
         "
-        :title="'View ' + collaboration.artist[0].name"
+        :title="'View ' + collaboration.name"
       >
         <!-- even: index % 2,
           odd: !(index % 2), -->
@@ -44,26 +41,17 @@
           class="flex flex-row items-center uppercase text-5xl mb-20"
           :class="{ 'flex-row-reverse': index % 2 }"
         >
-          {{ collaboration.artist[0].name }}
+          {{ collaboration.name }}
           <span
             class="flex separator"
             :class="{ 'mr-6': index % 2, 'ml-6': !(index % 2) }"
           ></span>
         </h3>
-        <!-- <NuxtLink
-          class="flex flex-col"
-          :to="
-            '/collaborations/' +
-            collaboration.artist[0].slug +
-            '-iid' +
-            collaboration.artist[0].id
-          "
-        > -->
+
         <img
           :src="collaboration.cover.data.full_url"
-          :alt="collaboration.artist.name"
+          :alt="collaboration.name"
         />
-        <!-- </NuxtLink> -->
       </NuxtLink>
     </section>
   </main>
@@ -78,7 +66,7 @@ export default {
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/collaborations?fields=*.*.*"
+      process.env.baseUrl + "/artists?fields=*.*.*"
     );
 
     console.log("data", data);
