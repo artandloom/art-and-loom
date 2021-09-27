@@ -120,7 +120,13 @@
             "
           >
             <option disabled selected>Company Type</option>
-            <option>Other</option>
+            <option
+              v-for="(company, index) in companyType"
+              :key="index"
+              :value="company"
+            >
+              {{ company.type }}
+            </option>
           </select>
         </div>
 
@@ -172,7 +178,13 @@
             "
           >
             <option disabled selected>State</option>
-            <option>Other</option>
+            <option
+              v-for="state in states"
+              :key="state.abbreviation"
+              :value="state"
+            >
+              {{ state.name }}
+            </option>
           </select>
         </div>
 
@@ -257,7 +269,14 @@ export default {
   computed: {
     ...mapState({
       cover: ({ configs }) => configs.trade_cover,
+      companyType: ({ configs }) => configs.company_type,
     }),
+  },
+  async asyncData({ $axios }) {
+    const states = await $axios.$get("/data/states.json");
+
+    console.log("data", states);
+    return { states };
   },
 };
 </script>
