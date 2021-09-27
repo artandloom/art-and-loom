@@ -101,16 +101,14 @@
 
         <div class="w-1/2 px-4 mb-5">
           <label for="company-type" class="sr-only">Company Type</label>
-          <input
-            id="company-type"
-            name="company-type"
-            required
+          <select
             class="
               appearance-none
               block
               w-full
               px-0
               py-2
+              pr-10
               uppercase
               border-b border-gray-300
               placeholder-black
@@ -118,9 +116,12 @@
               focus:outline-none
               focus:ring-black
               focus:border-black
+              bg-no-repeat
             "
-            placeholder="Company Type"
-          />
+          >
+            <option disabled selected>Company Type</option>
+            <option>Other</option>
+          </select>
         </div>
 
         <div class="w-1/2 px-4 mb-5">
@@ -152,16 +153,14 @@
 
         <div class="w-1/2 px-4 mb-5">
           <label for="state" class="sr-only">State</label>
-          <input
-            id="state"
-            name="state"
-            required
+          <select
             class="
               appearance-none
               block
               w-full
               px-0
               py-2
+              pr-10
               uppercase
               border-b border-gray-300
               placeholder-black
@@ -169,9 +168,12 @@
               focus:outline-none
               focus:ring-black
               focus:border-black
+              bg-no-repeat
             "
-            placeholder="State"
-          />
+          >
+            <option disabled selected>State</option>
+            <option>Other</option>
+          </select>
         </div>
 
         <div class="w-1/2 px-4 mb-5">
@@ -261,4 +263,11 @@ export default {
 </script>
 
 <style scoped>
+select {
+  background-image: url("/icons/select-icon.svg");
+  background-position: right 0.5rem center;
+  background-size: 21px 13px;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
 </style>

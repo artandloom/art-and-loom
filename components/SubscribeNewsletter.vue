@@ -32,11 +32,13 @@
           />
         </div>
         <div>
-          <label for="email-address" class="sr-only">Email address</label>
+          <label for="email" class="sr-only">Email</label>
           <input
-            id="email-address"
+            id="email"
             name="email"
             type="email"
+            inputmode="email"
+            autocomplete="email"
             required
             class="
               appearance-none
@@ -52,7 +54,7 @@
               focus:ring-black
               focus:border-black
             "
-            placeholder="Email address"
+            placeholder="Email"
           />
         </div>
       </div>
