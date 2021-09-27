@@ -14,7 +14,7 @@
             justify-start
           "
         >
-          <h2 class="flex flex-row items-center uppercase text-7xl px-15">
+          <h2 class="flex flex-row items-center uppercase text-7xl z-10 px-15">
             Press
             <span class="flex ml-6 separator"></span>
           </h2>

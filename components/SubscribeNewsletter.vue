@@ -11,7 +11,7 @@
           <label for="name" class="sr-only">Name</label>
           <input
             id="name"
-            name="email"
+            name="name"
             autocomplete="name"
             required
             class="

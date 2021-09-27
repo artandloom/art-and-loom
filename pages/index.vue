@@ -18,7 +18,7 @@
       </swiper>
     </section>
     <section class="mb-30">
-      <h2 class="flex flex-row items-center uppercase text-7xl mb-15">
+      <h2 class="flex flex-row items-center uppercase text-7xl z-10 mb-15">
         Collections.
         <span class="flex ml-6 separator separator-large"></span>
       </h2>
@@ -62,7 +62,7 @@
       </div>
     </section>
     <section class="flex flex-col items-end mb-30">
-      <h2 class="flex flex-row items-center uppercase text-7xl mb-15">
+      <h2 class="flex flex-row items-center uppercase text-7xl z-10 mb-15">
         <span class="flex mr-6 separator separator-large"></span>
         Collaborations.
       </h2>

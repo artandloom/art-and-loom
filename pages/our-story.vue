@@ -15,7 +15,7 @@
             justify-end
           "
         >
-          <h2 class="flex flex-row items-center uppercase text-7xl px-15">
+          <h2 class="flex flex-row items-center uppercase text-7xl z-10 px-15">
             <span class="flex mr-6 separator"></span>
             Our Story
           </h2>
