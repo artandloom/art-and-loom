@@ -12,6 +12,7 @@
             "src": "nuxt.config.js",
             "use": "@nuxtjs/now-builder",
             "config": {
+                "internalServer": "true",
                 "serverFiles": [
                     "api/**"
                 ]
@@ -21,7 +22,15 @@
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "/api/$1.js"
+            "dest": "/api/$1.js",
+            "methods": [
+                "GET",
+                "OPTIONS"
+            ],
+            "headers": {
+                "Access-Control-Allow-Methods": "GET",
+                "Access-Control-Allow-Headers": "Content-Type"
+            }
         },
         {
             "src": "/(.*)",
