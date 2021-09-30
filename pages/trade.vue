@@ -278,7 +278,7 @@ export default {
     if (process.server) {
       console.log("process");
       console.log(process.env);
-      states = await $axios.$get("/api/states");
+      // states = await $axios.$get("/api/states");
     } else {
       states = await $axios.$get(location.origin + "/api/states");
     }
