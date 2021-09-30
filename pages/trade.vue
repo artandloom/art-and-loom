@@ -273,9 +273,14 @@ export default {
     }),
   },
   async asyncData({ $axios }) {
-    const states = await $axios.$get("/data/states.json");
+    let states;
 
-    console.log("data", states);
+    if (process.server) {
+      states = await $axios.$get("/api/states");
+    } else {
+      states = await $axios.$get(location.origin + "/api/states");
+    }
+
     return { states };
   },
 };

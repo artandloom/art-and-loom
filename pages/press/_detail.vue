@@ -56,7 +56,6 @@
 export default {
   layout: "landing",
   async asyncData({ $axios, route }) {
-    console.log("route.params", route.params.detail);
     const { data } = await $axios.$get(
       process.env.baseUrl +
         "/press?single=1&filter[slug][eq]=" +
@@ -64,7 +63,6 @@ export default {
         "&fields=*.*.*"
     );
 
-    console.log("data", data);
     return { data };
   },
 };

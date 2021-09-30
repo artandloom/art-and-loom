@@ -39,7 +39,6 @@ export default {
       process.env.baseUrl + "/press?fields=*.*.*"
     );
 
-    console.log("data", data);
     return { data };
   },
 };

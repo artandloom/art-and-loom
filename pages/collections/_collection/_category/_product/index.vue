@@ -296,13 +296,11 @@ export default {
       process.env.baseUrl + "/products/" + id + "?fields=*.*.*"
     );
 
-    console.log("products", data);
     return { data };
   },
   methods: {
     request() {
       this.showModal = !this.showModal;
-      console.log("aaaa");
     },
     toggleModal() {
       this.showModal = !this.showModal;

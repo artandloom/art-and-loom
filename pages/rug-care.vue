@@ -125,7 +125,6 @@ export default {
       process.env.baseUrl + "/rug_care_maintenance?single=1&fields=*.*.*"
     );
 
-    console.log("data", data);
     return { data };
   },
 };

@@ -116,7 +116,6 @@ export default {
       process.env.baseUrl + "/artists/" + id + "?fields=*.*.*"
     );
 
-    console.log("artist", data);
     return { data };
   },
 };

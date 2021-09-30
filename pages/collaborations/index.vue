@@ -69,7 +69,6 @@ export default {
       process.env.baseUrl + "/artists?fields=*.*.*"
     );
 
-    console.log("data", data);
     return { collaborations: data };
   },
 };

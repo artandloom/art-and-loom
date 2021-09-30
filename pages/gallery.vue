@@ -37,7 +37,6 @@ export default {
       process.env.baseUrl + "/gallery?fields=*.*.*"
     );
 
-    console.log("data", data);
     return { data };
   },
 };

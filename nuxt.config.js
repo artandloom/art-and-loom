@@ -24,6 +24,11 @@ export default {
       { rel: 'dns-prefetch', href: 'https://use.typekit.net' },
     ],
   },
+  serverMiddleware: [
+    { path: '/api/ping', handler: '~/api/ping.js' },
+    { path: '/api/states', handler: '~/api/states.js' },
+  ],
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '@/plugins/vue-awesome-swiper', mode: 'client' },

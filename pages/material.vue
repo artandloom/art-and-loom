@@ -71,7 +71,6 @@ export default {
       process.env.baseUrl + "/material?single=1&fields=*.*.*"
     );
 
-    console.log("data", data);
     return { data };
   },
 };

@@ -91,8 +91,6 @@ export default {
       process.env.baseUrl + "/categories/" + id + "?fields=*.*.*"
     );
 
-    console.log("data", data);
-
     return { data };
   },
 };

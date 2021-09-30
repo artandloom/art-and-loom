@@ -35,7 +35,6 @@ export default {
       process.env.baseUrl + "/legal?single=1&fields=*.*.*"
     );
 
-    console.log("data", data);
     return { data };
   },
 };

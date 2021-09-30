@@ -83,8 +83,6 @@ export default {
       process.env.baseUrl + "/collections/" + id + "?fields=*.*.*"
     );
 
-    console.log("data", data);
-
     return { data };
   },
 };
