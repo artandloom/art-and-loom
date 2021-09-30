@@ -273,9 +273,13 @@ export default {
     }),
   },
   async asyncData({ $axios }) {
-    const states = await $axios.$get(
-      "https://art-and-loom.vercel.app/api/states"
-    );
+    let states;
+
+    if (process.server) {
+      states = await $axios.$get("http://localhost:3000/api/states");
+    } else {
+      states = await $axios.$get("https://art-and-loom.vercel.app/api/states");
+    }
 
     return { states };
   },
