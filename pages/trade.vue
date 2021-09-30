@@ -275,11 +275,14 @@ export default {
   async asyncData({ $axios }) {
     let states;
 
-    if (process.server) {
-      states = await $axios.$get("http://localhost:3000/api/states");
-    } else {
-      states = await $axios.$get("https://art-and-loom.vercel.app/api/states");
-    }
+    console.log("process.env.PORT", process.env.PORT);
+    console.log("process.env", process.env);
+    // if (process.server) {
+    //   states = await $axios.$get("http://localhost:3000/api/states");
+    // } else {
+    //   states = await $axios.$get("https://art-and-loom.vercel.app/api/states");
+    // }
+    states = await $axios.$get("https://art-and-loom.vercel.app/api/states");
 
     return { states };
   },
