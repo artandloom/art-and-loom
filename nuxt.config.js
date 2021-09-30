@@ -1,5 +1,3 @@
-const baseUrl = process.env.baseUrl || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://art-and-loom-admin.thinkapp.dev/art-and-loom/items')
-
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'server',
@@ -52,12 +50,13 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', withoutNullishEntries({ baseURL: baseUrl })],
+  modules: ['@nuxtjs/axios'],
 
   // Environments variables
-  env: withoutNullishEntries({
-    baseUrl
-  }),
+  env: {
+    baseUrl: 'https://art-and-loom-admin.thinkapp.dev/art-and-loom/items'
+  },
+
   googleFonts: {
     /* module options */
     families: {
@@ -68,8 +67,3 @@ export default {
     display: 'swap'
   },
 };
-
-
-function withoutNullishEntries(x) {
-  return Object.fromEntries(Object.entries(x).filter(([k, v]) => v != null))
-}

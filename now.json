@@ -1,5 +1,6 @@
 {
     "version": 2,
+    "internalServer": true,
     "env": {
         "ON_VERCEL": "true"
     },
