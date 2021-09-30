@@ -12,7 +12,6 @@
             "src": "nuxt.config.js",
             "use": "@nuxtjs/now-builder",
             "config": {
-                "internalServer": "true",
                 "serverFiles": [
                     "api/**"
                 ]
