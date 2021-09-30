@@ -65,5 +65,8 @@ export default {
       },
     },
     display: 'swap'
-  }
+  },
+  server: {
+    host: '0.0.0.0', // default: localhost
+  },
 };
