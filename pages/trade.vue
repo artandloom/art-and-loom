@@ -278,7 +278,9 @@ export default {
     if (process.server) {
       console.log("process");
       console.log(process.env);
-      // states = await $axios.$get("/api/states");
+      states = await $axios.$get(
+        process.env.AWS_LAMBDA_RUNTIME_API + "/api/states"
+      );
     } else {
       console.log("process 2");
       console.log(process.env);
