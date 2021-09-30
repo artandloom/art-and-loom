@@ -280,6 +280,8 @@ export default {
       console.log(process.env);
       // states = await $axios.$get("/api/states");
     } else {
+      console.log("process 2");
+      console.log(process.env);
       states = await $axios.$get(location.origin + "/api/states");
     }
 
