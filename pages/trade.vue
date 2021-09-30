@@ -278,11 +278,10 @@ export default {
     console.log("process.env.PORT", process.env.PORT);
     console.log("process.env", process.env);
     if (process.server) {
-      states = await $axios.$get("http://localhost/api/states");
+      states = await $axios.$get(process.env.VERCEL_URL + "/api/states");
     } else {
       states = await $axios.$get("https://art-and-loom.vercel.app/api/states");
     }
-    // states = await $axios.$get("https://art-and-loom.vercel.app/api/states");
 
     return { states };
   },
