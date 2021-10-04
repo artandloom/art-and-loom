@@ -23,7 +23,7 @@
         <span class="flex ml-6 separator separator-large"></span>
       </h2>
       <NuxtLink
-        class="flex w-4/5"
+        class="flex w-3/5"
         title="See all Collections"
         to="/collections"
       >
@@ -68,7 +68,7 @@
       </h2>
 
       <NuxtLink
-        class="flex w-4/5"
+        class="flex w-3/5"
         title="See all Collaborations"
         to="/collaborations"
       >
