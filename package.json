@@ -16,6 +16,7 @@
     "nuxt": "^2.15.7",
     "nuxt-edge": "latest",
     "swiper": "^6.8.0",
+    "v-debounce": "^0.1.2",
     "vue-awesome-swiper": "^4.1.1",
     "vuex": "^3.6.2",
     "vuex-persistedstate": "^4.0.0"

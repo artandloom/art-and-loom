@@ -79,6 +79,21 @@
   </section>
 </template>
 
+<script>
+export default {
+  data: () => ({
+    email: null,
+    password: null,
+  }),
+  methods: {
+    async submitForm() {
+      console.log("form", this.email);
+      console.log("form", this.password);
+    },
+  },
+};
+</script>
+
 <style scoped>
 section {
   background: rgba(196, 196, 196, 0.1);
