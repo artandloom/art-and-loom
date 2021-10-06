@@ -17,3 +17,10 @@ To get started with Nuxt.js deployed with Vercel, you can use the [Create-Nuxt-A
 ```shell
 $ npx create-nuxt-app my-app
 ```
+
+
+Imágenes de portadas
+1280x720
+
+Imágenes de alfombras
+300x404

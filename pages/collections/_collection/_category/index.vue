@@ -73,8 +73,9 @@
           :title="product.name"
         >
           <Item
-            :name="product.name"
+            :id="product.picture.private_hash"
             :image="product.picture.data.full_url"
+            :name="product.name"
             :tag="product.tag"
           />
         </NuxtLink>

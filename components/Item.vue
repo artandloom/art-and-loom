@@ -1,11 +1,21 @@
 <template>
-  <article class="relative">
+  <article class="relative flex items-center justify-center h-full">
     <div class="name absolute inset-y-0 left-0 w-8 truncate">
       <p class="absolute inset-y-0 h-8 m-auto truncate">
         {{ name }}
       </p>
     </div>
-    <img :src="image" :alt="name" />
+    <img
+      :alt="name"
+      sizes="(max-width: 1400px) 100vw, 1400px"
+      :srcset="
+        baseUrl + id + imageSrc.xsmall +',w_200.jpg   200w,' +
+        baseUrl + id + imageSrc.small +',w_788.jpg   788w,' +
+        baseUrl + id + imageSrc.medium +',w_1204.jpg 1204w,' +
+        baseUrl + id + imageSrc.large +',w_1400.jpg 1400w'
+      "
+      :src="baseUrl + id + imageSrc.large"
+    />
 
     <div
       v-if="tag"
@@ -17,7 +27,20 @@
 </template>
 <script>
 export default {
+  data: () => ({
+    baseUrl: "https://art-and-loom-admin.thinkapp.dev/art-and-loom/assets/",
+    imageSrc: {
+      xsmall: "?w=200&h=252&q=72&f=contain",
+      small: "?w=741&h=935&q=72&f=contain",
+      medium: "?w=1148&h=1448&q=72&f=contain",
+      large: "?w=1400&h=1766&q=72&f=contain",
+    },
+  }),
   props: {
+    id: {
+      type: String,
+      default: "",
+    },
     name: {
       type: String,
       default: "",

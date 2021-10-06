@@ -56,8 +56,9 @@
           :title="collection.name"
         >
           <Item
-            :name="collection.name"
+            :id="collection.picture.private_hash"
             :image="collection.picture.data.full_url"
+            :name="collection.name"
           />
         </NuxtLink>
       </div>

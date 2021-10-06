@@ -46,8 +46,9 @@
             :to="'/collections/' + collection.slug + '-iid' + collection.id"
           >
             <Item
-              :name="collection.name"
+              :id="collection.picture.private_hash"
               :image="collection.picture.data.full_url"
+              :name="collection.name"
             />
           </NuxtLink>
         </swiper-slide>
@@ -95,8 +96,9 @@
             "
           >
             <Item
-              :name="collaboration.name"
+              :id="collaboration.cover.private_hash"
               :image="collaboration.cover.data.full_url"
+              :name="collaboration.name"
             />
           </NuxtLink>
         </swiper-slide>

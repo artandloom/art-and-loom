@@ -64,7 +64,11 @@
           "
           :title="category.name"
         >
-          <Item :name="category.name" :image="category.picture.data.full_url" />
+          <Item
+            :id="category.picture.private_hash"
+            :image="category.picture.data.full_url"
+            :name="category.name"
+          />
         </NuxtLink>
       </div>
     </section>
