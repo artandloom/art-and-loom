@@ -25,6 +25,47 @@
     <section class="flex flex-row">
       <div class="w-1/2 mx-15">
         <img class="cover" :src="image.data.full_url" alt="Connect with us" />
+
+        <section class="flex flex-col items-end justify-between pt-11 px-15">
+          <a
+            v-if="configs.contact_phone"
+            :href="
+              'tel:' + (configs.contact_phone_link || configs.contact_phone)
+            "
+            target="_blank"
+            rel="noopener"
+          >
+            {{ configs.contact_phone }}
+          </a>
+          <a
+            v-if="configs.contact_email"
+            class="mt-2"
+            :href="'mailto:' + configs.contact_email"
+            target="_blank"
+            rel="noopener"
+          >
+            {{ configs.contact_email }}
+          </a>
+          <div class="flex flex-row mt-8">
+            <a
+              v-if="configs.contact_instagram"
+              class="mr-7"
+              :href="configs.contact_instagram"
+              target="_blank"
+              rel="noopener"
+            >
+              <img src="/icons/instagram.svg" alt="Instagram" />
+            </a>
+            <a
+              v-if="configs.contact_whatsapp"
+              :href="configs.contact_whatsapp"
+              target="_blank"
+              rel="noopener"
+            >
+              <img src="/icons/whatsapp.svg" alt="Whatsapp" />
+            </a>
+          </div>
+        </section>
       </div>
       <div class="w-1/2 px-20">
         <form class="flex flex-col">
@@ -162,6 +203,7 @@ export default {
     ...mapState({
       cover: ({ configs }) => configs.contact_us_cover,
       image: ({ configs }) => configs.contact_us_image,
+      configs: ({ configs }) => configs,
     }),
   },
 };

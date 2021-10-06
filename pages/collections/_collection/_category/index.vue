@@ -72,7 +72,11 @@
           "
           :title="product.name"
         >
-          <Item :name="product.name" :image="product.picture.data.full_url" />
+          <Item
+            :name="product.name"
+            :image="product.picture.data.full_url"
+            :tag="product.tag"
+          />
         </NuxtLink>
       </div>
     </section>
