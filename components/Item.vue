@@ -9,10 +9,10 @@
       :alt="name"
       sizes="(max-width: 1400px) 100vw, 1400px"
       :srcset="
-        baseUrl + id + imageSrc.xsmall +',w_200.jpg   200w,' +
-        baseUrl + id + imageSrc.small +',w_788.jpg   788w,' +
-        baseUrl + id + imageSrc.medium +',w_1204.jpg 1204w,' +
-        baseUrl + id + imageSrc.large +',w_1400.jpg 1400w'
+        baseUrl + id + imageSrc.xsmall +'   200w,' +
+        baseUrl + id + imageSrc.small +'   788w,' +
+        baseUrl + id + imageSrc.medium +' 1204w,' +
+        baseUrl + id + imageSrc.large +' 1400w'
       "
       :src="baseUrl + id + imageSrc.large"
     />
