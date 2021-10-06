@@ -45,42 +45,57 @@
       v-show="showResults"
       class="absolute divide-y w-64 shadow-md rounded my-2 bg-white uppercase"
     >
-      <li
-        class="flex flex-row items-center px-4 py-2"
+      <NuxtLink
+        class="flex px-4 py-2"
         :key="'collection-' + collection.id"
         v-for="collection in collections"
+        :to="'/collections/' + collection.slug + '-iid' + collection.id"
+        :title="'View ' + collection.name"
+        @click.native="clearSearch()"
       >
-        <img
-          class="w-10 mr-4"
-          :src="collection.picture.data.full_url"
-          :alt="collection.name"
-        />
-        <p>{{ collection.name }}</p>
-      </li>
-      <li
-        class="flex flex-row items-center px-4 py-2"
+        <li class="flex flex-row items-center">
+          <img
+            class="w-10 mr-4"
+            :src="collection.picture.data.full_url"
+            :alt="collection.name"
+          />
+          <p>{{ collection.name }}</p>
+        </li>
+      </NuxtLink>
+      <NuxtLink
+        class="flex px-4 py-2"
         :key="'artist-' + artist.id"
         v-for="artist in artists"
+        :to="'/collaborations/' + artist.slug + '-iid' + artist.id"
+        :title="'View ' + artist.name"
+        @click.native="clearSearch()"
       >
-        <img
-          class="w-10 mr-4"
-          :src="artist.cover.data.full_url"
-          :alt="artist.name"
-        />
-        <p>{{ artist.name }}</p>
-      </li>
-      <li
-        class="flex flex-row items-center px-4 py-2"
+        <li class="flex flex-row items-center">
+          <img
+            class="w-10 mr-4"
+            :src="artist.cover.data.full_url"
+            :alt="artist.name"
+          />
+          <p>{{ artist.name }}</p>
+        </li>
+      </NuxtLink>
+      <NuxtLink
+        class="flex px-4 py-2"
         :key="'product-' + product.id"
         v-for="product in products"
+        :to="getProductLink(product)"
+        :title="product.name"
+        @click.native="clearSearch()"
       >
-        <img
-          class="w-10 mr-4"
-          :src="product.picture.data.full_url"
-          :alt="product.name"
-        />
-        <p>{{ product.name }}</p>
-      </li>
+        <li class="flex flex-row items-center">
+          <img
+            class="w-10 mr-4"
+            :src="product.picture.data.full_url"
+            :alt="product.name"
+          />
+          <p>{{ product.name }}</p>
+        </li>
+      </NuxtLink>
     </ul>
   </div>
 </template>
@@ -97,9 +112,42 @@ export default {
     products: [],
   }),
   methods: {
+    getProductLink(product) {
+      if (product.artist) {
+        return (
+          "/collaborations/" +
+          product.artist.slug +
+          "-iid" +
+          product.artist.id +
+          "/" +
+          product.slug +
+          "-iid" +
+          product.id
+        );
+      }
+      return (
+        "/collections/" +
+        product.category.collection.slug +
+        "-iid" +
+        product.category.collection.id +
+        "/" +
+        product.category.slug +
+        "-iid" +
+        product.category.id +
+        "/" +
+        product.slug +
+        "-iid" +
+        product.id
+      );
+    },
     async submitForm() {
       console.log("form", this.search);
       this.searchedTerm = this.search;
+    },
+    clearSearch() {
+      this.showResults = false;
+      this.search = null;
+      this.searchedTerm = null;
     },
     changeSearch() {
       console.log("form", this.search);
