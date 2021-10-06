@@ -125,20 +125,23 @@ export default {
           product.id
         );
       }
-      return (
-        "/collections/" +
-        product.category.collection.slug +
-        "-iid" +
-        product.category.collection.id +
-        "/" +
-        product.category.slug +
-        "-iid" +
-        product.category.id +
-        "/" +
-        product.slug +
-        "-iid" +
-        product.id
-      );
+      if (product.category) {
+        return (
+          "/collections/" +
+          product.category.collection.slug +
+          "-iid" +
+          product.category.collection.id +
+          "/" +
+          product.category.slug +
+          "-iid" +
+          product.category.id +
+          "/" +
+          product.slug +
+          "-iid" +
+          product.id
+        );
+      }
+      return '';
     },
     async submitForm() {
       console.log("form", this.search);
