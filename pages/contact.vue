@@ -3,7 +3,11 @@
     <Cover title="Connect with us" :image="cover.private_hash" />
     <section class="flex flex-row">
       <div class="w-1/2 mx-15">
-        <img class="min-w-full" :src="image.data.full_url" alt="Connect with us" />
+        <img
+          class="min-w-full"
+          :src="image.data.full_url"
+          alt="Connect with us"
+        />
 
         <section class="flex flex-col items-end justify-between pt-11 px-15">
           <a
@@ -13,6 +17,7 @@
             "
             target="_blank"
             rel="noopener"
+            title="Call Us"
           >
             {{ configs.contact_phone }}
           </a>
@@ -22,8 +27,19 @@
             :href="'mailto:' + configs.contact_email"
             target="_blank"
             rel="noopener"
+            title="Send Email"
           >
             {{ configs.contact_email }}
+          </a>
+          <a
+            v-if="configs.contact_address && configs.contact_address_link"
+            class="mt-2"
+            :href="configs.contact_address_link"
+            target="_blank"
+            rel="noopener"
+            title="Open on Maps"
+          >
+            {{ configs.contact_address }}
           </a>
           <div class="flex flex-row mt-8">
             <a
