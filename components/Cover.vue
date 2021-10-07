@@ -38,7 +38,7 @@
 <script>
 export default {
   data: () => ({
-    baseUrl: "https://art-and-loom-admin.thinkapp.dev/art-and-loom/assets/",
+    baseUrl: "https://admin.artandloom.com/art-and-loom/assets/",
     imageSrc: {
       xsmall: "?w=200&h=90&q=72&f=contain",
       small: "?w=741&h=333&q=72&f=contain",

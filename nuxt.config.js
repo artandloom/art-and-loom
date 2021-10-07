@@ -55,7 +55,7 @@ export default {
 
   // Environments variables
   env: {
-    baseUrl: 'https://art-and-loom-admin.thinkapp.dev/art-and-loom/items'
+    baseUrl: 'https://admin.artandloom.com/art-and-loom/items'
   },
 
   googleFonts: {
