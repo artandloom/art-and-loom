@@ -12,7 +12,7 @@
       <div class="w-3/5 pl-32 text-xl content-wyswyg" v-html="data.content"></div>
     </section>
     <section class="flex flex-row mb-44">
-      <img class="full-width" :src="data.image.data.full_url" alt="Collections" />
+      <img class="min-w-full" :src="data.image.data.full_url" alt="Collections" />
     </section>
   </main>
 </template>
