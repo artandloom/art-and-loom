@@ -31,7 +31,11 @@
         />
       </div>
       <div class="w-1/2 pl-8">
-        <div class="mb-4" v-if="data.excerpt" v-html="data.excerpt"></div>
+        <div
+          class="mb-4 content-wyswyg"
+          v-if="data.excerpt"
+          v-html="data.excerpt"
+        ></div>
 
         <a
           v-if="data.link"

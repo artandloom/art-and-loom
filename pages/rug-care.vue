@@ -1,32 +1,16 @@
 <template>
   <main>
-    <section class="mb-30">
-      <div class="relative -mx-15">
-        <img class="cover" :src="data.cover.data.full_url" alt="Collections" />
-        <div
-          class="
-            text-background
-            absolute
-            bottom-0
-            left-0
-            right-0
-            flex flex-row
-            items-center
-            justify-end
-          "
-        >
-          <h2 class="flex flex-row items-center uppercase text-7xl z-10 px-15">
-            <span class="flex mr-6 separator"></span>
-            Rug Care & Maintenance
-          </h2>
-        </div>
-      </div>
-    </section>
+    <Cover
+      title="Rug Care & Maintenance"
+      :image="data.cover.private_hash"
+      alt="Rug Care and Maintenance"
+    />
+
     <section class="flex flex-row mb-44 items-center">
       <div class="w-2/5">
         <img
           v-if="data.image_left_first"
-          class="cover"
+          class="min-w-full"
           :src="data.image_left_first.data.full_url"
           alt="Collections"
         />
@@ -54,7 +38,7 @@
       </div>
       <div class="w-3/5">
         <img
-          class="cover"
+          class="min-w-full"
           :src="data.image_right_first.data.full_url"
           alt="Collections"
         />
@@ -63,7 +47,7 @@
     <section class="flex flex-row mb-44">
       <div class="w-2/5">
         <img
-          class="cover"
+          class="min-w-full"
           :src="data.image_left_second.data.full_url"
           alt="Collections"
         />
@@ -94,7 +78,7 @@
       </div>
       <div class="w-3/5">
         <img
-          class="cover"
+          class="min-w-full"
           :src="data.image_right_second.data.full_url"
           alt="Collections"
         />

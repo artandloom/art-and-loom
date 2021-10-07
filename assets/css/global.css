@@ -4,10 +4,6 @@ body {
     font-style: normal;
 }
 
-.cover {
-    width: 100%;
-}
-
 .separator {
     border-top: 0.5px solid #000000;
     width: 100px;
@@ -28,4 +24,23 @@ body {
 
 .full-width {
     width: 100%;
+}
+
+.content-wyswyg h1 {
+    font-size: 4.5rem;
+}
+.content-wyswyg h2 {
+    font-size: 3.75rem;
+}
+.content-wyswyg h3 {
+    font-size: 3rem;
+}
+.content-wyswyg h4 {
+    font-size: 2.25rem;
+}
+.content-wyswyg h5 {
+    font-size: 1.875rem;
+}
+.content-wyswyg h6 {
+    font-size: 1.5rem;
 }

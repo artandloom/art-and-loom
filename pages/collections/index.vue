@@ -1,31 +1,8 @@
 <template>
   <main>
+    <Cover title="Collections" :image="settings.collection_cover.private_hash" />
     <section class="mb-30">
-      <div class="relative">
-        <img
-          class="cover"
-          :src="settings.collection_cover.data.full_url"
-          alt="Collections"
-        />
-        <div
-          class="
-            text-background
-            absolute
-            bottom-0
-            left-0
-            right-0
-            flex flex-row
-            items-center
-            justify-end
-          "
-        >
-          <h2 class="flex flex-row items-center uppercase text-7xl z-10">
-            <span class="flex mr-6 separator"></span>
-            Collections.
-          </h2>
-        </div>
-      </div>
-      <div v-html="settings.collections_description"></div>
+      <div class="content-wyswyg" v-html="settings.collections_description"></div>
     </section>
     <section class="mb-14">
       <span class="flex m-auto mb-30 separator separator-large"></span>

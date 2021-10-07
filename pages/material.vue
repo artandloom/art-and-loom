@@ -1,35 +1,14 @@
 <template>
   <main>
-    <section class="mb-30">
-      <div class="relative -mx-15">
-        <img
-          class="cover"
-          :src="data.cover.data.full_url"
-          alt="Material and Techniques"
-        />
-        <div
-          class="
-            text-background
-            absolute
-            bottom-0
-            left-0
-            right-0
-            flex flex-row
-            items-center
-            justify-end
-          "
-        >
-          <h2 class="flex flex-row items-center uppercase text-7xl z-10 px-15">
-            <span class="flex mr-6 separator"></span>
-            Material & Techniques
-          </h2>
-        </div>
-      </div>
-    </section>
+    <Cover
+      title="Material & Techniques"
+      :image="data.cover.private_hash"
+      alt="Material and Techniques"
+    />
     <section class="flex flex-row mb-44">
       <div class="w-2/5">
         <img
-          class="cover"
+          class="min-w-full"
           :src="data.bespoke_image.data.full_url"
           alt="Collections"
         />
@@ -54,7 +33,7 @@
       </div>
       <div class="w-3/5">
         <img
-          class="cover"
+          class="min-w-full"
           :src="data.custom_image.data.full_url"
           alt="Collections"
         />

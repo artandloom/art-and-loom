@@ -1,27 +1,6 @@
 <template>
   <main>
-    <section class="mb-30">
-      <div class="relative -mx-15">
-        <img class="cover" :src="cover.data.full_url" alt="Connect with us" />
-        <div
-          class="
-            text-background
-            absolute
-            bottom-0
-            left-0
-            right-0
-            flex flex-row
-            items-center
-            justify-end
-          "
-        >
-          <h2 class="flex flex-row items-center uppercase text-7xl z-10 px-15">
-            <span class="flex mr-6 separator"></span>
-            Trade
-          </h2>
-        </div>
-      </div>
-    </section>
+    <Cover title="Trade" :image="cover.private_hash" />
     <section>
       <form class="flex flex-row flex-wrap">
         <div class="w-1/2 px-4 mb-5">

@@ -1,36 +1,15 @@
 <template>
   <main>
-    <section class="mb-30">
-      <div class="relative -mx-15">
-        <img class="cover" :src="data.cover.data.full_url" alt="Collections" />
-        <div
-          class="
-            text-background
-            absolute
-            bottom-0
-            left-0
-            right-0
-            flex flex-row
-            items-center
-            justify-end
-          "
-        >
-          <h2 class="flex flex-row items-center uppercase text-7xl z-10 px-15">
-            <span class="flex mr-6 separator"></span>
-            Our Story
-          </h2>
-        </div>
-      </div>
-    </section>
+    <Cover title="Our Story" :image="data.cover.private_hash" />
     <section class="flex flex-row mb-44">
       <div class="w-2/5">
         <img
-          class="cover"
+          class="min-w-full"
           :src="data.picture.data.full_url"
           alt="Collections"
         />
       </div>
-      <div class="w-3/5 pl-32 text-xl" v-html="data.content"></div>
+      <div class="w-3/5 pl-32 text-xl content-wyswyg" v-html="data.content"></div>
     </section>
     <section class="flex flex-row mb-44">
       <img class="full-width" :src="data.image.data.full_url" alt="Collections" />

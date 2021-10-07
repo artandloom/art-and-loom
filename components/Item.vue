@@ -9,8 +9,8 @@
       :alt="name"
       sizes="(max-width: 1400px) 100vw, 1400px"
       :srcset="
-        baseUrl + id + imageSrc.xsmall +'   200w,' +
-        baseUrl + id + imageSrc.small +'   788w,' +
+        baseUrl + id + imageSrc.xsmall +' 200w,' +
+        baseUrl + id + imageSrc.small +' 788w,' +
         baseUrl + id + imageSrc.medium +' 1204w,' +
         baseUrl + id + imageSrc.large +' 1400w'
       "

@@ -22,7 +22,7 @@
       </div>
     </section>
     <section
-      class="flex flex-row flex-wrap pt-15 -mx-4"
+      class="flex flex-row flex-wrap pt-15 -mx-4 content-wyswyg"
       v-html="data.content"
     ></section>
   </main>
