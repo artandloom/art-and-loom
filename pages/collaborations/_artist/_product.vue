@@ -18,7 +18,6 @@
           />
         </div>
         <div class="w-2/4 pl-4">
-          <h3 class="uppercase mt-16 mb-9">Collections shape.</h3>
           <div class="mb-4 content-wyswyg" v-html="data.information"></div>
           <p
             class="underline mb-4 cursor-pointer select-none"
