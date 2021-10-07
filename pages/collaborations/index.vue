@@ -1,37 +1,64 @@
 <template>
   <main>
     <Cover title="Collaborations" :image="cover.private_hash" />
-    <section class="flex flex-col">
-      <NuxtLink
-        class="w-4/5 mb-44 flex flex-col"
-        :key="collaboration.id"
-        v-for="(collaboration, index) in collaborations"
-        :class="{
-          'ml-auto justify-end': index % 2,
-        }"
-        :to="
-          '/collaborations/' + collaboration.slug + '-iid' + collaboration.id
-        "
-        :title="'View ' + collaboration.name"
-      >
-        <!-- even: index % 2,
-          odd: !(index % 2), -->
-        <h3
-          class="flex flex-row items-center uppercase text-5xl mb-20"
-          :class="{ 'flex-row-reverse': index % 2 }"
-        >
-          {{ collaboration.name }}
-          <span
-            class="flex separator"
-            :class="{ 'mr-6': index % 2, 'ml-6': !(index % 2) }"
-          ></span>
-        </h3>
+    <section class="flex flex-row">
+      <aside class="w-1/5">
+        <ul>
+          <NuxtLink
+            class="flex my-7"
+            :key="collaboration.id"
+            v-for="collaboration in collaborations"
+            :to="
+              '/collaborations/' +
+              collaboration.slug +
+              '-iid' +
+              collaboration.id
+            "
+            :title="collaboration.name"
+          >
+            <li class="uppercase">
+              {{ collaboration.name }}
+            </li>
+          </NuxtLink>
+        </ul>
+      </aside>
+      <section class="flex flex-row flex-wrap w-4/5 justify-end">
+        <div class="flex flex-col">
+          <NuxtLink
+            class="w-4/5 mb-44 flex flex-col"
+            :key="collaboration.id"
+            v-for="(collaboration, index) in collaborations"
+            :class="{
+              'ml-auto justify-end': index % 2,
+            }"
+            :to="
+              '/collaborations/' +
+              collaboration.slug +
+              '-iid' +
+              collaboration.id
+            "
+            :title="'View ' + collaboration.name"
+          >
+            <!-- even: index % 2,
+              odd: !(index % 2), -->
+            <h3
+              class="flex flex-row items-center uppercase text-5xl mb-20"
+              :class="{ 'flex-row-reverse': index % 2 }"
+            >
+              {{ collaboration.name }}
+              <span
+                class="flex separator"
+                :class="{ 'mr-6': index % 2, 'ml-6': !(index % 2) }"
+              ></span>
+            </h3>
 
-        <img
-          :src="collaboration.cover.data.full_url"
-          :alt="collaboration.name"
-        />
-      </NuxtLink>
+            <img
+              :src="collaboration.cover.data.full_url"
+              :alt="collaboration.name"
+            />
+          </NuxtLink>
+        </div>
+      </section>
     </section>
   </main>
 </template>
