@@ -1,5 +1,5 @@
 <template>
-  <div class="page landing">
+  <div class="landing">
     <Header />
     <Nuxt class="px-15 pb-30" />
     <Footer />

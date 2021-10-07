@@ -6,13 +6,16 @@
         <img
           class="min-w-full"
           :src="data.picture.data.full_url"
-          alt="Collections"
+          alt="Our Story"
         />
       </div>
-      <div class="w-3/5 pl-32 text-xl content-wyswyg" v-html="data.content"></div>
+      <div
+        class="w-3/5 pl-32 text-xl content-wyswyg"
+        v-html="data.content"
+      ></div>
     </section>
     <section class="flex flex-row mb-44">
-      <img class="min-w-full" :src="data.image.data.full_url" alt="Collections" />
+      <img class="min-w-full" :src="data.image.data.full_url" alt="Our Story" />
     </section>
   </main>
 </template>

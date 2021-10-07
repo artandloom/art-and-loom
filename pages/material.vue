@@ -10,7 +10,7 @@
         <img
           class="min-w-full"
           :src="data.bespoke_image.data.full_url"
-          alt="Collections"
+          :alt="data.bespoke_title"
         />
       </div>
       <div class="w-3/5 pl-32 text-xl">
@@ -35,7 +35,7 @@
         <img
           class="min-w-full"
           :src="data.custom_image.data.full_url"
-          alt="Collections"
+          :alt="data.custom_title"
         />
       </div>
     </section>

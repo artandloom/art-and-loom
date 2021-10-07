@@ -14,7 +14,7 @@
           <img
             class="min-w-full"
             :src="data.picture.data.full_url"
-            alt="Collections"
+            :alt="data.name"
           />
         </div>
         <div class="w-2/4 pl-4">
@@ -47,7 +47,32 @@
       <section class="-mx-15">
         <swiper class="swiper gallery" :options="swiperOptionsGallery">
           <swiper-slide :key="gallery.id" v-for="gallery in data.gallery">
-            <img :src="gallery.directus_files_id.data.full_url" />
+            <img
+              sizes="(max-width: 1400px) 100vw, 1400px"
+              :srcset="
+                baseUrl +
+                gallery.directus_files_id.private_hash +
+                imageSrc.xsmall +
+                ' 200w,' +
+                baseUrl +
+                gallery.directus_files_id.private_hash +
+                imageSrc.small +
+                ' 788w,' +
+                baseUrl +
+                gallery.directus_files_id.private_hash +
+                imageSrc.medium +
+                ' 1204w,' +
+                baseUrl +
+                gallery.directus_files_id.private_hash +
+                imageSrc.large +
+                ' 1400w'
+              "
+              :src="
+                baseUrl +
+                gallery.directus_files_id.private_hash +
+                imageSrc.large
+              "
+            />
           </swiper-slide>
         </swiper>
       </section>
@@ -138,7 +163,7 @@
               <img
                 class="min-w-full"
                 :src="data.picture.data.full_url"
-                alt="Collections"
+                :alt="data.name"
               />
             </div>
             <div class="w-2/4 pl-4">
@@ -261,13 +286,20 @@ import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 export default {
   data() {
     return {
+      baseUrl: "https://art-and-loom-admin.thinkapp.dev/art-and-loom/assets/",
+      imageSrc: {
+        xsmall: "?w=200&h=252&q=72&f=contain",
+        small: "?w=741&h=935&q=72&f=contain",
+        medium: "?w=1148&h=1448&q=72&f=contain",
+        large: "?w=1400&h=1766&q=72&f=contain",
+      },
       showModal: false,
       swiperOptionsGallery: {
         preventClicks: false,
         preventClicksPropagation: false,
         resistance: true,
         resistanceRatio: 0.65,
-        slidesPerView: 1.1,
+        slidesPerView: 3.1,
         spaceBetween: 40,
         slidesOffsetAfter: 20,
         slidesOffsetBefore: 60,

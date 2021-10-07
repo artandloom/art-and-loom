@@ -12,7 +12,7 @@
           v-if="data.image_left_first"
           class="min-w-full"
           :src="data.image_left_first.data.full_url"
-          alt="Collections"
+          alt="Rug Care and Maintenance"
         />
       </div>
       <div class="w-3/5 pl-32 text-3xl">
@@ -40,7 +40,7 @@
         <img
           class="min-w-full"
           :src="data.image_right_first.data.full_url"
-          alt="Collections"
+          alt="Rug Care and Maintenance"
         />
       </div>
     </section>
@@ -49,7 +49,7 @@
         <img
           class="min-w-full"
           :src="data.image_left_second.data.full_url"
-          alt="Collections"
+          alt="Rug Care and Maintenance"
         />
       </div>
       <div class="w-3/5 pl-32 text-xl">
@@ -80,7 +80,7 @@
         <img
           class="min-w-full"
           :src="data.image_right_second.data.full_url"
-          alt="Collections"
+          alt="Rug Care and Maintenance"
         />
       </div>
     </section>

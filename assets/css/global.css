@@ -3,12 +3,7 @@ body {
     font-weight: 100;
     font-style: normal;
 }
-.page {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1400px;
-    width: 100%;
-}
+
 .separator {
     border-top: 0.5px solid #000000;
     width: 100px;
@@ -44,4 +39,8 @@ body {
 }
 .content-wyswyg h6 {
     font-size: 1.5rem;
+}
+
+.gallery .swiper-wrapper {
+    align-items: center;
 }

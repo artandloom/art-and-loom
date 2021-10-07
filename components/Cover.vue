@@ -40,10 +40,10 @@ export default {
   data: () => ({
     baseUrl: "https://art-and-loom-admin.thinkapp.dev/art-and-loom/assets/",
     imageSrc: {
-      xsmall: "?w=200&h=90&q=72&f=crop",
-      small: "?w=741&h=333&q=72&f=crop",
-      medium: "?w=1102&h=496&q=72&f=crop",
-      large: "?w=1400&h=630&q=72&f=crop",
+      xsmall: "?w=200&h=90&q=72&f=contain",
+      small: "?w=741&h=333&q=72&f=contain",
+      medium: "?w=1102&h=496&q=72&f=contain",
+      large: "?w=1400&h=630&q=72&f=contain",
     },
   }),
   props: {

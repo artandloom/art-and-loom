@@ -6,22 +6,34 @@
           <img src="/images/logo.svg" alt="Art and loom" />
         </NuxtLink>
       </div>
-      <div class="flex flex-row">
+      <div class="flex flex-col items-end justify-between pt-11">
         <a
-          class="mr-7"
-          href="https://www.instagram.com/artandloom/"
+          v-if="configs.contact_phone"
+          :href="'tel:' + (configs.contact_phone_link || configs.contact_phone)"
           target="_blank"
           rel="noopener"
         >
-          <img src="/icons/instagram.svg" alt="Instagram" />
+          {{ configs.contact_phone }}
         </a>
-        <a
-          href="https://api.whatsapp.com/send?phone=+19177670078"
-          target="_blank"
-          rel="noopener"
-        >
-          <img src="/icons/whatsapp.svg" alt="Whatsapp" />
-        </a>
+        <div class="flex flex-row mt-8">
+          <a
+            v-if="configs.contact_instagram"
+            class="mr-7"
+            :href="configs.contact_instagram"
+            target="_blank"
+            rel="noopener"
+          >
+            <img src="/icons/instagram.svg" alt="Instagram" />
+          </a>
+          <a
+            v-if="configs.contact_whatsapp"
+            :href="configs.contact_whatsapp"
+            target="_blank"
+            rel="noopener"
+          >
+            <img src="/icons/whatsapp.svg" alt="Whatsapp" />
+          </a>
+        </div>
       </div>
     </section>
     <section class="flex flex-row items-center justify-end mt-8 px-15">
@@ -77,7 +89,13 @@ footer {
 </style>
 
 <script>
+import { mapState } from "vuex";
 export default {
+  computed: {
+    ...mapState({
+      configs: ({ configs }) => configs,
+    }),
+  },
   data: () => ({
     year: new Date().getFullYear(),
   }),
