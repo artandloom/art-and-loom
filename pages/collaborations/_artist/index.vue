@@ -73,14 +73,6 @@ export default {
         slidesOffsetAfter: 20,
         slidesOffsetBefore: 40,
       },
-      swiperOptionsItem: {
-        slidesPerView: "auto",
-        spaceBetween: 8,
-        preventClicks: false,
-        preventClicksPropagation: false,
-        resistance: true,
-        resistanceRatio: 0.65,
-      },
     };
   },
   components: {

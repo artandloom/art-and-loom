@@ -36,7 +36,7 @@
           ← Go Back
         </NuxtLink>
       </section>
-      <section class="-mx-15">
+      <section class="-mx-15 mb-35">
         <swiper class="swiper gallery" :options="swiperOptionsGallery">
           <swiper-slide :key="gallery.id" v-for="gallery in data.gallery">
             <img
@@ -67,6 +67,45 @@
             />
           </swiper-slide>
         </swiper>
+      </section>
+
+      <section class="-mx-15 text-right">
+        <swiper
+          class="swiper products-recommended mb-4"
+          :options="swiperOptionsProducts"
+        >
+          <swiper-slide
+            class="flex justify-center items-center item"
+            :key="product.id"
+            v-for="product in recommendedProducts"
+          >
+            <NuxtLink
+              :title="product.name"
+              :to="
+                '/collaborations/' +
+                $route.params.artist +
+                '/' +
+                product.slug +
+                '-iid' +
+                product.id
+              "
+            >
+              <Item
+                :id="product.picture.private_hash"
+                :image="product.picture.data.full_url"
+                :name="product.name"
+              />
+            </NuxtLink>
+          </swiper-slide>
+        </swiper>
+        <div class="px-15">
+          <NuxtLink
+            class="uppercase"
+            title="See all Collaborations"
+            to="/collaborations"
+            >See all Collaborations.
+          </NuxtLink>
+        </div>
       </section>
     </main>
 
@@ -287,6 +326,9 @@ export default {
       },
       showModal: false,
       swiperOptionsGallery: {
+        watchOverflow: true,
+        watchSlidesProgress: true,
+        watchSlidesVisibility: true,
         preventClicks: false,
         preventClicksPropagation: false,
         resistance: true,
@@ -296,13 +338,18 @@ export default {
         slidesOffsetAfter: 20,
         slidesOffsetBefore: 60,
       },
-      swiperOptionsItem: {
-        slidesPerView: "auto",
-        spaceBetween: 8,
+      swiperOptionsProducts: {
+        watchOverflow: true,
+        watchSlidesProgress: true,
+        watchSlidesVisibility: true,
         preventClicks: false,
         preventClicksPropagation: false,
         resistance: true,
         resistanceRatio: 0.65,
+        spaceBetween: 40,
+        slidesOffsetAfter: 20,
+        slidesOffsetBefore: 60,
+        slidesPerView: 4.5,
       },
     };
   },
@@ -311,17 +358,31 @@ export default {
     SwiperSlide,
   },
   async asyncData({ $axios, route }) {
-    const matcher = route.params.product.match(/-iid(\d+)/);
+    const productMatcher = route.params.product.match(/-iid(\d+)/);
 
-    let id = null;
-    if (matcher && matcher.length > 1) {
-      id = matcher[1];
+    let productId = null;
+    if (productMatcher && productMatcher.length > 1) {
+      productId = productMatcher[1];
     }
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/products/" + id + "?fields=*.*.*"
+      process.env.baseUrl + "/products/" + productId + "?fields=*.*.*"
     );
 
-    return { data };
+    const artistMatcher = route.params.artist.match(/-iid(\d+)/);
+
+    let artistId = null;
+    if (artistMatcher && artistMatcher.length > 1) {
+      artistId = artistMatcher[1];
+    }
+    const { data: artistProducts } = await $axios.$get(
+      process.env.baseUrl + "/artists/" + artistId + "?fields=products.*.*"
+    );
+
+    const recommendedProducts = artistProducts.products.filter(
+      (product) => product.id !== Number(productId)
+    );
+
+    return { data, recommendedProducts };
   },
   methods: {
     request() {

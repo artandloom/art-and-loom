@@ -44,3 +44,7 @@ body {
 .gallery .swiper-wrapper {
     align-items: center;
 }
+
+.products-recommended .swiper-wrapper {
+    align-items: center;
+}

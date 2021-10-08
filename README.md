@@ -24,7 +24,3 @@ Imágenes de portadas
 
 Imágenes de alfombras
 300x404
-
-# TODO:
-- en artistas, por defecto te recomienda otros artistas
-- en collections, te recomienda los productos del a otra colección
