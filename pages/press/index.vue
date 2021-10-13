@@ -25,7 +25,7 @@
       <div class="w-1/3 m-4 press-item" v-for="item in data" :key="item.id">
         <NuxtLink :to="'/press/' + item.slug">
           <!-- TODO: Add image component -->
-          <img :src="item.cover.data.full_url" :alt="item.title" />
+          <img class="w-full" :src="item.cover.data.full_url" :alt="item.title" />
         </NuxtLink>
       </div>
     </section>
