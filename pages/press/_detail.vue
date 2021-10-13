@@ -21,6 +21,11 @@
         </div>
       </div>
     </section>
+    <section class="my-8">
+      <NuxtLink title="Go Back" :to="'/press'">
+        ← Go Back
+      </NuxtLink>
+    </section>
     <section class="flex flex-row pt-15">
       <div class="w-1/2 pr-8">
         <!-- TODO: Add image component -->

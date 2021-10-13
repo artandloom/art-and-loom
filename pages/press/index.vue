@@ -22,10 +22,21 @@
       </div>
     </section>
     <section class="flex flex-row flex-wrap pt-15 -mx-4">
-      <div class="w-1/3 m-4 press-item" v-for="item in data" :key="item.id">
+      <div class="w-1/3 p-4 press-item" v-for="item in data" :key="item.id">
         <NuxtLink :to="'/press/' + item.slug">
           <!-- TODO: Add image component -->
-          <img class="w-full" :src="item.cover.data.full_url" :alt="item.title" />
+          <img
+            class="w-full"
+            :alt="item.title"
+            sizes="(max-width: 500px) 100vw, 500px"
+            :srcset="
+              baseUrl + item.cover.private_hash + imageSrc.xsmall +' 200w,' +
+              baseUrl + item.cover.private_hash + imageSrc.small +' 602w,' +
+              baseUrl + item.cover.private_hash + imageSrc.medium +' 861w,' +
+              baseUrl + item.cover.private_hash + imageSrc.large +' 1080w'
+            "
+            :src="baseUrl + item.cover.private_hash + imageSrc.large"
+          />
         </NuxtLink>
       </div>
     </section>
@@ -41,6 +52,15 @@ export default {
 
     return { data };
   },
+  data: () => ({
+    baseUrl: "https://admin.artandloom.com/art-and-loom/assets/",
+    imageSrc: {
+      xsmall: "?w=200&h=250&q=72&f=crop",
+      small: "?w=602&h=753&q=72&f=crop",
+      medium: "?w=861&h=1076&q=72&f=crop",
+      large: "?w=1080&h=1350&q=72&f=crop",
+    },
+  }),
 };
 </script>
 <style scoped>
