@@ -221,6 +221,7 @@
                     autocomplete="name"
                     required
                     class="
+                      lining-nums
                       appearance-none
                       block
                       w-full
@@ -247,6 +248,7 @@
                     type="email"
                     required
                     class="
+                      lining-nums
                       appearance-none
                       block
                       w-full

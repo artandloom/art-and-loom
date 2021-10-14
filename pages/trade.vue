@@ -11,6 +11,7 @@
             autocomplete="given-name"
             required
             class="
+              lining-nums
               appearance-none
               block
               w-full
@@ -36,6 +37,7 @@
             autocomplete="family-name"
             required
             class="
+              lining-nums
               appearance-none
               block
               w-full
@@ -61,6 +63,7 @@
             autocomplete="url"
             required
             class="
+              lining-nums
               appearance-none
               block
               w-full
@@ -119,6 +122,7 @@
             type="resale-number"
             required
             class="
+              lining-nums
               appearance-none
               block
               w-full
@@ -176,6 +180,7 @@
             inputmode="email"
             required
             class="
+              lining-nums
               appearance-none
               block
               w-full
@@ -202,6 +207,7 @@
             inputmode="tel"
             required
             class="
+              lining-nums
               appearance-none
               block
               w-full

@@ -72,6 +72,7 @@
               autocomplete="name"
               required
               class="
+                lining-nums
                 appearance-none
                 block
                 w-full
@@ -97,6 +98,7 @@
               inputmode="tel"
               required
               class="
+                lining-nums
                 appearance-none
                 block
                 w-full
@@ -122,6 +124,7 @@
               inputmode="email"
               required
               class="
+                lining-nums
                 appearance-none
                 block
                 w-full
@@ -145,7 +148,6 @@
               id="comments"
               name="comments"
               type="comments"
-              inputmode="comments"
               required
               rows="4"
               class="

@@ -3,6 +3,7 @@
     <form class="pt-2 relative text-gray-800" @submit.prevent="submitForm">
       <input
         class="
+          lining-nums
           bg-gray-100
           placeholder-gray-800
           w-full
@@ -141,7 +142,7 @@ export default {
           product.id
         );
       }
-      return '';
+      return "";
     },
     async submitForm() {
       console.log("form", this.search);
