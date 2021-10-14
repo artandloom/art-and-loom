@@ -19,7 +19,7 @@
         </div>
         <div class="w-2/4 pl-4">
           <h3 v-if="data.category" class="uppercase mt-16 mb-9">
-            {{ data.category.collection.name }} Collections
+            {{ data.category.collection.name }} Collection
           </h3>
           <div class="mb-4 content-wyswyg" v-html="data.information" />
           <p

@@ -19,7 +19,7 @@
         </div>
         <div class="w-2/4 pl-4">
           <h3 v-if="data.artist" class="uppercase mt-16 mb-9">
-            {{ data.artist.name }} Collaborations
+            {{ data.artist.name }} Collaboration
           </h3>
           <div class="mb-4 content-wyswyg" v-html="data.information"></div>
           <p
