@@ -67,7 +67,10 @@
         </p>
       </div>
     </section>
-    <section class="flex flex-row">
+    <section
+      class="flex flex-row"
+      v-if="data.wear_title || data.wear_description"
+    >
       <div class="w-2/5 pr-32 text-xl">
         <h3 class="mb-2 text-5xl" v-if="data.wear_title">
           {{ data.wear_title }}

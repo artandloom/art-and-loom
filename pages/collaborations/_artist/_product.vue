@@ -18,6 +18,9 @@
           />
         </div>
         <div class="w-2/4 pl-4">
+          <h3 v-if="data.artist" class="uppercase mt-16 mb-9">
+            {{ data.artist.name }} Collaborations
+          </h3>
           <div class="mb-4 content-wyswyg" v-html="data.information"></div>
           <p
             class="underline mb-4 cursor-pointer select-none"
@@ -25,7 +28,17 @@
           >
             Request information
           </p>
-          <a class="underline" href="tel:+19177670078">Call Us 917.767.0078</a>
+          <a
+            class="underline"
+            v-if="configs.contact_phone"
+            :href="
+              'tel:' + (configs.contact_phone_link || configs.contact_phone)
+            "
+            target="_blank"
+            rel="noopener"
+          >
+            {{ configs.contact_phone }}
+          </a>
         </div>
       </section>
       <section class="mt-8 mb-24">
@@ -314,9 +327,15 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 
 export default {
+  computed: {
+    ...mapState({
+      configs: ({ configs }) => configs,
+    }),
+  },
   data() {
     return {
       baseUrl: "https://admin.artandloom.com/art-and-loom/assets/",

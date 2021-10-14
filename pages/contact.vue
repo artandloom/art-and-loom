@@ -9,7 +9,7 @@
           alt="Connect with us"
         />
 
-        <section class="flex flex-col items-end justify-between pt-11 px-15">
+        <section class="flex flex-col items-end justify-between pt-11 px-15 text-right">
           <a
             v-if="configs.contact_phone"
             :href="

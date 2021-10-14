@@ -1,6 +1,6 @@
 <template>
   <main>
-    <Cover title="Collaborations" :image="cover.private_hash" />
+    <Cover class="mb-20" title="Collaborations" :image="cover.private_hash" />
     <section class="flex flex-row">
       <aside class="w-1/5">
         <ul>
@@ -22,7 +22,7 @@
           </NuxtLink>
         </ul>
       </aside>
-      <section class="flex flex-row flex-wrap w-4/5 justify-end">
+      <section class="flex flex-row flex-wrap w-4/5 justify-end mt-20">
         <div class="flex flex-col">
           <NuxtLink
             class="w-4/5 mb-44 flex flex-col"

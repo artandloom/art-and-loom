@@ -6,7 +6,7 @@
     </section>
     <section class="flex flex-row justify-end my-14">
       <div class="w-1/4 text-xl px-10" v-if="data.picture">
-        <img :src="data.picture.data.full_url" :alt="data.name" />
+        <img class="mt-2" :src="data.picture.data.full_url" :alt="data.name" />
       </div>
       <div class="w-2/4 text-xl" v-if="data.biography">
         {{ data.biography }}
