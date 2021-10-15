@@ -177,6 +177,10 @@ export default {
   data() {
     return {
       swiperOptionsMain: {
+        centerInsufficientSlides: true,
+        watchOverflow: true,
+        watchSlidesProgress: true,
+        watchSlidesVisibility: true,
         preventClicks: false,
         preventClicksPropagation: false,
         resistance: true,

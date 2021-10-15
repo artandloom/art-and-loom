@@ -3,7 +3,7 @@
     <Cover title="Trade" :image="cover.private_hash" />
     <section>
       <form class="flex flex-row flex-wrap">
-        <div class="w-1/2 px-4 mb-5">
+        <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="last-name" class="sr-only">First Name</label>
           <input
             id="first-name"
@@ -29,7 +29,7 @@
           />
         </div>
 
-        <div class="w-1/2 px-4 mb-5">
+        <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="last-name" class="sr-only">Last Name</label>
           <input
             id="last-name"
@@ -55,7 +55,7 @@
           />
         </div>
 
-        <div class="w-1/2 px-4 mb-5">
+        <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="website" class="sr-only">Company Website</label>
           <input
             id="website"
@@ -81,7 +81,7 @@
           />
         </div>
 
-        <div class="w-1/2 px-4 mb-5">
+        <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="company-type" class="sr-only">Company Type</label>
           <select
             class="
@@ -112,7 +112,7 @@
           </select>
         </div>
 
-        <div class="w-1/2 px-4 mb-5">
+        <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="resale-number" class="sr-only"
             >Resale Certificate Number</label
           >
@@ -140,7 +140,7 @@
           />
         </div>
 
-        <div class="w-1/2 px-4 mb-5">
+        <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="state" class="sr-only">State</label>
           <select
             class="
@@ -171,7 +171,7 @@
           </select>
         </div>
 
-        <div class="w-1/2 px-4 mb-5">
+        <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="email" class="sr-only">Email</label>
           <input
             id="email"
@@ -198,7 +198,7 @@
           />
         </div>
 
-        <div class="w-1/2 px-4 mb-5">
+        <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="phone" class="sr-only">Phone</label>
           <input
             id="phone"
@@ -260,8 +260,6 @@ export default {
   async asyncData({ $axios }) {
     let states;
 
-    console.log("process.env.PORT", process.env.PORT);
-    console.log("process.env", process.env);
     if (process.server) {
       states = await $axios.$get(
         "http://" + process.env.VERCEL_URL + "/api/states"

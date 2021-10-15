@@ -1,15 +1,15 @@
 <template>
   <main>
     <Cover title="Connect with us" :image="cover.private_hash" />
-    <section class="flex flex-row">
-      <div class="w-1/2 mx-15">
+    <section class="flex flex-col-reverse md:flex-row">
+      <div class="w-full md:w-1/2 md:mx-15">
         <img
           class="min-w-full"
           :src="image.data.full_url"
           alt="Connect with us"
         />
 
-        <section class="flex flex-col items-end justify-between pt-11 px-15 text-right">
+        <section class="flex flex-col items-end justify-between pt-11 md:px-15 text-right">
           <a
             v-if="configs.contact_phone"
             :href="
@@ -62,7 +62,7 @@
           </div>
         </section>
       </div>
-      <div class="w-1/2 px-20">
+      <div class="w-full md:w-1/2 mb-10 md:mb-0 md:px-20">
         <form class="flex flex-col">
           <div class="mb-5">
             <label for="name" class="sr-only">Name</label>
