@@ -1,8 +1,8 @@
 <template>
   <main>
     <Cover class="px-15" :title="data.name" :image="data.cover.private_hash" />
-    <section class="flex flex-row">
-      <aside class="w-1/5">
+    <section class="flex flex-row justify-center md:justify-end -mx-4 md:-mx-0">
+      <aside class="hidden md:flex md:flex-row w-1/5">
         <ul>
           <NuxtLink class="flex mb-12" title="Go Back" to="/collections">
             ← Go Back
@@ -28,9 +28,9 @@
           </NuxtLink>
         </ul>
       </aside>
-      <div class="flex flex-row flex-wrap w-4/5 justify-end">
+      <div class="flex flex-row flex-wrap w-full md:w-4/5 justify-end">
         <NuxtLink
-          class="w-1/3 overflow-hidden mb-24 px-4"
+          class="w-1/2 md:w-1/3 overflow-hidden mb-24 px-4"
           :key="category.id"
           v-for="category in data.categories"
           :to="

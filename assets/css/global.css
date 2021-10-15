@@ -23,22 +23,43 @@ body {
 }
 
 .content-wyswyg h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
 }
 .content-wyswyg h2 {
-    font-size: 3.75rem;
+    font-size: 3.25rem;
 }
 .content-wyswyg h3 {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 .content-wyswyg h4 {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
 }
 .content-wyswyg h5 {
-    font-size: 1.875rem;
+    font-size: 1.375rem;
 }
 .content-wyswyg h6 {
-    font-size: 1.5rem;
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    .content-wyswyg h1 {
+        font-size: 4.5rem;
+    }
+    .content-wyswyg h2 {
+        font-size: 3.75rem;
+    }
+    .content-wyswyg h3 {
+        font-size: 3rem;
+    }
+    .content-wyswyg h4 {
+        font-size: 2.25rem;
+    }
+    .content-wyswyg h5 {
+        font-size: 1.875rem;
+    }
+    .content-wyswyg h6 {
+        font-size: 1.5rem;
+    }
 }
 
 .gallery .swiper-wrapper {

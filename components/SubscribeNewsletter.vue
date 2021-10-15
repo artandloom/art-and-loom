@@ -1,7 +1,9 @@
 <template>
   <section class="text-center pt-14 pb-30">
-    <h3 class="pb-12 text-4xl">Sign Up for our newsletter</h3>
-    <p class="text-2xl mb-16">
+    <h3 class="pb-12 text-2xl md:text-3xl lg:text-4xl">
+      Sign Up for our newsletter
+    </h3>
+    <p class="text-xl lg:text-2xl mb-16 px-4">
       Stay up to date on exciting projects and upcoming events from Art+Loom.
     </p>
 

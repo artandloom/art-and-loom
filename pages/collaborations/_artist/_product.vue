@@ -59,7 +59,7 @@
           ← Go Back
         </NuxtLink>
       </section>
-      <section class="-mx-15 mb-35">
+      <section class="-mx-5 md:-mx-10 lg:-mx-15 mb-24 lg:mb-35">
         <swiper class="swiper gallery" :options="swiperOptionsGallery">
           <swiper-slide :key="gallery.id" v-for="gallery in data.gallery">
             <img
@@ -92,7 +92,7 @@
         </swiper>
       </section>
 
-      <section class="-mx-15 text-right">
+      <section class="-mx-5 md:-mx-10 lg:-mx-15 mb-24 lg:mb-35 text-right">
         <swiper
           class="swiper products-recommended mb-4"
           :options="swiperOptionsProducts"
@@ -364,10 +364,22 @@ export default {
         preventClicksPropagation: false,
         resistance: true,
         resistanceRatio: 0.65,
-        slidesPerView: 3.1,
-        spaceBetween: 40,
+        spaceBetween: 20,
         slidesOffsetAfter: 20,
-        slidesOffsetBefore: 60,
+        slidesOffsetBefore: 20,
+        slidesPerView: 2.1,
+        breakpoints: {
+          769: {
+            slidesOffsetAfter: 40,
+            slidesOffsetBefore: 40,
+          },
+          1025: {
+            slidesPerView: 3.1,
+            spaceBetween: 40,
+            slidesOffsetAfter: 60,
+            slidesOffsetBefore: 60,
+          },
+        },
       },
       swiperOptionsProducts: {
         watchOverflow: true,
@@ -377,10 +389,33 @@ export default {
         preventClicksPropagation: false,
         resistance: true,
         resistanceRatio: 0.65,
-        spaceBetween: 40,
+        spaceBetween: 20,
         slidesOffsetAfter: 20,
-        slidesOffsetBefore: 60,
-        slidesPerView: 4.5,
+        slidesOffsetBefore: 20,
+        slidesPerView: 1.8,
+        breakpoints: {
+          641: {
+            slidesPerView: 2.8,
+          },
+          769: {
+            slidesPerView: 3.8,
+            spaceBetween: 30,
+            slidesOffsetAfter: 40,
+            slidesOffsetBefore: 40,
+          },
+          1025: {
+            slidesPerView: 4.8,
+            spaceBetween: 40,
+            slidesOffsetAfter: 60,
+            slidesOffsetBefore: 60,
+          },
+          1281: {
+            slidesPerView: 5.8,
+          },
+          1537: {
+            slidesPerView: 6.8,
+          },
+        },
       },
     };
   },
