@@ -1,14 +1,14 @@
 <template>
   <main>
     <Cover :title="data.name" :image="data.cover.private_hash" />
-    <section class="mx-10">
+    <section class="lg:mx-10">
       <NuxtLink title="Go Back" to="/collaborations"> ← Go Back </NuxtLink>
     </section>
-    <section class="flex flex-row justify-end my-14">
-      <div class="w-1/4 text-xl px-10" v-if="data.picture">
+    <section class="flex flex-col-reverse lg:flex-row justify-end my-14 mb-20 lg:mb-14">
+      <div class="w-full lg:w-1/4 text-xl px-10" v-if="data.picture">
         <img class="mt-2" :src="data.picture.data.full_url" :alt="data.name" />
       </div>
-      <div class="w-2/4 text-xl" v-if="data.biography">
+      <div class="w-full lg:w-2/4 text-xl mb-4 lg:mb-0" v-if="data.biography">
         {{ data.biography }}
       </div>
     </section>
@@ -22,11 +22,11 @@
 
     <section class="flex flex-col" v-if="data.products.length > 0">
       <NuxtLink
-        class="w-4/5 mb-44 flex flex-col"
+        class="w-4/5 mb-14 md:mb-20 lg:mb-44 flex flex-col"
         :key="product.id"
         v-for="(product, index) in data.products"
         :class="{
-          'ml-auto justify-end': !(index % 2),
+          'ml-auto justify-end text-right': !(index % 2),
         }"
         :to="
           '/collaborations/' +
@@ -43,7 +43,17 @@
         <!-- even: index % 2,
           odd: !(index % 2), -->
         <h3
-          class="flex flex-row items-center uppercase text-5xl mb-20"
+          class="
+            flex flex-row
+            items-center
+            uppercase
+            text-2xl
+            md:text-3xl
+            lg:text-5xl
+            mb-4
+            md:mb-10
+            lg:mb-20
+          "
           :class="{ 'flex-row-reverse': !(index % 2) }"
         >
           {{ product.name }}

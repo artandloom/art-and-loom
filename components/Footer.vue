@@ -81,7 +81,7 @@
         </li>
       </ul>
     </nav>
-    <section class="pb-15">
+    <section class="pb-5 md:pb-15">
       <p class="text-center">
         Copyright © {{ year }} Art + Loom. All Rights Reserved.
       </p>

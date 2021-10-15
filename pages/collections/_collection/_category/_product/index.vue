@@ -4,20 +4,31 @@
       <Cover class="px-15" :image="data.cover.private_hash" :alt="data.name" />
 
       <section class="flex flex-row justify-end">
-        <h2 class="flex flex-row items-center uppercase text-3xl md:text-5xl lg:text-7xl z-10">
+        <h2
+          class="
+            flex flex-row
+            items-center
+            uppercase
+            text-3xl
+            md:text-5xl
+            lg:text-7xl
+            z-10
+            text-right
+          "
+        >
           <span class="flex mr-6 separator"></span>
           {{ data.name }}
         </h2>
       </section>
-      <section class="flex flex-row mt-24">
-        <div class="w-2/4 pr-4">
+      <section class="flex flex-col lg:flex-row mt-24">
+        <div class="w-full lg:w-2/4 lg:pr-4">
           <img
             class="min-w-full"
             :src="data.picture.data.full_url"
             :alt="data.name"
           />
         </div>
-        <div class="w-2/4 pl-4">
+        <div class="w-full lg:w-2/4 lg:pl-4">
           <h3 v-if="data.category" class="uppercase mt-16 mb-9">
             {{ data.category.collection.name }} Collection
           </h3>
