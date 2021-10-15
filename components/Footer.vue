@@ -45,8 +45,19 @@
         <a href="https://igworkshop.com" target="_blank">igworkshop.com</a>
       </div>
     </section>
-    <nav class="px-15 my-28">
-      <ul class="flex flex-row list-none m-0 p-0 justify-end uppercase">
+    <nav class="px-5 md:px-10 lg:px-15 my-14 lg:my-28">
+      <ul
+        class="
+          flex flex-col
+          lg:flex-row
+          text-center
+          list-none
+          m-0
+          p-0
+          justify-end
+          uppercase
+        "
+      >
         <li class="mx-5">
           <NuxtLink title="Contact" to="/contact">Contact</NuxtLink>
         </li>
