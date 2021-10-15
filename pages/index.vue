@@ -8,7 +8,7 @@
           v-for="banner in data.banners"
         >
           <p
-            class="absolute text-7xl uppercase"
+            class="absolute text-3xl md:text-5xl lg:text-7xl uppercase text-center"
             :class="banner.color === 'dark' ? 'text-black' : 'text-white'"
           >
             {{ banner.name }}
@@ -18,7 +18,7 @@
       </swiper>
     </section>
     <section class="mb-30">
-      <h2 class="flex flex-row items-center uppercase text-7xl z-10 mb-15">
+      <h2 class="flex flex-row items-center uppercase text-3xl md:text-5xl lg:text-7xl z-10 mb-15">
         Collections.
         <span class="flex ml-6 separator separator-large"></span>
       </h2>
@@ -63,7 +63,7 @@
       </div>
     </section>
     <section class="flex flex-col items-end mb-30">
-      <h2 class="flex flex-row items-center uppercase text-7xl z-10 mb-15">
+      <h2 class="flex flex-row items-center uppercase text-3xl md:text-5xl lg:text-7xl z-10 mb-15">
         <span class="flex mr-6 separator separator-large"></span>
         Collaborations.
       </h2>
@@ -115,7 +115,7 @@
     </section>
     <section class="flex flex-col mb-15">
       <a
-        class="mb-4 text-7xl leading-none"
+        class="mb-4 text-3xl md:text-5xl lg:text-7xl leading-none"
         href="https://www.instagram.com/artandloom/"
         target="_blank"
         rel="noopener"

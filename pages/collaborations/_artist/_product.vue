@@ -4,7 +4,7 @@
       <Cover class="px-15" :image="data.cover.private_hash" :alt="data.name" />
 
       <section class="flex flex-row justify-end">
-        <h2 class="text-7xl flex flex-row items-center uppercase">
+        <h2 class="text-3xl md:text-5xl lg:text-7xl flex flex-row items-center uppercase">
           <span class="flex mr-6 separator"></span>
           {{ data.name }}
         </h2>

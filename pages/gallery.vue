@@ -14,7 +14,7 @@
             justify-end
           "
         >
-          <h2 class="flex flex-row items-center uppercase text-7xl z-10 px-15">
+          <h2 class="flex flex-row items-center uppercase text-3xl md:text-5xl lg:text-7xl z-10 px-15">
             <span class="flex mr-6 separator"></span>
             Gallery
           </h2>
@@ -22,7 +22,7 @@
       </div>
     </section>
     <section class="flex flex-row flex-wrap pt-15 -mx-4">
-      <div class="w-1/3 p-4 press-item" v-for="item in data" :key="item.id">
+      <div class="md:w-1/2 lg:w-1/3 p-4 press-item" v-for="item in data" :key="item.id">
         <!-- TODO: Add image component -->
         <img
           class="w-full"

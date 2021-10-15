@@ -6,7 +6,7 @@
     </section>
     <section class="mb-14">
       <span class="flex m-auto mb-30 separator separator-large"></span>
-      <h3 class="text-7xl uppercase">Our collections</h3>
+      <h3 class="text-3xl md:text-5xl lg:text-7xl uppercase">Our collections</h3>
     </section>
     <section class="flex flex-row">
       <aside class="w-1/5">
