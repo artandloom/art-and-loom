@@ -1,6 +1,6 @@
 <template>
   <main>
-    <section>
+    <section class="mb-10">
       <swiper class="swiper" :options="swiperOptionsMain">
         <swiper-slide
           class="flex justify-center items-center"
@@ -8,7 +8,14 @@
           v-for="banner in data.banners"
         >
           <p
-            class="absolute text-3xl md:text-5xl lg:text-7xl uppercase text-center"
+            class="
+              absolute
+              text-3xl
+              md:text-5xl
+              lg:text-7xl
+              uppercase
+              text-center
+            "
             :class="banner.color === 'dark' ? 'text-black' : 'text-white'"
           >
             {{ banner.name }}
@@ -17,13 +24,24 @@
         </swiper-slide>
       </swiper>
     </section>
-    <section class="mb-30">
-      <h2 class="flex flex-row items-center uppercase text-3xl md:text-5xl lg:text-7xl z-10 mb-15">
-        Collections.
+    <section class="mb-10 lg:mb-30">
+      <h2
+        class="
+          flex flex-row
+          items-center
+          uppercase
+          text-2xl
+          md:text-5xl
+          lg:text-7xl
+          z-10
+          mb-15
+        "
+      >
+        Collections
         <span class="flex ml-6 separator separator-large"></span>
       </h2>
       <NuxtLink
-        class="flex w-3/5"
+        class="flex w-2/3 md:w-3/5"
         title="See all Collections"
         to="/collections"
       >
@@ -34,7 +52,7 @@
         />
       </NuxtLink>
     </section>
-    <section class="-mx-15 mb-35 text-right">
+    <section class="-mx-5 md:-mx-10 lg:-mx-15 mb-24 lg:mb-35 text-right">
       <swiper class="swiper mb-4" :options="swiperOptionsCollection">
         <swiper-slide
           class="flex justify-center items-center item"
@@ -62,14 +80,25 @@
         </NuxtLink>
       </div>
     </section>
-    <section class="flex flex-col items-end mb-30">
-      <h2 class="flex flex-row items-center uppercase text-3xl md:text-5xl lg:text-7xl z-10 mb-15">
+    <section class="flex flex-col items-end mb-10 lg:mb-30">
+      <h2
+        class="
+          flex flex-row
+          items-center
+          uppercase
+          text-2xl
+          md:text-5xl
+          lg:text-7xl
+          z-10
+          mb-15
+        "
+      >
         <span class="flex mr-6 separator separator-large"></span>
-        Collaborations.
+        Collaborations
       </h2>
 
       <NuxtLink
-        class="flex w-3/5"
+        class="flex w-2/3 md:w-3/5"
         title="See all Collaborations"
         to="/collaborations"
       >
@@ -80,7 +109,8 @@
         />
       </NuxtLink>
     </section>
-    <section class="-mx-15 mb-35 text-right">
+    <!-- -mx-5 md:-mx-10 lg:-mx-15 -->
+    <section class="-mx-5 md:-mx-10 lg:-mx-15 mb-24 lg:mb-35 text-right">
       <swiper class="swiper mb-4" :options="swiperOptionsCollaboration">
         <swiper-slide
           class="flex justify-center items-center item"
@@ -157,20 +187,56 @@ export default {
         preventClicksPropagation: false,
         resistance: true,
         resistanceRatio: 0.65,
-        spaceBetween: 40,
+        spaceBetween: 20,
         slidesOffsetAfter: 20,
-        slidesOffsetBefore: 60,
-        slidesPerView: 4.5,
+        slidesOffsetBefore: 20,
+        slidesPerView: 1.8,
+        breakpoints: {
+          641: {
+            slidesPerView: 2.8,
+          },
+          769: {
+            slidesPerView: 3.8,
+            spaceBetween: 30,
+            slidesOffsetAfter: 40,
+            slidesOffsetBefore: 40,
+          },
+          1025: {
+            slidesPerView: 4.8,
+            spaceBetween: 40,
+            slidesOffsetAfter: 60,
+            slidesOffsetBefore: 60,
+          },
+          1281: {
+            slidesPerView: 5.8,
+          },
+          1537: {
+            slidesPerView: 6.8,
+          },
+        },
       },
       swiperOptionsCollaboration: {
         preventClicks: false,
         preventClicksPropagation: false,
         resistance: true,
         resistanceRatio: 0.65,
-        spaceBetween: 40,
+        spaceBetween: 20,
         slidesOffsetAfter: 20,
-        slidesOffsetBefore: 60,
-        slidesPerView: 2.5,
+        slidesOffsetBefore: 20,
+        slidesPerView: 1.5,
+        breakpoints: {
+          769: {
+            spaceBetween: 30,
+            slidesOffsetAfter: 40,
+            slidesOffsetBefore: 40,
+          },
+          1025: {
+            slidesPerView: 2.5,
+            spaceBetween: 40,
+            slidesOffsetAfter: 60,
+            slidesOffsetBefore: 60,
+          },
+        },
       },
     };
   },
