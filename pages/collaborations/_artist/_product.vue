@@ -193,7 +193,8 @@
             transform
             transition-all
             sm:my-8
-            w-4/5
+            w-full
+            md:w-4/5
           "
         >
           <header class="p-4 flex flex-row-reverse">
@@ -212,18 +213,20 @@
               <img src="/icons/close-button.svg" alt="Instagram" />
             </button>
           </header>
-          <section class="w-10/12 flex flex-row my-8 mx-auto">
-            <div class="w-2/4 pr-4">
+          <section class="w-10/12 flex flex-col md:flex-row my-8 mx-auto">
+            <div class="w-full md:w-2/4 md:pr-4">
               <img
                 class="min-w-full"
                 :src="data.picture.data.full_url"
                 :alt="data.name"
               />
             </div>
-            <div class="w-2/4 pl-4">
+            <div class="w-full md:w-2/4 md:pl-4">
               <h2
                 class="
-                  text-4xl
+                  text-2xl
+                  md:text-3xl
+                  lg:text-4xl
                   flex flex-row
                   items-center
                   justify-end
