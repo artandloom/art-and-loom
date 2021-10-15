@@ -5,7 +5,7 @@
       Stay up to date on exciting projects and upcoming events from Art+Loom.
     </p>
 
-    <form class="w-1/3 mx-auto">
+    <form class="w-2/3 md:w-1/2 lg:w-1/3 mx-auto">
       <div>
         <div class="mb-5">
           <label for="name" class="sr-only">Name</label>

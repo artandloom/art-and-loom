@@ -22,7 +22,7 @@
       </div>
     </section>
     <section class="flex flex-row flex-wrap pt-15 -mx-4">
-      <div class="w-1/3 p-4 press-item" v-for="item in data" :key="item.id">
+      <div class="w-full md:w-1/2 lg:w-1/3 p-4 press-item" v-for="item in data" :key="item.id">
         <NuxtLink :to="'/press/' + item.slug">
           <!-- TODO: Add image component -->
           <img

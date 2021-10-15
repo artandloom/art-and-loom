@@ -26,8 +26,8 @@
         ← Go Back
       </NuxtLink>
     </section>
-    <section class="flex flex-row pt-15">
-      <div class="w-1/2 pr-8">
+    <section class="flex flex-col md:flex-row pt-15">
+      <div class="w-full md:w-1/2 md:pr-8">
         <!-- TODO: Add image component -->
         <img
           v-if="data.image"
@@ -35,7 +35,7 @@
           :alt="data.title"
         />
       </div>
-      <div class="w-1/2 pl-8">
+      <div class="w-full mt-10 md:mt-0 md:w-1/2 md:pl-8">
         <div
           class="mb-4 content-wyswyg"
           v-if="data.excerpt"
@@ -51,7 +51,7 @@
         >
 
         <img
-          class="w-2/5 mt-30"
+          class="w-2/3 mt-10 md:w-2/5 md:mt-30"
           v-if="data.image_secondary"
           :src="data.image_secondary.data.full_url"
           :alt="data.title"
@@ -77,9 +77,6 @@ export default {
 };
 </script>
 <style scoped>
-a {
-  display: block;
-}
 .press-item img {
   border: 1px solid #c4c4c4;
 }
