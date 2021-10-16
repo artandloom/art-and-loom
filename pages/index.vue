@@ -213,9 +213,15 @@ export default {
           },
           1281: {
             slidesPerView: 5.8,
+            spaceBetween: 40,
+            slidesOffsetAfter: 60,
+            slidesOffsetBefore: 60,
           },
           1537: {
             slidesPerView: 6.8,
+            spaceBetween: 40,
+            slidesOffsetAfter: 60,
+            slidesOffsetBefore: 60,
           },
         },
       },

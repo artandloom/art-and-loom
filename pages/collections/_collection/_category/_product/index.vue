@@ -166,8 +166,7 @@
           px-4
           pb-20
           text-center
-          sm:block
-          sm:p-0
+          sm:block sm:p-0
         "
       >
         <!--
@@ -224,7 +223,9 @@
                 focus:outline-none
                 hover:bg-gray-200
                 focus:outline-none
-                focus:ring-2 focus:ring-offset-2 focus:ring-gray-50
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-gray-50
               "
             >
               <img src="/icons/close-button.svg" alt="Instagram" />
@@ -274,9 +275,7 @@
                       placeholder-gray-300
                       text-gray-900
                       rounded-sm
-                      focus:outline-none
-                      focus:ring-black
-                      focus:border-black
+                      focus:outline-none focus:ring-black focus:border-black
                     "
                     placeholder="Name"
                   />
@@ -301,9 +300,7 @@
                       placeholder-gray-300
                       text-gray-900
                       rounded-sm
-                      focus:outline-none
-                      focus:ring-black
-                      focus:border-black
+                      focus:outline-none focus:ring-black focus:border-black
                     "
                     placeholder="Email address"
                   />
@@ -325,9 +322,7 @@
                       placeholder-gray-300
                       text-gray-900
                       rounded-sm
-                      focus:outline-none
-                      focus:ring-black
-                      focus:border-black
+                      focus:outline-none focus:ring-black focus:border-black
                     "
                     placeholder="Message"
                   />
@@ -341,7 +336,9 @@
                     mt-12
                     hover:bg-gray-300
                     focus:outline-none
-                    focus:ring-2 focus:ring-offset-2 focus:ring-gray-50
+                    focus:ring-2
+                    focus:ring-offset-2
+                    focus:ring-gray-50
                     rounded
                     uppercase
                   "
@@ -431,9 +428,15 @@ export default {
           },
           1281: {
             slidesPerView: 5.8,
+            spaceBetween: 40,
+            slidesOffsetAfter: 60,
+            slidesOffsetBefore: 60,
           },
           1537: {
             slidesPerView: 6.8,
+            spaceBetween: 40,
+            slidesOffsetAfter: 60,
+            slidesOffsetBefore: 60,
           },
         },
       },
