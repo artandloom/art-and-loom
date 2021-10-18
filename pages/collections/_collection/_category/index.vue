@@ -56,6 +56,7 @@
             :image="product.picture.data.full_url"
             :name="product.name"
             :tag="product.tag"
+            :hideName="product.hide_on_list"
           />
         </NuxtLink>
       </div>

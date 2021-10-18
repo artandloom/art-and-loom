@@ -2,7 +2,7 @@
   <article class="relative flex items-center justify-center h-full">
     <div class="name absolute inset-y-0 left-0 w-8 truncate">
       <p class="absolute inset-y-0 h-8 m-auto truncate uppercase">
-        {{ name }}
+        {{ hideName ? "" : name }}
       </p>
     </div>
     <img
@@ -52,6 +52,10 @@ export default {
     tag: {
       type: String,
       default: null,
+    },
+    hideName: {
+      type: Boolean,
+      default: false,
     },
     // imageSrc: {
     //   type: Object,
