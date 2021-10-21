@@ -78,6 +78,7 @@ export default {
         preventClicksPropagation: false,
         resistance: true,
         resistanceRatio: 0.65,
+        mousewheel: true,
         slidesPerView: 2.8,
         spaceBetween: 16,
         slidesOffsetAfter: 20,
