@@ -11,7 +11,7 @@ const getCacheKey = (obj) => hash(obj);
 const getCacheKeyObjRequest = (config) => {
     return {
         method: config.method,
-        url: config.baseURL + (config.url ? config.url : ''),
+        url: config.url,
         params: config.params,
         data: config.data,
     }
@@ -142,7 +142,7 @@ export default async ({ app }) => {
             if (searchURLs.find(searchURL => url.startsWith(searchURL))) {
                 url = url.substr(0, url.lastIndexOf("filter[name][contains]"));
             }
-            
+
             if (currentExecutingRequests[url]) {
                 // here you clean the request
                 delete currentExecutingRequests[url];
