@@ -28,6 +28,7 @@ export default {
   serverMiddleware: [
     { path: '/api/ping', handler: '~/api/ping.js' },
     { path: '/api/states', handler: '~/api/states.js' },
+    { path: '/api/mail', handler: '~/api/mail.js' },
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

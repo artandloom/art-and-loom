@@ -9,7 +9,16 @@
           alt="Connect with us"
         />
 
-        <section class="flex flex-col items-end justify-between pt-11 md:px-15 text-right">
+        <section
+          class="
+            flex flex-col
+            items-end
+            justify-between
+            pt-11
+            md:px-15
+            text-right
+          "
+        >
           <a
             v-if="configs.contact_phone"
             :href="
@@ -63,7 +72,7 @@
         </section>
       </div>
       <div class="w-full md:w-1/2 mb-10 md:mb-0 md:px-20">
-        <form class="flex flex-col">
+        <form class="flex flex-col" @submit.prevent="submitForm">
           <div class="mb-5">
             <label for="name" class="sr-only">Name</label>
             <input
@@ -71,6 +80,7 @@
               name="name"
               autocomplete="name"
               required
+              v-model="form.name"
               class="
                 lining-nums
                 appearance-none
@@ -82,9 +92,7 @@
                 border-b border-gray-300
                 placeholder-black
                 text-black
-                focus:outline-none
-                focus:ring-black
-                focus:border-black
+                focus:outline-none focus:ring-black focus:border-black
               "
               placeholder="Name"
             />
@@ -97,6 +105,7 @@
               autocomplete="phone"
               inputmode="tel"
               required
+              v-model="form.phone"
               class="
                 lining-nums
                 appearance-none
@@ -108,9 +117,7 @@
                 border-b border-gray-300
                 placeholder-black
                 text-black
-                focus:outline-none
-                focus:ring-black
-                focus:border-black
+                focus:outline-none focus:ring-black focus:border-black
               "
               placeholder="Phone"
             />
@@ -122,7 +129,9 @@
               name="email"
               type="email"
               inputmode="email"
+              autocomplete="email"
               required
+              v-model="form.email"
               class="
                 lining-nums
                 appearance-none
@@ -134,9 +143,7 @@
                 border-b border-gray-300
                 placeholder-black
                 text-black
-                focus:outline-none
-                focus:ring-black
-                focus:border-black
+                focus:outline-none focus:ring-black focus:border-black
               "
               placeholder="Email"
             />
@@ -149,6 +156,7 @@
               name="comments"
               type="comments"
               required
+              v-model="form.comments"
               rows="4"
               class="
                 resize-none
@@ -157,15 +165,12 @@
                 w-full
                 px-0
                 py-2
-                uppercase
                 border-b border-gray-300
                 placeholder-black
                 text-black
-                focus:outline-none
-                focus:ring-black
-                focus:border-black
+                focus:outline-none focus:ring-black focus:border-black
               "
-              placeholder="Comments"
+              placeholder="COMMENTS"
             />
           </div>
 
@@ -180,10 +185,18 @@
               mt-5
               hover:bg-gray-300
               focus:outline-none
-              focus:ring-2 focus:ring-offset-2 focus:ring-gray-50
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-gray-50
               rounded
+              flex
+              items-center
+              justify-center
             "
+            :class="{ 'bg-gray-300': isLoading }"
+            :disabled="isLoading"
           >
+            <Spinner v-if="isLoading" />
             Submit
           </button>
         </form>
@@ -202,6 +215,47 @@ export default {
       image: ({ configs }) => configs.contact_us_image,
       configs: ({ configs }) => configs,
     }),
+  },
+  data: () => ({
+    form: {
+      email: null,
+      name: null,
+      phone: null,
+      comments: null,
+    },
+    isLoading: false,
+  }),
+  methods: {
+    async submitForm() {
+      if (this.isLoading) {
+        return;
+      }
+
+      this.isLoading = true;
+      console.log("test");
+
+      try {
+        const resp = await this.$axios.$post(
+          "https://art-and-loom.vercel.app/api/mail/contact",
+          // "http://localhost:3000/api/mail/contact",
+          {
+            ...this.form,
+          }
+        );
+
+        console.log("resp", resp);
+        this.form = {
+          email: null,
+          name: null,
+          phone: null,
+          comments: null,
+        };
+      } catch (error) {
+        console.log("error", error);
+      }
+
+      this.isLoading = false;
+    },
   },
 };
 </script>

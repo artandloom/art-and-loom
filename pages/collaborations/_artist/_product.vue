@@ -134,7 +134,7 @@
 
     <div
       v-show="showModal"
-      class="fixed z-10 inset-0 overflow-y-auto"
+      class="fixed z-40 inset-0 overflow-y-auto"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
@@ -239,7 +239,7 @@
                 {{ data.name }}
               </h2>
 
-              <form>
+              <form @submit.prevent="submitForm">
                 <div class="mb-5 text-right">
                   <label for="name" class="sr-only">Name</label>
                   <input
@@ -247,6 +247,7 @@
                     name="email"
                     autocomplete="name"
                     required
+                    v-model="form.name"
                     class="
                       lining-nums
                       appearance-none
@@ -271,7 +272,9 @@
                     id="email-address"
                     name="email"
                     type="email"
+                    autocomplete="email"
                     required
+                    v-model="form.email"
                     class="
                       lining-nums
                       appearance-none
@@ -294,6 +297,7 @@
                     id="message"
                     name="message"
                     required
+                    v-model="form.message"
                     rows="8"
                     class="
                       appearance-none
@@ -324,9 +328,15 @@
                     focus:ring-gray-50
                     rounded
                     uppercase
+                    flex
+                    items-center
+                    justify-center
                   "
+                  :class="{ 'bg-gray-300': isLoading }"
+                  :disabled="isLoading"
                 >
-                  Send
+                  <Spinner v-if="isLoading" color="text-black" />
+                  Request Information
                 </button>
               </form>
             </div>
@@ -425,6 +435,17 @@ export default {
           },
         },
       },
+      form: {
+        email: null,
+        name: null,
+        message: null,
+        product: {
+          image: null,
+          name: null,
+          path: null,
+        },
+      },
+      isLoading: false,
     };
   },
   components: {
@@ -464,6 +485,45 @@ export default {
     },
     toggleModal() {
       this.showModal = !this.showModal;
+    },
+    async submitForm() {
+      if (this.isLoading) {
+        return;
+      }
+
+      this.isLoading = true;
+
+      try {
+        const resp = await this.$axios.$post(
+          process.env.baseUrl + "/auth/authenticate",
+          "https://art-and-loom.vercel.app/api/mail/request-information",
+          // "http://localhost:3000/api/mail/request-information",
+          {
+            ...this.form,
+            product: {
+              image: this.data.picture.data.thumbnails[3].url,
+              name: this.data.name,
+              path: location.href,
+            },
+          }
+        );
+
+        console.log("resp", resp);
+        this.form = {
+          email: null,
+          name: null,
+          message: null,
+          product: {
+            image: null,
+            name: null,
+            path: null,
+          },
+        };
+      } catch (error) {
+        console.log("error", error);
+      }
+
+      this.isLoading = false;
     },
   },
 };

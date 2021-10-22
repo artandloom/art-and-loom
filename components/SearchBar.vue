@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-64 ml-auto z-50">
+  <div class="relative z-10 w-64 ml-auto">
     <form class="pt-2 relative text-gray-800" @submit.prevent="submitForm">
       <input
         class="

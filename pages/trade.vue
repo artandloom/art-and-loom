@@ -2,7 +2,7 @@
   <main>
     <Cover title="Trade" :image="cover.private_hash" />
     <section>
-      <form class="flex flex-row flex-wrap">
+      <form class="flex flex-row flex-wrap" @submit.prevent="submitForm">
         <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="last-name" class="sr-only">First Name</label>
           <input
@@ -10,6 +10,7 @@
             name="first-name"
             autocomplete="given-name"
             required
+            v-model="form.firstName"
             class="
               lining-nums
               appearance-none
@@ -21,9 +22,7 @@
               border-b border-gray-300
               placeholder-black
               text-black
-              focus:outline-none
-              focus:ring-black
-              focus:border-black
+              focus:outline-none focus:ring-black focus:border-black
             "
             placeholder="First Name"
           />
@@ -36,6 +35,7 @@
             name="last-name"
             autocomplete="family-name"
             required
+            v-model="form.lastName"
             class="
               lining-nums
               appearance-none
@@ -47,9 +47,7 @@
               border-b border-gray-300
               placeholder-black
               text-black
-              focus:outline-none
-              focus:ring-black
-              focus:border-black
+              focus:outline-none focus:ring-black focus:border-black
             "
             placeholder="Last Name"
           />
@@ -62,6 +60,7 @@
             name="website"
             autocomplete="url"
             required
+            v-model="form.companyWebsite"
             class="
               lining-nums
               appearance-none
@@ -69,21 +68,20 @@
               w-full
               px-0
               py-2
-              uppercase
               border-b border-gray-300
               placeholder-black
               text-black
-              focus:outline-none
-              focus:ring-black
-              focus:border-black
+              focus:outline-none focus:ring-black focus:border-black
             "
-            placeholder="Company Website"
+            placeholder="COMPANY WEBSITE"
           />
         </div>
 
         <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="company-type" class="sr-only">Company Type</label>
           <select
+            required
+            v-model="form.companyType"
             class="
               appearance-none
               block
@@ -95,17 +93,15 @@
               border-b border-gray-300
               placeholder-black
               text-black
-              focus:outline-none
-              focus:ring-black
-              focus:border-black
+              focus:outline-none focus:ring-black focus:border-black
               bg-no-repeat
             "
           >
-            <option disabled selected>Company Type</option>
+            <option disabled selected :value="null" hidden>Company Type</option>
             <option
               v-for="(company, index) in companyType"
               :key="index"
-              :value="company"
+              :value="company.type"
             >
               {{ company.type }}
             </option>
@@ -121,6 +117,7 @@
             name="resale-number"
             type="resale-number"
             required
+            v-model="form.resaleCertificateNumber"
             class="
               lining-nums
               appearance-none
@@ -132,9 +129,7 @@
               border-b border-gray-300
               placeholder-black
               text-black
-              focus:outline-none
-              focus:ring-black
-              focus:border-black
+              focus:outline-none focus:ring-black focus:border-black
             "
             placeholder="Resale Certificate Number"
           />
@@ -143,6 +138,8 @@
         <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="state" class="sr-only">State</label>
           <select
+            required
+            v-model="form.state"
             class="
               appearance-none
               block
@@ -154,17 +151,15 @@
               border-b border-gray-300
               placeholder-black
               text-black
-              focus:outline-none
-              focus:ring-black
-              focus:border-black
+              focus:outline-none focus:ring-black focus:border-black
               bg-no-repeat
             "
           >
-            <option disabled selected>State</option>
+            <option disabled selected :value="null" hidden>State</option>
             <option
               v-for="state in states"
               :key="state.abbreviation"
-              :value="state"
+              :value="state.name"
             >
               {{ state.name }}
             </option>
@@ -178,7 +173,9 @@
             name="email"
             type="email"
             inputmode="email"
+            autocomplete="email"
             required
+            v-model="form.email"
             class="
               lining-nums
               appearance-none
@@ -190,9 +187,7 @@
               border-b border-gray-300
               placeholder-black
               text-black
-              focus:outline-none
-              focus:ring-black
-              focus:border-black
+              focus:outline-none focus:ring-black focus:border-black
             "
             placeholder="Email"
           />
@@ -206,6 +201,7 @@
             autocomplete="phone"
             inputmode="tel"
             required
+            v-model="form.phone"
             class="
               lining-nums
               appearance-none
@@ -217,9 +213,7 @@
               border-b border-gray-300
               placeholder-black
               text-black
-              focus:outline-none
-              focus:ring-black
-              focus:border-black
+              focus:outline-none focus:ring-black focus:border-black
             "
             placeholder="Phone"
           />
@@ -236,10 +230,18 @@
             mt-5
             hover:bg-gray-300
             focus:outline-none
-            focus:ring-2 focus:ring-offset-2 focus:ring-gray-50
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-gray-50
             rounded
+            flex
+            items-center
+            justify-center
           "
+          :class="{ 'bg-gray-300': isLoading }"
+          :disabled="isLoading"
         >
+          <Spinner v-if="isLoading" />
           Submit
         </button>
       </form>
@@ -268,7 +270,57 @@ export default {
       states = await $axios.$get("https://art-and-loom.vercel.app/api/states");
     }
 
+    // states = await $axios.$get("http://localhost:3000/api/states");
+
     return { states };
+  },
+  data: () => ({
+    form: {
+      firstName: null,
+      lastName: null,
+      companyWebsite: null,
+      companyType: null,
+      resaleCertificateNumber: null,
+      state: null,
+      email: null,
+      phone: null,
+    },
+    isLoading: false,
+  }),
+  methods: {
+    async submitForm() {
+      if (this.isLoading) {
+        return;
+      }
+
+      this.isLoading = true;
+
+      try {
+        const resp = await this.$axios.$post(
+          "https://art-and-loom.vercel.app/api/mail/tarde",
+          // "http://localhost:3000/api/mail/trade",
+          {
+            ...this.form,
+          }
+        );
+
+        console.log("resp", resp);
+        this.form = {
+          firstName: null,
+          lastName: null,
+          companyWebsite: null,
+          companyType: null,
+          resaleCertificateNumber: null,
+          state: null,
+          email: null,
+          phone: null,
+        };
+      } catch (error) {
+        console.log("error", error);
+      }
+
+      this.isLoading = false;
+    },
   },
 };
 </script>
