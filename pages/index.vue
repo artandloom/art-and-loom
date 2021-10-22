@@ -30,13 +30,13 @@
 
         <div
           v-show="swiperMainPrev"
-          class="swiper-main-button-prev swiper-button-prev"
+          class="swiper-main-button-prev swiper-button-prev shadow-md"
           slot="button-prev"
           @click="changePrevSlide('swiperMain')"
         ></div>
         <div
           v-show="swiperMainNext"
-          class="swiper-main-button-next swiper-button-next"
+          class="swiper-main-button-next swiper-button-next shadow-md"
           slot="button-next"
           @click="changeNextSlide('swiperMain')"
         ></div>
@@ -95,13 +95,13 @@
         </swiper-slide>
         <div
           v-show="swiperCollectionPrev"
-          class="swiper-collection-button-prev swiper-button-prev"
+          class="swiper-collection-button-prev swiper-button-prev shadow-md"
           slot="button-prev"
           @click="changePrevSlide('swiperCollection')"
         ></div>
         <div
           v-show="swiperCollectionNext"
-          class="swiper-collection-button-next swiper-button-next"
+          class="swiper-collection-button-next swiper-button-next shadow-md"
           slot="button-next"
           @click="changeNextSlide('swiperCollection')"
         ></div>
@@ -174,13 +174,13 @@
         </swiper-slide>
         <div
           v-show="swiperCollaborationPrev"
-          class="swiper-collaboration-button-prev swiper-button-prev"
+          class="swiper-collaboration-button-prev swiper-button-prev shadow-md"
           slot="button-prev"
           @click="changePrevSlide('swiperCollaboration')"
         ></div>
         <div
           v-show="swiperCollaborationNext"
-          class="swiper-collaboration-button-next swiper-button-next"
+          class="swiper-collaboration-button-next swiper-button-next shadow-md"
           slot="button-next"
           @click="changeNextSlide('swiperCollaboration')"
         ></div>
