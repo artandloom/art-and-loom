@@ -1,6 +1,10 @@
 <template>
-  <div class="relative z-10 w-64 ml-auto">
-    <form class="pt-2 relative text-gray-800" @submit.prevent="submitForm">
+  <div class="relative z-20 w-64 ml-auto">
+    <form
+      class="pt-2 relative text-gray-800"
+      @submit.prevent="submitForm"
+      v-click-outside="clearSearch"
+    >
       <input
         class="
           lining-nums
@@ -103,7 +107,12 @@
 
 
 <script>
+import ClickOutside from "vue-click-outside";
+
 export default {
+  directives: {
+    ClickOutside,
+  },
   data: () => ({
     search: null,
     searchedTerm: null,
@@ -145,7 +154,6 @@ export default {
       return "";
     },
     async submitForm() {
-      console.log("form", this.search);
       this.searchedTerm = this.search;
     },
     clearSearch() {
@@ -154,7 +162,6 @@ export default {
       this.searchedTerm = null;
     },
     changeSearch() {
-      console.log("form", this.search);
       if (!this.search) {
         this.showResults = false;
         return;
@@ -166,8 +173,6 @@ export default {
       }
     },
     async doSearch() {
-      // Entre collections, products y artists
-      console.log("this.searchedTerm", this.searchedTerm);
       const collectionsEndpoint =
         process.env.baseUrl +
         "/collections?fields=*.*.*&filter[name][contains]=";
