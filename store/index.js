@@ -1,6 +1,7 @@
 // // holds your root state
 export const state = () => ({
-  configs: {}
+  configs: {},
+  device: {},
 })
 
 // // contains your actions

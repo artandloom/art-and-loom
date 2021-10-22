@@ -16,6 +16,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "lru-cache": "^6.0.0",
+    "mobile-detect": "^1.4.5",
     "nodemailer": "^6.7.0",
     "nuxt": "^2.15.7",
     "nuxt-edge": "latest",

@@ -1,7 +1,12 @@
 <template>
   <main>
     <section class="mb-10">
-      <swiper class="swiper" :options="swiperOptionsMain">
+      <swiper
+        ref="swiperMain"
+        class="swiper"
+        :options="swiperOptionsMain"
+        @slideChange="slideChangeInstance('swiperMain')"
+      >
         <swiper-slide
           class="flex justify-center items-center"
           :key="banner.id"
@@ -22,6 +27,19 @@
           </p>
           <img class="m-auto" :src="banner.image.data.full_url" />
         </swiper-slide>
+
+        <div
+          v-show="swiperMainPrev"
+          class="swiper-main-button-prev swiper-button-prev"
+          slot="button-prev"
+          @click="changePrevSlide('swiperMain')"
+        ></div>
+        <div
+          v-show="swiperMainNext"
+          class="swiper-main-button-next swiper-button-next"
+          slot="button-next"
+          @click="changeNextSlide('swiperMain')"
+        ></div>
       </swiper>
     </section>
     <section class="mb-10 lg:mb-30">
@@ -53,7 +71,12 @@
       </NuxtLink>
     </section>
     <section class="-mx-5 md:-mx-10 lg:-mx-15 mb-24 lg:mb-35 text-right">
-      <swiper class="swiper mb-4" :options="swiperOptionsCollection">
+      <swiper
+        ref="swiperCollection"
+        class="swiper mb-4"
+        :options="swiperOptionsCollection"
+        @slideChange="slideChangeInstance('swiperCollection')"
+      >
         <swiper-slide
           class="flex justify-center items-center item"
           :key="collection.id"
@@ -70,6 +93,18 @@
             />
           </NuxtLink>
         </swiper-slide>
+        <div
+          v-show="swiperCollectionPrev"
+          class="swiper-collection-button-prev swiper-button-prev"
+          slot="button-prev"
+          @click="changePrevSlide('swiperCollection')"
+        ></div>
+        <div
+          v-show="swiperCollectionNext"
+          class="swiper-collection-button-next swiper-button-next"
+          slot="button-next"
+          @click="changeNextSlide('swiperCollection')"
+        ></div>
       </swiper>
       <div class="px-15">
         <NuxtLink
@@ -111,7 +146,12 @@
     </section>
     <!-- -mx-5 md:-mx-10 lg:-mx-15 -->
     <section class="-mx-5 md:-mx-10 lg:-mx-15 mb-24 lg:mb-35 text-right">
-      <swiper class="swiper mb-4" :options="swiperOptionsCollaboration">
+      <swiper
+        ref="swiperCollaboration"
+        class="swiper mb-4"
+        :options="swiperOptionsCollaboration"
+        @slideChange="slideChangeInstance('swiperCollaboration')"
+      >
         <swiper-slide
           class="flex justify-center items-center item"
           :key="collaboration.id"
@@ -132,6 +172,18 @@
             />
           </NuxtLink>
         </swiper-slide>
+        <div
+          v-show="swiperCollaborationPrev"
+          class="swiper-collaboration-button-prev swiper-button-prev"
+          slot="button-prev"
+          @click="changePrevSlide('swiperCollaboration')"
+        ></div>
+        <div
+          v-show="swiperCollaborationNext"
+          class="swiper-collaboration-button-next swiper-button-next"
+          slot="button-next"
+          @click="changeNextSlide('swiperCollaboration')"
+        ></div>
       </swiper>
       <div class="px-15">
         <NuxtLink
@@ -171,12 +223,25 @@
   </main>
 </template>
 <script>
+import { mapState } from "vuex";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 
 export default {
+  computed: {
+    ...mapState({
+      isDesktop: ({ device }) => device.isDesktop,
+    }),
+  },
   data() {
     return {
+      swiperMainPrev: false,
+      swiperMainNext: false,
       swiperOptionsMain: {
+        navigation: {
+          nextEl: ".swiper-main-button-next",
+          prevEl: ".swiper-main-button-prev",
+        },
+        slideToClickedSlide: false,
         centerInsufficientSlides: true,
         watchOverflow: true,
         watchSlidesProgress: true,
@@ -185,14 +250,22 @@ export default {
         preventClicksPropagation: false,
         resistance: true,
         resistanceRatio: 0.65,
-        mousewheel: true,
+        on: {
+          init: this.swiperInit,
+        },
       },
+      swiperCollectionPrev: false,
+      swiperCollectionNext: false,
       swiperOptionsCollection: {
+        navigation: {
+          nextEl: ".swiper-collection-button-next",
+          prevEl: ".swiper-collection-button-prev",
+        },
+        slideToClickedSlide: false,
         preventClicks: false,
         preventClicksPropagation: false,
         resistance: true,
         resistanceRatio: 0.65,
-        mousewheel: true,
         spaceBetween: 20,
         slidesOffsetAfter: 20,
         slidesOffsetBefore: 20,
@@ -214,13 +287,22 @@ export default {
             slidesOffsetBefore: 60,
           },
         },
+        on: {
+          init: this.swiperInit,
+        },
       },
+      swiperCollaborationPrev: false,
+      swiperCollaborationNext: false,
       swiperOptionsCollaboration: {
+        navigation: {
+          nextEl: ".swiper-collaboration-button-next",
+          prevEl: ".swiper-collaboration-button-prev",
+        },
+        slideToClickedSlide: false,
         preventClicks: false,
         preventClicksPropagation: false,
         resistance: true,
         resistanceRatio: 0.65,
-        mousewheel: true,
         spaceBetween: 20,
         slidesOffsetAfter: 20,
         slidesOffsetBefore: 20,
@@ -237,6 +319,9 @@ export default {
             slidesOffsetAfter: 60,
             slidesOffsetBefore: 60,
           },
+        },
+        on: {
+          init: this.swiperInit,
         },
       },
     };
@@ -259,6 +344,34 @@ export default {
     );
 
     return { data, collections, collaborations };
+  },
+  methods: {
+    changeNextSlide(refName) {
+      this.$refs[refName].$swiper.slideNext();
+    },
+    changePrevSlide(refName) {
+      this.$refs[refName].$swiper.slidePrev();
+    },
+    refreshSwiperInstance(refName) {
+      this.$refs[refName].$swiper.update();
+
+      this.$nextTick(() => {
+        this.slideChangeInstance(refName);
+      });
+    },
+    slideChangeInstance(refName) {
+      if (this.isDesktop) {
+        this[refName + "Prev"] = !this.$refs[refName].$swiper.isBeginning;
+        this[refName + "Next"] = !this.$refs[refName].$swiper.isEnd;
+      }
+    },
+    swiperInit() {
+      this.$nextTick(() => {
+        this.refreshSwiperInstance("swiperMain");
+        this.refreshSwiperInstance("swiperCollection");
+        this.refreshSwiperInstance("swiperCollaboration");
+      });
+    },
   },
 };
 </script>
