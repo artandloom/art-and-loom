@@ -4,7 +4,9 @@
     <section class="lg:mx-10">
       <NuxtLink title="Go Back" to="/collaborations"> ← Go Back </NuxtLink>
     </section>
-    <section class="flex flex-col-reverse lg:flex-row justify-end my-14 mb-20 lg:mb-14">
+    <section
+      class="flex flex-col-reverse lg:flex-row justify-end my-14 mb-20 lg:mb-14"
+    >
       <div class="w-full lg:w-1/4 text-xl px-10" v-if="data.picture">
         <img class="mt-2" :src="data.picture.data.full_url" :alt="data.name" />
       </div>
@@ -13,10 +15,28 @@
       </div>
     </section>
     <section class="-mx-15 mb-20" v-if="data.showcase.length > 0">
-      <swiper class="swiper gallery" :options="swiperOptionsGallery">
+      <swiper
+        ref="swiperGallery"
+        class="swiper gallery"
+        :options="swiperOptionsGallery"
+        @slideChange="slideChangeInstance('swiperGallery')"
+      >
         <swiper-slide :key="gallery.id" v-for="gallery in data.showcase">
           <img class="w-full" :src="gallery.directus_files_id.data.full_url" />
         </swiper-slide>
+
+        <div
+          v-show="swiperGalleryPrev"
+          class="swiper-gallery-button-prev swiper-button-prev shadow-md"
+          slot="button-prev"
+          @click="changePrevSlide('swiperGallery')"
+        ></div>
+        <div
+          v-show="swiperGalleryNext"
+          class="swiper-gallery-button-next swiper-button-next shadow-md"
+          slot="button-next"
+          @click="changeNextSlide('swiperGallery')"
+        ></div>
       </swiper>
     </section>
 
@@ -68,12 +88,24 @@
   </main>
 </template>
 <script>
+import { mapState } from "vuex";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 
 export default {
+  computed: {
+    ...mapState({
+      isDesktop: ({ device }) => device.isDesktop,
+    }),
+  },
   data() {
     return {
+      swiperGalleryPrev: false,
+      swiperGalleryNext: false,
       swiperOptionsGallery: {
+        navigation: {
+          nextEl: ".swiper-gallery-button-next",
+          prevEl: ".swiper-gallery-button-prev",
+        },
         preventClicks: false,
         preventClicksPropagation: false,
         resistance: true,
@@ -83,6 +115,9 @@ export default {
         spaceBetween: 16,
         slidesOffsetAfter: 20,
         slidesOffsetBefore: 40,
+        on: {
+          init: this.swiperInit,
+        },
       },
     };
   },
@@ -102,6 +137,32 @@ export default {
     );
 
     return { data };
+  },
+  methods: {
+    changeNextSlide(refName) {
+      this.$refs[refName].$swiper.slideNext();
+    },
+    changePrevSlide(refName) {
+      this.$refs[refName].$swiper.slidePrev();
+    },
+    refreshSwiperInstance(refName) {
+      this.$refs[refName].$swiper.update();
+
+      this.$nextTick(() => {
+        this.slideChangeInstance(refName);
+      });
+    },
+    slideChangeInstance(refName) {
+      if (this.isDesktop) {
+        this[refName + "Prev"] = !this.$refs[refName].$swiper.isBeginning;
+        this[refName + "Next"] = !this.$refs[refName].$swiper.isEnd;
+      }
+    },
+    swiperInit() {
+      this.$nextTick(() => {
+        this.refreshSwiperInstance("swiperGallery");
+      });
+    },
   },
 };
 </script>

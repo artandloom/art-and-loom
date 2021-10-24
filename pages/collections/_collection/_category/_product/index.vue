@@ -69,7 +69,12 @@
         class="-mx-5 md:-mx-10 lg:-mx-15 mb-24 lg:mb-35"
         v-if="data.gallery.length > 0"
       >
-        <swiper class="swiper gallery" :options="swiperOptionsGallery">
+        <swiper
+          ref="swiperGallery"
+          class="swiper gallery"
+          :options="swiperOptionsGallery"
+          @slideChange="slideChangeInstance('swiperGallery')"
+        >
           <swiper-slide :key="gallery.id" v-for="gallery in data.gallery">
             <img
               sizes="(max-width: 1400px) 100vw, 1400px"
@@ -98,6 +103,19 @@
               "
             />
           </swiper-slide>
+
+          <div
+            v-show="swiperGalleryPrev"
+            class="swiper-gallery-button-prev swiper-button-prev shadow-md"
+            slot="button-prev"
+            @click="changePrevSlide('swiperGallery')"
+          ></div>
+          <div
+            v-show="swiperGalleryNext"
+            class="swiper-gallery-button-next swiper-button-next shadow-md"
+            slot="button-next"
+            @click="changeNextSlide('swiperGallery')"
+          ></div>
         </swiper>
       </section>
       <section
@@ -105,8 +123,10 @@
         v-if="recommendedProducts.length > 0"
       >
         <swiper
+          ref="swiperProducts"
           class="swiper products-recommended mb-4"
           :options="swiperOptionsProducts"
+          @slideChange="slideChangeInstance('swiperProducts')"
         >
           <swiper-slide
             class="flex justify-center items-center item"
@@ -137,6 +157,19 @@
               />
             </NuxtLink>
           </swiper-slide>
+
+          <div
+            v-show="swiperProductsPrev"
+            class="swiper-products-button-prev swiper-button-prev shadow-md"
+            slot="button-prev"
+            @click="changePrevSlide('swiperProducts')"
+          ></div>
+          <div
+            v-show="swiperProductsNext"
+            class="swiper-products-button-next swiper-button-next shadow-md"
+            slot="button-next"
+            @click="changeNextSlide('swiperProducts')"
+          ></div>
         </swiper>
         <div class="px-15">
           <NuxtLink
@@ -371,6 +404,7 @@ export default {
   computed: {
     ...mapState({
       configs: ({ configs }) => configs,
+      isDesktop: ({ device }) => device.isDesktop,
     }),
   },
   data() {
@@ -383,7 +417,13 @@ export default {
         large: "?w=1400&h=1766&q=72&f=contain",
       },
       showModal: false,
+      swiperGalleryPrev: false,
+      swiperGalleryNext: false,
       swiperOptionsGallery: {
+        navigation: {
+          nextEl: ".swiper-gallery-button-next",
+          prevEl: ".swiper-gallery-button-prev",
+        },
         watchOverflow: true,
         watchSlidesProgress: true,
         watchSlidesVisibility: true,
@@ -408,8 +448,17 @@ export default {
             slidesOffsetBefore: 60,
           },
         },
+        on: {
+          init: this.swiperInit,
+        },
       },
+      swiperProductsPrev: false,
+      swiperProductsNext: false,
       swiperOptionsProducts: {
+        navigation: {
+          nextEl: ".swiper-products-button-next",
+          prevEl: ".swiper-products-button-prev",
+        },
         watchOverflow: true,
         watchSlidesProgress: true,
         watchSlidesVisibility: true,
@@ -450,6 +499,9 @@ export default {
             slidesOffsetAfter: 60,
             slidesOffsetBefore: 60,
           },
+        },
+        on: {
+          init: this.swiperInit,
         },
       },
       form: {
@@ -540,6 +592,31 @@ export default {
       }
 
       this.isLoading = false;
+    },
+    changeNextSlide(refName) {
+      this.$refs[refName].$swiper.slideNext();
+    },
+    changePrevSlide(refName) {
+      this.$refs[refName].$swiper.slidePrev();
+    },
+    refreshSwiperInstance(refName) {
+      this.$refs[refName].$swiper.update();
+
+      this.$nextTick(() => {
+        this.slideChangeInstance(refName);
+      });
+    },
+    slideChangeInstance(refName) {
+      if (this.isDesktop) {
+        this[refName + "Prev"] = !this.$refs[refName].$swiper.isBeginning;
+        this[refName + "Next"] = !this.$refs[refName].$swiper.isEnd;
+      }
+    },
+    swiperInit() {
+      this.$nextTick(() => {
+        this.refreshSwiperInstance("swiperGallery");
+        this.refreshSwiperInstance("swiperProducts");
+      });
     },
   },
 };
