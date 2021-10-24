@@ -106,6 +106,7 @@ export default {
           nextEl: ".swiper-gallery-button-next",
           prevEl: ".swiper-gallery-button-prev",
         },
+        slideToClickedSlide: false,
         preventClicks: false,
         preventClicksPropagation: false,
         resistance: true,
