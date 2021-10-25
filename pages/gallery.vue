@@ -41,7 +41,7 @@
     </section>
     <section class="flex flex-row flex-wrap pt-15 -mx-4">
       <div
-        class="w-full md:w-1/2 lg:w-1/3 p-4 press-item"
+        class="w-full md:w-1/2 lg:w-1/3 p-4 press-item cursor-pointer"
         v-for="(item, index) in data"
         :key="item.id"
         @click="updateIndexImage(index)"
