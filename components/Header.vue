@@ -62,6 +62,7 @@
         items-center
         justify-center
         hover:bg-gray-100
+        lg:hidden
       "
       title="Menu"
       @click.prevent="toggleMenuOpen()"
