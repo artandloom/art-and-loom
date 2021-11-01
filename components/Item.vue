@@ -77,7 +77,9 @@ article {
   line-height: 2em;
 }
 img {
+  /* width: 100%; */
+  /* height: auto; */
+  height: 100%;
   width: 100%;
-  height: auto;
 }
 </style>
