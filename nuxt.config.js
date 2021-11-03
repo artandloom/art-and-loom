@@ -15,7 +15,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'This is an awesome description of my Nuxt app',
+        content: 'Custom Bespoke Rugs, designed in Miami, by Samantha Gallacher, crafted in India and Nepal. We ship everywhere!',
       },
     ],
     link: [
