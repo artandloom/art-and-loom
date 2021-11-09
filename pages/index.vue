@@ -234,6 +234,8 @@ export default {
   },
   data() {
     return {
+      collections: [],
+      collaborations: [],
       swiperMainPrev: false,
       swiperMainNext: false,
       swiperOptionsMain: {
@@ -335,15 +337,18 @@ export default {
       process.env.baseUrl + "/home?single=1&fields=*.*.*"
     );
 
-    const { data: collections } = await $axios.$get(
+    return { data };
+  },
+  async mounted() {
+    const { data: collections } = await this.$axios.$get(
       process.env.baseUrl + "/collections?filter[featured][nempty]&fields=*.*.*"
     );
+    this.collections = collections;
 
-    const { data: collaborations } = await $axios.$get(
+    const { data: collaborations } = await this.$axios.$get(
       process.env.baseUrl + "/artists?filter[featured][nempty]&fields=*.*.*"
     );
-
-    return { data, collections, collaborations };
+    this.collaborations = collaborations;
   },
   methods: {
     changeNextSlide(refName) {
