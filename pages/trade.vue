@@ -267,7 +267,7 @@ export default {
         "http://" + process.env.VERCEL_URL + "/api/states"
       );
     } else {
-      states = await $axios.$get("https://art-and-loom.vercel.app/api/states");
+      states = await $axios.$get("https://artandloom.com/api/states");
     }
 
     // states = await $axios.$get("http://localhost:3000/api/states");
