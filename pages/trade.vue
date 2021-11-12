@@ -267,7 +267,7 @@ export default {
         "http://" + process.env.VERCEL_URL + "/api/states"
       );
     } else {
-      states = await $axios.$get("https://artandloom.com/api/states");
+      states = await $axios.$get("https://www.artandloom.com/api/states");
     }
 
     // states = await $axios.$get("http://localhost:3000/api/states");
@@ -297,7 +297,7 @@ export default {
 
       try {
         const resp = await this.$axios.$post(
-          "https://artandloom.com/api/mail/tarde",
+          "https://www.artandloom.com/api/mail/tarde",
           // "http://localhost:3000/api/mail/trade",
           {
             ...this.form,
