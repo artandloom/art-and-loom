@@ -347,10 +347,19 @@ export default {
     return { data };
   },
   async mounted() {
+    const collectionsFields = `
+      id,name,slug,sort,
+      picture.private_hash,picture.data.full_url
+    `;
+    const collaborationsFields = `
+      id,name,slug,sort,
+      cover.private_hash,cover.data.full_url
+    `;
     this.$axios
       .$get(
         process.env.baseUrl +
-          "/collections?filter[featured][nempty]&fields=*.*.*"
+          "/collections?filter[featured][nempty]&fields=" +
+          collectionsFields
       )
       .then((res) => {
         this.collections = res.data;
@@ -358,7 +367,9 @@ export default {
 
     this.$axios
       .$get(
-        process.env.baseUrl + "/artists?filter[featured][nempty]&fields=*.*.*"
+        process.env.baseUrl +
+          "/artists?filter[featured][nempty]&fields=" +
+          collaborationsFields
       )
       .then((res) => {
         this.collaborations = res.data;
