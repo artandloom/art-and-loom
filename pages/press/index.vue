@@ -47,7 +47,7 @@
 export default {
   async asyncData({ $axios }) {
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/press?fields=*.*.*"
+      process.env.baseUrl + "/press?fields=id,slug,cover.private_hash"
     );
 
     return { data };

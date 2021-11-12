@@ -72,8 +72,15 @@ export default {
     if (matcher && matcher.length > 1) {
       id = matcher[1];
     }
+    const fields = [
+      "name",
+      "cover.private_hash",
+      "products.id,products.slug,products.name",
+      "products.tag,products.hide_on_list",
+      "products.picture.private_hash,products.picture.data.full_url",
+    ];
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/categories/" + id + "?fields=*.*.*"
+      process.env.baseUrl + "/categories/" + id + "?fields=" + fields.join(",")
     );
 
     return { data };

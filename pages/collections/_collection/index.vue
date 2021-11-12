@@ -62,8 +62,13 @@ export default {
     if (matcher && matcher.length > 1) {
       id = matcher[1];
     }
+    const fields = [
+      "name",
+      "cover.private_hash",
+      "categories.id,categories.slug,categories.name,categories.picture.private_hash,categories.picture.data.full_url",
+    ];
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/collections/" + id + "?fields=*.*.*"
+      process.env.baseUrl + "/collections/" + id + "?fields=" + fields.join(",")
     );
 
     return { data };

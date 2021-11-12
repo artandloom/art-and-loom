@@ -25,7 +25,7 @@ export default {
   layout: "landing",
   async asyncData({ $axios }) {
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/about_us?single=1&fields=*.*.*"
+      process.env.baseUrl + "/about_us?single=1&fields=content,cover.private_hash,picture.data,image.data"
     );
 
     return { data };

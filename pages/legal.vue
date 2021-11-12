@@ -29,7 +29,7 @@
 export default {
   async asyncData({ $axios }) {
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/legal?single=1&fields=*.*.*"
+      process.env.baseUrl + "/legal?single=1&fields=content"
     );
 
     return { data };

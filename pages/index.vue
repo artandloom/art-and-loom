@@ -335,31 +335,31 @@ export default {
     SwiperSlide,
   },
   async asyncData({ $axios }) {
-    const homeFields = `
-      banners.id,banners.sort,banners.color,banners.image.data,
-      collection_cover.data,
-      collaboration_cover.data,
-    `;
+    const homeFields = [
+      "banners.id,banners.sort,banners.color,banners.image.data",
+      "collection_cover.data",
+      "collaboration_cover.data",
+    ];
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/home?single=1&fields=" + homeFields
+      process.env.baseUrl + "/home?single=1&fields=" + homeFields.join(",")
     );
 
     return { data };
   },
   async mounted() {
-    const collectionsFields = `
-      id,name,slug,sort,
-      picture.private_hash,picture.data.full_url
-    `;
-    const collaborationsFields = `
-      id,name,slug,sort,
-      cover.private_hash,cover.data.full_url
-    `;
+    const collectionsFields = [
+      "id,name,slug,sort",
+      "picture.private_hash,picture.data.full_url",
+    ];
+    const collaborationsFields = [
+      "id,name,slug,sort",
+      "cover.private_hash,cover.data.full_url",
+    ];
     this.$axios
       .$get(
         process.env.baseUrl +
           "/collections?filter[featured][nempty]&fields=" +
-          collectionsFields
+          collectionsFields.join(",")
       )
       .then((res) => {
         this.collections = res.data;
@@ -369,7 +369,7 @@ export default {
       .$get(
         process.env.baseUrl +
           "/artists?filter[featured][nempty]&fields=" +
-          collaborationsFields
+          collaborationsFields.join(",")
       )
       .then((res) => {
         this.collaborations = res.data;

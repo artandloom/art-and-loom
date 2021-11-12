@@ -59,8 +59,9 @@ export default {
     }),
   },
   async asyncData({ $axios }) {
+    const fields = ["id,name,slug", "picture.data", "picture.private_hash"];
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/collections?fields=*.*.*"
+      process.env.baseUrl + "/collections?fields=" + fields.join(",")
     );
 
     return { data };

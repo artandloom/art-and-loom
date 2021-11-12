@@ -6,9 +6,7 @@
       alt="Rug Care and Maintenance"
     />
 
-    <section
-      class="flex flex-col md:flex-row mb-20 lg:mb-44 items-center"
-    >
+    <section class="flex flex-col md:flex-row mb-20 lg:mb-44 items-center">
       <div class="w-full md:w-2/5">
         <img
           v-if="data.image_left_first"
@@ -25,13 +23,19 @@
     </section>
     <section class="flex flex-col-reverse md:flex-row mb-20 lg:mb-44">
       <div class="w-full md:w-2/5 pr-32 text-xl">
-        <h3 class="mb-2 text-2xl md:text-3xl lg:text-5xl" v-if="data.padding_title">
+        <h3
+          class="mb-2 text-2xl md:text-3xl lg:text-5xl"
+          v-if="data.padding_title"
+        >
           {{ data.padding_title }}
         </h3>
         <p v-if="data.padding_description" class="mb-16">
           {{ data.padding_description }}
         </p>
-        <h3 class="mb-2 text-2xl md:text-3xl lg:text-5xl" v-if="data.vacumming_title">
+        <h3
+          class="mb-2 text-2xl md:text-3xl lg:text-5xl"
+          v-if="data.vacumming_title"
+        >
           {{ data.vacumming_title }}
         </h3>
         <p v-if="data.vacumming_description">
@@ -55,13 +59,19 @@
         />
       </div>
       <div class="w-full md:w-3/5 pl-32 text-xl">
-        <h3 class="mb-2 text-2xl md:text-3xl lg:text-5xl" v-if="data.fiber_pulls_title">
+        <h3
+          class="mb-2 text-2xl md:text-3xl lg:text-5xl"
+          v-if="data.fiber_pulls_title"
+        >
           {{ data.fiber_pulls_title }}
         </h3>
         <p v-if="data.fiber_pulls_description" class="mb-16">
           {{ data.fiber_pulls_description }}
         </p>
-        <h3 class="mb-2 text-2xl md:text-3xl lg:text-5xl" v-if="data.shedding_title">
+        <h3
+          class="mb-2 text-2xl md:text-3xl lg:text-5xl"
+          v-if="data.shedding_title"
+        >
           {{ data.shedding_title }}
         </h3>
         <p v-if="data.shedding_description">
@@ -74,7 +84,10 @@
       v-if="data.wear_title || data.wear_description"
     >
       <div class="w-full md:w-2/5 pr-32 text-xl">
-        <h3 class="mb-2 text-2xl md:text-3xl lg:text-5xl" v-if="data.wear_title">
+        <h3
+          class="mb-2 text-2xl md:text-3xl lg:text-5xl"
+          v-if="data.wear_title"
+        >
           {{ data.wear_title }}
         </h3>
         <p v-if="data.wear_description" class="mb-16">
@@ -120,8 +133,20 @@
 export default {
   layout: "landing",
   async asyncData({ $axios }) {
+    const fields = [
+      "*",
+      "cover.private_hash",
+      "image_left_first.data",
+      "image_right_first.data",
+      "image_left_second.data",
+      "image_right_second.data",
+      "cleaning_guide.title",
+      "cleaning_guide.description",
+    ];
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/rug_care_maintenance?single=1&fields=*.*.*"
+      process.env.baseUrl +
+        "/rug_care_maintenance?single=1&fields=" +
+        fields.join(",")
     );
 
     return { data };

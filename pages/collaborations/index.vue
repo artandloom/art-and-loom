@@ -1,6 +1,10 @@
 <template>
   <main>
-    <Cover class="mb-10 md:mb-20" title="Collaborations" :image="cover.private_hash" />
+    <Cover
+      class="mb-10 md:mb-20"
+      title="Collaborations"
+      :image="cover.private_hash"
+    />
     <section class="flex flex-row">
       <aside class="hidden md:flex md:flex-row w-1/5">
         <ul>
@@ -22,7 +26,9 @@
           </NuxtLink>
         </ul>
       </aside>
-      <section class="flex flex-row flex-wrap w-full md:w-4/5 justify-end md:mt-20">
+      <section
+        class="flex flex-row flex-wrap w-full md:w-4/5 justify-end md:mt-20"
+      >
         <div class="flex flex-col">
           <NuxtLink
             class="w-4/5 mb-14 md:mb-20 lg:mb-44 flex flex-col"
@@ -42,7 +48,17 @@
             <!-- even: index % 2,
               odd: !(index % 2), -->
             <h3
-              class="flex flex-row items-center uppercase text-2xl md:text-3xl lg:text-5xl mb-4 md:mb-10 lg:mb-20"
+              class="
+                flex flex-row
+                items-center
+                uppercase
+                text-2xl
+                md:text-3xl
+                lg:text-5xl
+                mb-4
+                md:mb-10
+                lg:mb-20
+              "
               :class="{ 'flex-row-reverse': index % 2 }"
             >
               {{ collaboration.name }}
@@ -71,8 +87,9 @@ export default {
     }),
   },
   async asyncData({ $axios }) {
+    const fields = ["id,name,slug,", "cover.data"];
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/artists?fields=*.*.*"
+      process.env.baseUrl + "/artists?fields=" + fields.join(",")
     );
 
     return { collaborations: data };

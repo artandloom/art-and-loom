@@ -69,7 +69,7 @@ export default {
       process.env.baseUrl +
         "/press?single=1&filter[slug][eq]=" +
         route.params.detail +
-        "&fields=*.*.*"
+        "&fields=title,link,excerpt,image.data,image_secondary.data"
     );
 
     return { data };

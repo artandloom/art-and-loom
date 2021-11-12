@@ -52,8 +52,14 @@
 export default {
   layout: "landing",
   async asyncData({ $axios }) {
+    const fields = [
+      "*",
+      "cover.private_hash",
+      "bespoke_image.data",
+      "custom_image.data",
+    ];
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/material?single=1&fields=*.*.*"
+      process.env.baseUrl + "/material?single=1&fields=" + fields.join(",")
     );
 
     return { data };

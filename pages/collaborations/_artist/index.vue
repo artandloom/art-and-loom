@@ -133,8 +133,16 @@ export default {
     if (matcher && matcher.length > 1) {
       id = matcher[1];
     }
+
+    const fields = [
+      "*",
+      "cover.private_hash",
+      "picture.data",
+      "showcase.id,showcase.directus_files_id.data",
+      "products.id,products.name,products.slug,products.cover.data",
+    ];
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/artists/" + id + "?fields=*.*.*"
+      process.env.baseUrl + "/artists/" + id + "?fields=" + fields.join(",")
     );
 
     return { data };
