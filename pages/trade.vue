@@ -297,7 +297,7 @@ export default {
 
       try {
         const resp = await this.$axios.$post(
-          "https://art-and-loom.vercel.app/api/mail/tarde",
+          "https://artandloom.com/api/mail/tarde",
           // "http://localhost:3000/api/mail/trade",
           {
             ...this.form,
