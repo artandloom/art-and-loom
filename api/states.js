@@ -11,7 +11,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     res.end(
         JSON.stringify([
