@@ -23,6 +23,8 @@ export default {
       { rel: 'stylesheet', href: 'https://use.typekit.net/kng2flj.css' },
       { rel: 'preconnect', href: 'https://use.typekit.net', crossorigin: true },
       { rel: 'dns-prefetch', href: 'https://use.typekit.net' },
+      { rel: 'preconnect', href: 'https://cdn.lightwidget.com' },
+      { rel: 'dns-prefetch', href: 'https://cdn.lightwidget.com' },
     ],
   },
   serverMiddleware: [

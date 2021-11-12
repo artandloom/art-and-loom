@@ -333,8 +333,13 @@ export default {
     SwiperSlide,
   },
   async asyncData({ $axios }) {
+    const homeFields = `
+      banners.id,banners.sort,banners.color,banners.image.data,
+      collection_cover.data,
+      collaboration_cover.data,
+    `;
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/home?single=1&fields=*.*.*"
+      process.env.baseUrl + "/home?single=1&fields=" + homeFields
     );
 
     return { data };
