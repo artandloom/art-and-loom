@@ -64,6 +64,7 @@
         to="/collections"
       >
         <img
+          loading="lazy"
           class="w-full"
           :src="data.collection_cover.data.full_url"
           alt="Collections"
@@ -138,6 +139,7 @@
         to="/collaborations"
       >
         <img
+          loading="lazy"
           class="w-full"
           :src="data.collaboration_cover.data.full_url"
           alt="Collaborations"
@@ -345,15 +347,22 @@ export default {
     return { data };
   },
   async mounted() {
-    const { data: collections } = await this.$axios.$get(
-      process.env.baseUrl + "/collections?filter[featured][nempty]&fields=*.*.*"
-    );
-    this.collections = collections;
+    this.$axios
+      .$get(
+        process.env.baseUrl +
+          "/collections?filter[featured][nempty]&fields=*.*.*"
+      )
+      .then((res) => {
+        this.collections = res.data;
+      });
 
-    const { data: collaborations } = await this.$axios.$get(
-      process.env.baseUrl + "/artists?filter[featured][nempty]&fields=*.*.*"
-    );
-    this.collaborations = collaborations;
+    this.$axios
+      .$get(
+        process.env.baseUrl + "/artists?filter[featured][nempty]&fields=*.*.*"
+      )
+      .then((res) => {
+        this.collaborations = res.data;
+      });
   },
   methods: {
     changeNextSlide(refName) {
