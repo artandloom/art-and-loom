@@ -1,4 +1,11 @@
-export default (req, res) => {
+const bodyParser = require('body-parser');
+const cors = require('cors')
+const app = require('express')();
+
+app.use(cors());
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     res.end(
         JSON.stringify([
@@ -240,4 +247,6 @@ export default (req, res) => {
             }
         ])
     )
-}
+});
+
+module.exports = app;
