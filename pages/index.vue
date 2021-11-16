@@ -336,7 +336,7 @@ export default {
   },
   async asyncData({ $axios }) {
     const homeFields = [
-      "banners.id,banners.sort,banners.color,banners.image.data",
+      "banners.name,banners.id,banners.sort,banners.color,banners.image.data",
       "collection_cover.data",
       "collaboration_cover.data",
     ];
