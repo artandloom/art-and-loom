@@ -5,6 +5,7 @@ export default {
             '*',
             'collection_cover.*',
             'contact_us_cover.*',
+            'contact_us_image.*',
             'trade_cover.*'
         ];
         try {
