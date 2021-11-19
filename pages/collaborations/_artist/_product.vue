@@ -1,7 +1,12 @@
 <template>
   <div>
     <main>
-      <Cover class="px-15" :image="data.cover.private_hash" :alt="data.name" />
+      <Cover
+        v-show="data.cover"
+        class="px-15"
+        :image="data.cover.private_hash"
+        :alt="data.name"
+      />
 
       <section class="flex flex-row justify-end">
         <h2
@@ -68,6 +73,7 @@
         >
           <swiper-slide :key="gallery.id" v-for="gallery in data.gallery">
             <img
+              v-show="gallery.directus_files_id"
               sizes="(max-width: 1400px) 100vw, 1400px"
               :srcset="
                 baseUrl +
@@ -134,6 +140,7 @@
               "
             >
               <Item
+                v-show="product.picture"
                 :id="product.picture.private_hash"
                 :image="product.picture.data.full_url"
                 :name="product.name"

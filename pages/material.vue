@@ -1,6 +1,7 @@
 <template>
   <main>
     <Cover
+      v-show="data.cover"
       title="Material & Techniques"
       :image="data.cover.private_hash"
       alt="Material and Techniques"

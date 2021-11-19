@@ -88,6 +88,7 @@
             :to="'/collections/' + collection.slug + '-iid' + collection.id"
           >
             <Item
+              v-show="collection.picture"
               :id="collection.picture.private_hash"
               :image="collection.picture.data.full_url"
               :name="collection.name"
@@ -168,6 +169,7 @@
             "
           >
             <Item
+              v-show="collaboration.cover"
               :id="collaboration.cover.private_hash"
               :image="collaboration.cover.data.full_url"
               :name="collaboration.name"

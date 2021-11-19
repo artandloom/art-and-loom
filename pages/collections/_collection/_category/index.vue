@@ -1,6 +1,11 @@
 <template>
   <main>
-    <Cover class="px-15" :title="data.name" :image="data.cover.private_hash" />
+    <Cover
+      v-show="data.cover"
+      class="px-15"
+      :title="data.name"
+      :image="data.cover.private_hash"
+    />
     <section class="flex flex-row justify-center md:justify-end -mx-4 md:-mx-0">
       <aside class="hidden md:flex md:flex-row w-1/5">
         <ul>
@@ -52,6 +57,7 @@
           :title="product.name"
         >
           <Item
+            v-show="product.picture"
             :id="product.picture.private_hash"
             :image="product.picture.data.full_url"
             :name="product.name"

@@ -1,6 +1,7 @@
 <template>
   <main>
     <Cover
+      v-show="data.cover"
       title="Rug Care & Maintenance"
       :image="data.cover.private_hash"
       alt="Rug Care and Maintenance"

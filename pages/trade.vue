@@ -1,11 +1,15 @@
 <template>
   <main>
-    <Cover title="Trade" :image="cover.private_hash" />
+    <Cover v-show="cover" title="Trade" :image="cover.private_hash" />
     <section>
       <div v-if="showSuccess">
-          <h3 class="text-xl">Message Sent. Thank you!</h3>
-        </div>
-      <form v-if="!showSuccess" class="flex flex-row flex-wrap" @submit.prevent="submitForm">
+        <h3 class="text-xl">Message Sent. Thank you!</h3>
+      </div>
+      <form
+        v-if="!showSuccess"
+        class="flex flex-row flex-wrap"
+        @submit.prevent="submitForm"
+      >
         <div class="w-full md:w-1/2 px-4 mb-5">
           <label for="last-name" class="sr-only">First Name</label>
           <input

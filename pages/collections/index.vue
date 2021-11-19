@@ -1,6 +1,7 @@
 <template>
   <main>
     <Cover
+      v-show="settings.collection_cover"
       title="Collections"
       :image="settings.collection_cover.private_hash"
     />
@@ -41,6 +42,7 @@
           :title="collection.name"
         >
           <Item
+            v-show="collection.picture"
             :id="collection.picture.private_hash"
             :image="collection.picture.data.full_url"
             :name="collection.name"

@@ -1,6 +1,10 @@
 <template>
   <main>
-    <Cover :title="data.name" :image="data.cover.private_hash" />
+    <Cover
+      v-show="data.cover"
+      :title="data.name"
+      :image="data.cover.private_hash"
+    />
     <section class="lg:mx-10">
       <NuxtLink title="Go Back" to="/collaborations"> ← Go Back </NuxtLink>
     </section>

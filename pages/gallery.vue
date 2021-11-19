@@ -48,6 +48,7 @@
       >
         <!-- TODO: Add image component -->
         <img
+          v-show="item.image"
           class="w-full"
           :alt="item.name"
           sizes="(max-width: 500px) 100vw, 500px"

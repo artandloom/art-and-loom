@@ -1,6 +1,10 @@
 <template>
   <main>
-    <Cover title="Our Story" :image="data.cover.private_hash" />
+    <Cover
+      v-show="data.cover"
+      title="Our Story"
+      :image="data.cover.private_hash"
+    />
     <section class="flex flex-col md:flex-row mb-14 md:mb-20 lg:mb-44">
       <div class="w-full md:w-2/5 mb-6 md:mb-0">
         <img
@@ -25,7 +29,8 @@ export default {
   layout: "landing",
   async asyncData({ $axios }) {
     const { data } = await $axios.$get(
-      process.env.baseUrl + "/about_us?single=1&fields=content,cover.private_hash,picture.data,image.data"
+      process.env.baseUrl +
+        "/about_us?single=1&fields=content,cover.private_hash,picture.data,image.data"
     );
 
     return { data };

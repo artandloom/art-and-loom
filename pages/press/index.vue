@@ -14,7 +14,18 @@
             justify-start
           "
         >
-          <h2 class="flex flex-row items-center uppercase text-3xl md:text-5xl lg:text-7xl z-10 px-15">
+          <h2
+            class="
+              flex flex-row
+              items-center
+              uppercase
+              text-3xl
+              md:text-5xl
+              lg:text-7xl
+              z-10
+              px-15
+            "
+          >
             Press
             <span class="flex ml-6 separator"></span>
           </h2>
@@ -22,18 +33,35 @@
       </div>
     </section>
     <section class="flex flex-row flex-wrap pt-15 -mx-4">
-      <div class="w-full md:w-1/2 lg:w-1/3 p-4 press-item" v-for="item in data" :key="item.id">
+      <div
+        class="w-full md:w-1/2 lg:w-1/3 p-4 press-item"
+        v-for="item in data"
+        :key="item.id"
+      >
         <NuxtLink :to="'/press/' + item.slug">
           <!-- TODO: Add image component -->
           <img
+            v-show="item.cover"
             class="w-full"
             :alt="item.title"
             sizes="(max-width: 500px) 100vw, 500px"
             :srcset="
-              baseUrl + item.cover.private_hash + imageSrc.xsmall +' 200w,' +
-              baseUrl + item.cover.private_hash + imageSrc.small +' 602w,' +
-              baseUrl + item.cover.private_hash + imageSrc.medium +' 861w,' +
-              baseUrl + item.cover.private_hash + imageSrc.large +' 1080w'
+              baseUrl +
+              item.cover.private_hash +
+              imageSrc.xsmall +
+              ' 200w,' +
+              baseUrl +
+              item.cover.private_hash +
+              imageSrc.small +
+              ' 602w,' +
+              baseUrl +
+              item.cover.private_hash +
+              imageSrc.medium +
+              ' 861w,' +
+              baseUrl +
+              item.cover.private_hash +
+              imageSrc.large +
+              ' 1080w'
             "
             :src="baseUrl + item.cover.private_hash + imageSrc.large"
           />
