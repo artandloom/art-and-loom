@@ -2,7 +2,7 @@
   <div>
     <main>
       <Cover
-        v-show="data.cover"
+        v-show="data.cover && data.cover.private_hash"
         class="px-15"
         :image="data.cover.private_hash"
         :alt="data.name"
@@ -73,7 +73,10 @@
         >
           <swiper-slide :key="gallery.id" v-for="gallery in data.gallery">
             <img
-              v-show="gallery.directus_files_id"
+              v-show="
+                gallery.directus_files_id &&
+                gallery.directus_files_id.private_hash
+              "
               sizes="(max-width: 1400px) 100vw, 1400px"
               :srcset="
                 baseUrl +

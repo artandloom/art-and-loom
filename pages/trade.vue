@@ -1,6 +1,6 @@
 <template>
   <main>
-    <Cover v-show="cover" title="Trade" :image="cover.private_hash" />
+    <Cover v-show="cover && cover.private_hash" title="Trade" :image="cover.private_hash" />
     <section>
       <div v-if="showSuccess">
         <h3 class="text-xl">Message Sent. Thank you!</h3>

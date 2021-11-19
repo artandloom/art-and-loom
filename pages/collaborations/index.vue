@@ -1,7 +1,7 @@
 <template>
   <main>
     <Cover
-      v-show="cover"
+      v-show="cover && cover.private_hash"
       class="mb-10 md:mb-20"
       title="Collaborations"
       :image="cover.private_hash"

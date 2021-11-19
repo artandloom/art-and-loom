@@ -1,7 +1,7 @@
 <template>
   <main>
     <Cover
-      v-show="data.cover"
+      v-show="data.cover && data.cover.private_hash"
       class="px-15"
       :title="data.name"
       :image="data.cover.private_hash"
@@ -49,7 +49,7 @@
           :title="category.name"
         >
           <Item
-            v-show="category.picture"
+            v-show="category.picture && category.picture.private_hash"
             :id="category.picture.private_hash"
             :image="category.picture.data.full_url"
             :name="category.name"

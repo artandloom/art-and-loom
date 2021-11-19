@@ -1,6 +1,10 @@
 <template>
   <main>
-    <Cover v-show="cover" title="Connect with us" :image="cover.private_hash" />
+    <Cover
+      v-show="cover && cover.private_hash"
+      title="Connect with us"
+      :image="cover.private_hash"
+    />
     <section class="flex flex-col-reverse md:flex-row">
       <div class="w-full md:w-1/2 md:mx-15">
         <img

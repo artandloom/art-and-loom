@@ -41,7 +41,7 @@
         <NuxtLink :to="'/press/' + item.slug">
           <!-- TODO: Add image component -->
           <img
-            v-show="item.cover"
+            v-show="item.cover && item.cover.private_hash"
             class="w-full"
             :alt="item.title"
             sizes="(max-width: 500px) 100vw, 500px"
