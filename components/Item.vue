@@ -6,7 +6,6 @@
       </p>
     </div>
     <img
-      loading="lazy"
       :alt="name"
       sizes="(max-width: 1400px) 100vw, 1400px"
       :srcset="
