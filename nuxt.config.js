@@ -74,6 +74,6 @@ export default {
     display: 'swap'
   },
   googleAnalytics: {
-    id: '294246859'
+    id: 'UA-84355925-8'
   }
 };
