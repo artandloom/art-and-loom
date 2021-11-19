@@ -272,7 +272,10 @@
                 {{ data.name }}
               </h2>
 
-              <form @submit.prevent="submitForm">
+              <div v-if="showSuccess">
+                <h3 class="text-xl">Message Sent. Thank you!</h3>
+              </div>
+              <form v-if="!showSuccess" @submit.prevent="submitForm">
                 <div class="mb-5 text-right">
                   <label for="name" class="sr-only">Name</label>
                   <input
@@ -499,6 +502,7 @@ export default {
           path: null,
         },
       },
+      showSuccess: false,
       isLoading: false,
     };
   },
@@ -562,6 +566,10 @@ export default {
         );
 
         console.log("resp", resp);
+        if (resp.status === "success") {
+          this.showSuccess = true;
+        }
+
         this.form = {
           email: null,
           name: null,

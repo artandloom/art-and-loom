@@ -72,7 +72,14 @@
         </section>
       </div>
       <div class="w-full md:w-1/2 mb-10 md:mb-0 md:px-20">
-        <form class="flex flex-col" @submit.prevent="submitForm">
+        <div v-if="showSuccess">
+          <h3 class="text-xl">Message Sent. Thank you!</h3>
+        </div>
+        <form
+          v-if="!showSuccess"
+          class="flex flex-col"
+          @submit.prevent="submitForm"
+        >
           <div class="mb-5">
             <label for="name" class="sr-only">Name</label>
             <input
@@ -223,6 +230,7 @@ export default {
       phone: null,
       comments: null,
     },
+    showSuccess: false,
     isLoading: false,
   }),
   methods: {
@@ -250,6 +258,9 @@ export default {
           phone: null,
           comments: null,
         };
+        if (resp.status === "success") {
+          this.showSuccess = true;
+        }
       } catch (error) {
         console.log("error", error);
       }
