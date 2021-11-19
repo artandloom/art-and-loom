@@ -53,6 +53,7 @@ export default {
   buildModules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
+    '@nuxtjs/google-analytics',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -72,4 +73,7 @@ export default {
     },
     display: 'swap'
   },
+  googleAnalytics: {
+    id: '294246859'
+  }
 };
