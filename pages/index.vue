@@ -363,6 +363,7 @@ export default {
       )
       .then((res) => {
         this.collections = res.data;
+        this.swiperInit();
       });
 
     this.$axios
@@ -373,6 +374,7 @@ export default {
       )
       .then((res) => {
         this.collaborations = res.data;
+        this.swiperInit();
       });
   },
   methods: {
