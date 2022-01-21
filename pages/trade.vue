@@ -305,7 +305,7 @@ export default {
 
       try {
         const resp = await this.$axios.$post(
-          "https://www.artandloom.com/api/mail/tarde",
+          "https://www.artandloom.com/api/mail/trade",
           // "http://localhost:3000/api/mail/trade",
           {
             ...this.form,
