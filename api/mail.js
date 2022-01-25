@@ -14,7 +14,7 @@ const mailerConfig = {
     secureConnection: true,
     port: 587,
     auth: {
-        user: "no-reply@artandloom.com",
+        user: "noreply@artandloom.com",
         pass: "@Gallacher452"
     }
 };
