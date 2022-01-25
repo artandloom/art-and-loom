@@ -20,7 +20,7 @@
     "mobile-detect": "^1.4.5",
     "nodemailer": "^6.7.0",
     "nuxt": "^2.15.7",
-    "nuxt-edge": "latest",
+    "nuxt-edge": "^2.16.0-27358576.777a4b7f",
     "object-hash": "^2.2.0",
     "object-sizeof": "^1.6.1",
     "swiper": "^6.8.0",
