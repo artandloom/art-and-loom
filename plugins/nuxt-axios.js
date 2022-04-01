@@ -75,7 +75,7 @@ export default async ({ app }) => {
             }
 
 
-            let url = request.url;
+            let url = encodeURI(request.url);
 
             if (searchURLs.find(searchURL => url.startsWith(searchURL))) {
                 url = url.substr(0, url.lastIndexOf("filter[name][contains]"));
