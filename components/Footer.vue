@@ -1,12 +1,12 @@
 <template>
   <footer>
-    <section class="flex flex-row items-end justify-between pt-11 px-15">
+    <section class="flex flex-col md:flex-row items-center md:items-end justify-between pt-11 px-15">
       <div>
         <NuxtLink to="/" title="Home">
           <img src="/images/logo.svg" alt="Art and loom" />
         </NuxtLink>
       </div>
-      <div class="flex flex-col items-end justify-between pt-11">
+      <div class="flex flex-col items-center md:items-end justify-between pt-11">
         <a
           v-if="configs.contact_phone"
           :href="'tel:' + (configs.contact_phone_link || configs.contact_phone)"
