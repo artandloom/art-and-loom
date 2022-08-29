@@ -5,7 +5,9 @@ const router = Router();
 
 
 const getSettings = () => {
+    console.log('start getSettings')
     return new Promise(async (resolve, reject) => {
+        console.log('start b getSettings')
         try {
             const res = await fetch('https://admin.artandloom.com/art-and-loom/items/settings?single=1&fields=email,password');
             const json = await res.json();
@@ -13,11 +15,12 @@ const getSettings = () => {
             resolve(json);
         } catch (error) {
             reject(error);
-
+            
         }
     });
 }
 
+await getSettings();
 // const toEmail = 'info@artandloom.com';
 const toEmail = 'fiocchigabriel@gmail.com';
 const mailerConfig = {
@@ -31,7 +34,7 @@ const mailerConfig = {
 };
 const transporter = nodemailer.createTransport(mailerConfig);
 
-await getSettings();
+
 
 const sendEmail = (res, options) => {
     const mailOptions = {
