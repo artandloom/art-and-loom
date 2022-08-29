@@ -4,6 +4,21 @@ import nodemailer from 'nodemailer';
 const router = Router();
 
 
+const getSettings = () => {
+    return new Promise((resolve, reject) => {
+        fetch('https://admin.artandloom.com/art-and-loom/items/settings?single=1&fields=email,password')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                resolve(data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                reject(error);
+            });
+    });
+}
+
 // const toEmail = 'info@artandloom.com';
 const toEmail = 'fiocchigabriel@gmail.com';
 const mailerConfig = {
@@ -42,6 +57,7 @@ const sendEmail = (res, options) => {
         }
     });
 };
+
 
 router.post('/mail/contact', (req, res) => {
     const mailOptions = {
