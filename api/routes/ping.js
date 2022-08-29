@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 const router = Router();
 
-router.use('/ping', (_req, res) => {
+router.get('/ping', (_req, res) => {
     res.setHeader('Content-Type', 'application/json')
     res.end(
         JSON.stringify({
@@ -12,4 +12,4 @@ router.use('/ping', (_req, res) => {
     )
 })
 
-export default router;
+module.exports = router;

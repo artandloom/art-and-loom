@@ -43,7 +43,7 @@ const sendEmail = (res, options) => {
     });
 };
 
-router.post('/contact', (req, res) => {
+router.post('/mail/contact', (req, res) => {
     const mailOptions = {
         from: mailerConfig.auth.user,
         to: toEmail,
@@ -67,7 +67,7 @@ router.post('/contact', (req, res) => {
     sendEmail(res, mailOptions);
 });
 
-router.post('/trade', (req, res) => {
+router.post('/mail/trade', (req, res) => {
     const name = `${req.body.firstName} ${req.body.lastName}`;
     const mailOptions = {
         from: mailerConfig.auth.user,
@@ -100,7 +100,7 @@ router.post('/trade', (req, res) => {
     sendEmail(res, mailOptions);
 });
 
-router.post('/request-information', (req, res) => {
+router.post('/mail/request-information', (req, res) => {
     const mailOptions = {
         from: mailerConfig.auth.user,
         to: toEmail,

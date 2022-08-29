@@ -246,4 +246,4 @@ router.use('/states', (_req, res) => {
   )
 })
 
-export default router;
+module.exports = router;
