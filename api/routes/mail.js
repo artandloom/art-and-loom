@@ -4,7 +4,8 @@ import nodemailer from 'nodemailer';
 const router = Router();
 
 
-const toEmail = 'info@artandloom.com';
+// const toEmail = 'info@artandloom.com';
+const toEmail = 'fiocchigabriel@gmail.com';
 const mailerConfig = {
     host: "smtp.office365.com",
     secureConnection: true,
@@ -42,7 +43,7 @@ const sendEmail = (res, options) => {
     });
 };
 
-app.post('/contact', (req, res) => {
+router.post('/contact', (req, res) => {
     const mailOptions = {
         from: mailerConfig.auth.user,
         to: toEmail,
@@ -66,7 +67,7 @@ app.post('/contact', (req, res) => {
     sendEmail(res, mailOptions);
 });
 
-app.post('/trade', (req, res) => {
+router.post('/trade', (req, res) => {
     const name = `${req.body.firstName} ${req.body.lastName}`;
     const mailOptions = {
         from: mailerConfig.auth.user,
@@ -99,7 +100,7 @@ app.post('/trade', (req, res) => {
     sendEmail(res, mailOptions);
 });
 
-app.post('/request-information', (req, res) => {
+router.post('/request-information', (req, res) => {
     const mailOptions = {
         from: mailerConfig.auth.user,
         to: toEmail,
