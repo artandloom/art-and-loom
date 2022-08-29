@@ -1,11 +1,7 @@
-const nodemailer = require("nodemailer");
+import { Router } from 'express';
+import nodemailer from 'nodemailer';
 
-const bodyParser = require('body-parser');
-const app = require('express')();
-
-app.use(bodyParser.json());
-
-
+const router = Router();
 
 
 const toEmail = 'info@artandloom.com';
@@ -19,7 +15,6 @@ const mailerConfig = {
     }
 };
 const transporter = nodemailer.createTransport(mailerConfig);
-
 
 
 const sendEmail = (res, options) => {
@@ -45,8 +40,7 @@ const sendEmail = (res, options) => {
             });
         }
     });
-}
-
+};
 
 app.post('/contact', (req, res) => {
     const mailOptions = {
@@ -137,4 +131,4 @@ app.post('/request-information', (req, res) => {
     sendEmail(res, mailOptions);
 });
 
-module.exports = app;
+module.exports = router;

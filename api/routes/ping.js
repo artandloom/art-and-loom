@@ -1,4 +1,8 @@
-export default (req, res) => {
+import { Router } from 'express';
+
+const router = Router();
+
+router.use('/ping', (_req, res) => {
     res.setHeader('Content-Type', 'application/json')
     res.end(
         JSON.stringify({
@@ -6,4 +10,6 @@ export default (req, res) => {
             message: 'Pong',
         })
     )
-}
+})
+
+export default router;
