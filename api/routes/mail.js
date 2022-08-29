@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import fetch from 'node-fetch';
+import axios from 'axios';
 import nodemailer from 'nodemailer';
 
 const router = Router();
@@ -41,15 +41,14 @@ const sendEmail = (res, mailOptions) => {
 
 
 const getMailOptions = (res, options) => {
-    fetch('https://admin.artandloom.com/art-and-loom/items/settings?single=1&fields=email,password')
-        .then((response) => response.json())
+    axios.get('https://admin.artandloom.com/art-and-loom/items/settings?single=1&fields=email,password')
         .then((response) => {
             const mailOptions = {
                 from: mailerConfig.auth.user,
                 ...options
             };
-            mailerConfig.auth.user = response.data.email;
-            mailerConfig.auth.pass = response.data.password;
+            mailerConfig.auth.user = response.data.data.email;
+            mailerConfig.auth.pass = response.data.data.password;
 
             transporter = nodemailer.createTransport(mailerConfig);
 
