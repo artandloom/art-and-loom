@@ -6,8 +6,8 @@ const router = Router();
 
 
 
-// const toEmail = 'info@artandloom.com';
-const toEmail = 'fiocchigabriel@gmail.com';
+const toEmail = 'info@artandloom.com';
+// const toEmail = 'fiocchigabriel@gmail.com';
 let mailerConfig = {
     host: "smtp.office365.com",
     secureConnection: true,
