@@ -5,7 +5,7 @@ const router = Router();
 
 
 const getSettings = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         try {
             const res = await fetch('https://admin.artandloom.com/art-and-loom/items/settings?single=1&fields=email,password');
             const json = await res.json();
