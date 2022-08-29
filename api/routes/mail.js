@@ -1,29 +1,14 @@
 import { Router } from 'express';
+import fetch from 'node-fetch';
 import nodemailer from 'nodemailer';
 
 const router = Router();
 
 
-const getSettings = () => {
-    console.log('start getSettings')
-    return new Promise(async (resolve, reject) => {
-        console.log('start b getSettings')
-        try {
-            const res = await fetch('https://admin.artandloom.com/art-and-loom/items/settings?single=1&fields=email,password');
-            const json = await res.json();
-            console.log('Success:', json);
-            resolve(json);
-        } catch (error) {
-            reject(error);
-            
-        }
-    });
-}
 
-await getSettings();
-// const toEmail = 'info@artandloom.com';
-const toEmail = 'fiocchigabriel@gmail.com';
-const mailerConfig = {
+const toEmail = 'info@artandloom.com';
+// const toEmail = 'fiocchigabriel@gmail.com';
+let mailerConfig = {
     host: "smtp.office365.com",
     secureConnection: true,
     port: 587,
@@ -32,16 +17,9 @@ const mailerConfig = {
         pass: "@Gallacher452"
     }
 };
-const transporter = nodemailer.createTransport(mailerConfig);
+let transporter;
 
-
-
-const sendEmail = (res, options) => {
-    const mailOptions = {
-        from: mailerConfig.auth.user,
-        ...options
-    };
-
+const sendEmail = (res, mailOptions) => {
     transporter.sendMail(mailOptions, (error) => {
         res.setHeader('Content-Type', 'application/json')
 
@@ -59,6 +37,31 @@ const sendEmail = (res, options) => {
             });
         }
     });
+}
+
+
+const getMailOptions = (res, options) => {
+    fetch('https://admin.artandloom.com/art-and-loom/items/settings?single=1&fields=email,password')
+        .then((response) => response.json())
+        .then((response) => {
+            const mailOptions = {
+                from: mailerConfig.auth.user,
+                ...options
+            };
+            mailerConfig.auth.user = response.data.email;
+            mailerConfig.auth.pass = response.data.password;
+
+            transporter = nodemailer.createTransport(mailerConfig);
+
+            sendEmail(res, mailOptions);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            res.writeHead(400);
+            res.json({
+                status: 'error',
+            });
+        });
 };
 
 
@@ -83,7 +86,7 @@ router.post('/mail/contact', (req, res) => {
             `</body>`
     };
 
-    sendEmail(res, mailOptions);
+    getMailOptions(res, mailOptions);
 });
 
 router.post('/mail/trade', (req, res) => {
@@ -116,7 +119,7 @@ router.post('/mail/trade', (req, res) => {
             `</body>`
     };
 
-    sendEmail(res, mailOptions);
+    getMailOptions(res, mailOptions);
 });
 
 router.post('/mail/request-information', (req, res) => {
@@ -148,7 +151,7 @@ router.post('/mail/request-information', (req, res) => {
             `</body>`
     };
 
-    sendEmail(res, mailOptions);
+    getMailOptions(res, mailOptions);
 });
 
 module.exports = router;
