@@ -1,6 +1,5 @@
-import express from 'express';
+import * as express from 'express';
 import bodyParser from 'body-parser';
-// const express = require('express');
 
 // Create express instance
 const app = express();
