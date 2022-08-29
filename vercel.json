@@ -1,43 +1,15 @@
 {
     "version": 2,
-    "env": {
-        "ON_VERCEL": "true"
-    },
     "builds": [
         {
-            "src": "api/**/*.js",
-            "use": "@now/node"
-        },
-        {
             "src": "nuxt.config.js",
-            "use": "@nuxtjs/now-builder",
+            "use": "@nuxtjs/vercel-builder",
             "config": {
+                "internalServer": true,
                 "serverFiles": [
                     "api/**"
                 ]
             }
-        }
-    ],
-    "routes": [
-        {
-            "src": "/api/(.*)",
-            "dest": "/api/$1.js",
-            "methods": [
-                "GET",
-                "POST",
-                "OPTIONS"
-            ],
-            "headers": {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-                "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
-                "Access-Control-Allow-Credentials": "true"
-            },
-            "continue": true
-        },
-        {
-            "src": "/(.*)",
-            "dest": "$1"
         }
     ]
 }

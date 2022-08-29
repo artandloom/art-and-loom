@@ -1,15 +1,14 @@
-const nodemailer = require("nodemailer");
+import { Router } from 'express';
+import fetch from 'node-fetch';
+import nodemailer from 'nodemailer';
 
-const bodyParser = require('body-parser');
-const app = require('express')();
-
-app.use(bodyParser.json());
-
+const router = Router();
 
 
 
 const toEmail = 'info@artandloom.com';
-const mailerConfig = {
+// const toEmail = 'fiocchigabriel@gmail.com';
+let mailerConfig = {
     host: "smtp.office365.com",
     secureConnection: true,
     port: 587,
@@ -18,16 +17,9 @@ const mailerConfig = {
         pass: "@Gallacher452"
     }
 };
-const transporter = nodemailer.createTransport(mailerConfig);
+let transporter;
 
-
-
-const sendEmail = (res, options) => {
-    const mailOptions = {
-        from: mailerConfig.auth.user,
-        ...options
-    };
-
+const sendEmail = (res, mailOptions) => {
     transporter.sendMail(mailOptions, (error) => {
         res.setHeader('Content-Type', 'application/json')
 
@@ -48,7 +40,32 @@ const sendEmail = (res, options) => {
 }
 
 
-app.post('/contact', (req, res) => {
+const getMailOptions = (res, options) => {
+    fetch('https://admin.artandloom.com/art-and-loom/items/settings?single=1&fields=email,password')
+        .then((response) => response.json())
+        .then((response) => {
+            const mailOptions = {
+                from: mailerConfig.auth.user,
+                ...options
+            };
+            mailerConfig.auth.user = response.data.email;
+            mailerConfig.auth.pass = response.data.password;
+
+            transporter = nodemailer.createTransport(mailerConfig);
+
+            sendEmail(res, mailOptions);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            res.writeHead(400);
+            res.json({
+                status: 'error',
+            });
+        });
+};
+
+
+router.post('/mail/contact', (req, res) => {
     const mailOptions = {
         from: mailerConfig.auth.user,
         to: toEmail,
@@ -69,10 +86,10 @@ app.post('/contact', (req, res) => {
             `</body>`
     };
 
-    sendEmail(res, mailOptions);
+    getMailOptions(res, mailOptions);
 });
 
-app.post('/trade', (req, res) => {
+router.post('/mail/trade', (req, res) => {
     const name = `${req.body.firstName} ${req.body.lastName}`;
     const mailOptions = {
         from: mailerConfig.auth.user,
@@ -102,10 +119,10 @@ app.post('/trade', (req, res) => {
             `</body>`
     };
 
-    sendEmail(res, mailOptions);
+    getMailOptions(res, mailOptions);
 });
 
-app.post('/request-information', (req, res) => {
+router.post('/mail/request-information', (req, res) => {
     const mailOptions = {
         from: mailerConfig.auth.user,
         to: toEmail,
@@ -134,7 +151,7 @@ app.post('/request-information', (req, res) => {
             `</body>`
     };
 
-    sendEmail(res, mailOptions);
+    getMailOptions(res, mailOptions);
 });
 
-module.exports = app;
+module.exports = router;
