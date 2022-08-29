@@ -6,16 +6,15 @@ const router = Router();
 
 const getSettings = () => {
     return new Promise((resolve, reject) => {
-        fetch('https://admin.artandloom.com/art-and-loom/items/settings?single=1&fields=email,password')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-                resolve(data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                reject(error);
-            });
+        try {
+            const res = await fetch('https://admin.artandloom.com/art-and-loom/items/settings?single=1&fields=email,password');
+            const json = await res.json();
+            console.log('Success:', json);
+            resolve(json);
+        } catch (error) {
+            reject(error);
+
+        }
     });
 }
 
@@ -32,6 +31,7 @@ const mailerConfig = {
 };
 const transporter = nodemailer.createTransport(mailerConfig);
 
+await getSettings();
 
 const sendEmail = (res, options) => {
     const mailOptions = {
